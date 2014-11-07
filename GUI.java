@@ -1,12 +1,31 @@
 import javax.swing.*;
+import java.awt.*;
+import java.awt.Component.*;
+import java.awt.event.*;
+import java.awt.Dimension;
 
-public class GUI
+public class GUI implements ActionListener
 {
-    private Frame frame;
+    private JFrame frame;
     private JPanel titlePanel, movePanel;
     private JPanel playerXPanel, playerOPanel;
     private JPanel boardPanel;
     private JButton button1, button2, button3, button4, button5, button6, button7, button8, button9;
+    private JPanel mainMenuPanel, mainTitlePanel;
+    private JLabel mainTitleLabel;
+    private JButton ticButton, blackButton;
+    private JPanel deckMain, deckTitlePanel;
+    private JLabel deckTitleLabel;
+    private JSlider slider;
+    private JPanel blackJackMain, dealerPanel, BJButtonPanel, playerPanel;
+    private JButton hit, stand, split;
+    private JPanel selectPlayerMain, selectButtonPanel, selectTitlePanel;
+    private JLabel selectTitleLabel;
+    private JButton computerButton, humanButton;
+    private JPanel leaderMain, leaderButtonPanel,leaderTextPanel;
+    private JTextArea leaderTextArea;
+    private JButton allTime, sinceStart;
+    private JPanel ticPanel;
 
     private void GUI()
     {
@@ -16,23 +35,39 @@ public class GUI
 
     private void generateTicTacToeGUI()
     {
-
-	frame = new Frame("Arcade", new BorderLayout());
+	frame = new JFrame("Arcade");
+	frame.setLayout(new BorderLayout());
 	titlePanel = new JPanel();
 	movePanel = new JPanel();
 	playerXPanel = new JPanel();
 	playerOPanel = new JPanel();
 	boardPanel = new JPanel(new GridLayout(3,3));
+	ticPanel = new JPanel(new BorderLayout());
 	
+	ticPanel.add(titlePanel, BorderLayout.NORTH);
+	ticPanel.add(boardPanel, BorderLayout.CENTER);
+	ticPanel.add(playerXPanel, BorderLayout.WEST);
+	ticPanel.add(playerOPanel, BorderLayout.EAST);
+	ticPanel.add(movePanel, BorderLayout.SOUTH);
+
 	button1 = new JButton();
+	button1.addActionListener(this);
 	button2 = new JButton();
+	button2.addActionListener(this);
 	button3 = new JButton();
+	button3.addActionListener(this);
 	button4 = new JButton();
+	button4.addActionListener(this);
 	button5 = new JButton();
+	button5.addActionListener(this);
 	button6 = new JButton();
+	button6.addActionListener(this);
 	button7 = new JButton();
+	button7.addActionListener(this);
 	button8 = new JButton();
+	button8.addActionListener(this);
 	button9 = new JButton();
+	button9.addActionListener(this);
 
 	boardPanel.add(button7);
 	boardPanel.add(button8);
@@ -44,87 +79,159 @@ public class GUI
 	boardPanel.add(button2);
 	boardPanel.add(button3);
 	
-	frame.add(titlePanel, BorderLayout.NORTH);
-	frame.add(playerXPanel, BorderLayout.WEST);
-	frame.add(playerOPanel, BorderLayout.EAST);
-	frame.add(boardPanel, BorderLayout.CENTER);
-	frame.add(movePanel, BorderLayout.SOUTH);
+	frame.add(ticPanel);
     }
     
     public void mainMenuGUI() 
     {
-	JPanel main = new JPanel(new GridLayout(3,1));
-	JPanel titlePanel = new JPanel();
-	JLabel titleLabel = new JLabel("Tic Tac Toe");
-	titlePanel.add(titleLabel);
-	main.add(titlePanel);
-	JButton ticButton = new JButton("Tic Tac Toe");
-	JButton blackButton = new JButton("Black Jack");
-	main.add(ticButton);
-	main.add(blackButton);
+	mainMenuPanel = new JPanel(new GridLayout(3,1));
+	mainTitlePanel = new JPanel();
+	mainTitleLabel = new JLabel("Tic Tac Toe");
+	mainTitlePanel.add(mainTitleLabel);
+	mainMenuPanel.add(mainTitlePanel);
+        ticButton = new JButton("Tic Tac Toe");
+	blackButton = new JButton("Black Jack");
+	mainMenuPanel.add(ticButton);
+	mainMenuPanel.add(blackButton);
+
+	Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+	mainMenuPanel.setPreferredSize(size);
+	mainMenuPanel.setVisible(true);
     }
 
     public void numDeckGUI() 
     {
-	JPanel main = new JPanel(new GridLayout(2,1));
-	JPanel titlePanel = new JPanel();
-	JLabel titleLabel = new JLabel("Select number of decks");
-	JSlider slider = new JSlider(2,8);
-	titlePanel.add(titleLabel);
-        main.add(titlePanel);
-	main.add(slider);
+	deckMain = new JPanel(new GridLayout(2,1));
+	deckTitlePanel = new JPanel();
+	deckTitleLabel = new JLabel("Select number of decks");
+	slider = new JSlider(2,8);
+	deckTitlePanel.add(deckTitleLabel);
+        deckMain.add(deckTitlePanel);
+	deckMain.add(slider);
+	frame.add(deckMain);
     }
 	
     public void blackJackGUI()
     {
-	JPanel main = new JPanel(new GridLayout(3,1));
-	JPanel dealerPanel = new JPanel();
-	JPanel playerPanel = new JPanel();
-	JPanel buttonPanel = new JPanel();
-	JButton hit = new JButton("Hit");
-	JButton stand = new JButton("Stand");
-	JButton split = new JButton("Split");
-	buttonPanel.add(hit);
-	buttonPanel.add(stand);
+	blackJackMain = new JPanel(new GridLayout(3,1));
+	dealerPanel = new JPanel();
+	playerPanel = new JPanel();
+	BJButtonPanel = new JPanel();
+	hit = new JButton("Hit");
+	stand = new JButton("Stand");
+	split = new JButton("Split");
+	BJButtonPanel.add(hit);
+	BJButtonPanel.add(stand);
 	if (split.canSplit()){
-	    buttonPanel.add(split);
+	    BJButtonPanel.add(split);
 	}
-	main.add(dealerPanel);
-	main.add(playerPanel);
-	main.add(buttonPanel);
-	
+	blackJackMain.add(dealerPanel);
+	blackJackMain.add(playerPanel);
+	blackJackMain.add(BJButtonPanel);
+	frame.add(blackJackMain);
     }
 
     public void selectPlayerTicGUI()
     {
-	JPanel main = new JPanel();
-	JPanel buttonPanel = new JPanel(new GridLayout(2,1));
-	JPanel titlePanel = new JPanel();
-	JLabel titleLabel = new JLabel("Select player type");
-	titlePanel.add(titleLabel);
-	JButton humanButton = new JButton("Human vs Human");
-	JButton computerButton = new JButton("Human vs. Computer");
-	buttonPanel.add(humanButton);
-	buttonPanel.add(computerButton);
+	selectPlayerMain = new JPanel();
+	selectButtonPanel = new JPanel(new GridLayout(2,1));
+	selectTitlePanel = new JPanel();
+	selectTitleLabel = new JLabel("Select player type");
+	selectTitlePanel.add(selectTitleLabel);
+	humanButton = new JButton("Human vs Human");
+	computerButton = new JButton("Human vs. Computer");
+	selectButtonPanel.add(humanButton);
+	selectButtonPanel.add(computerButton);
 	
-	main.add(titlePanel);
-	main.add(buttonPanel);
+	selectPlayerMain.add(selectTitlePanel);
+	selectPlayerMain.add(selectButtonPanel);
+	frame.add(selectPlayerMain);
     }
     
     public void leaderBoardGUI()
     {
-	JPanel main = new JPanel();
-	JPanel buttonPanel = new JPanel();
-	JPanel textPanel = new JPanel();
-	JTextArea textArea = new JTextArea();
-	textPanel.add(textArea);
+	leaderMain = new JPanel();
+        leaderButtonPanel = new JPanel();
+	leaderTextPanel = new JPanel();
+	leaderTextArea = new JTextArea();
+	leaderTextPanel.add(leaderTextArea);
+	allTime = new JButton("All Time");
+	sinceStart = new JButton("Since Start");
+	leaderButtonPanel.add(allTime);
+	leaderButtonPanel.add(sinceStart);
 
-	JButton allTime = new JButton("All Time");
-	JButton sinceStart = new JButton("Since Start");
-	buttonPanel.add(allTime);
-	buttonPanel.add(sinceStart);
+	leaderMain.add(leaderButtonPanel);
+	leaderMain.add(leaderTextPanel);
+	frame.add(leaderMain);
+    }
 
-	main.add(buttonPanel);
-	main.add(textPanel);
+    public void actionPerformed(ActionEvent e)
+    {
+	if(e.getSource() == button1)
+	    {
+		button1.setIcon(/*asdasd*/);
+		button1.revalidate();
+		button1.repaint();
+	    }
+	if(e.getSource() == button2)
+	    {
+		button2.setIcon(/*asdasd*/);
+		button2.revalidate();
+		button2.repaint();
+	    }
+	if(e.getSource() == button3)
+	    {
+		button3.setIcon(/*asdasd*/);
+		button3.revalidate();
+		button3.repaint();
+	    }
+	if(e.getSource() == button4)
+	    {
+		button4.setIcon(/*asdasd*/);
+		button4.revalidate();
+		button4.repaint();
+	    }
+	if(e.getSource() == button5)
+	    {
+		button5.setIcon(/*asdasd*/);
+		button5.revalidate();
+		button5.repaint();
+	    }
+	if(e.getSource() == button6)
+	    {
+		button6.setIcon(/*asdasd*/);
+		button6.revalidate();
+		button6.repaint();
+	    }
+	if(e.getSource() == button7)
+	    {
+		button7.setIcon(/*asdasd*/);
+		button7.revalidate();
+		button7.repaint();
+	    }
+	if(e.getSource() == button8)
+	    {
+		button8.setIcon(/*asdasd*/);
+		button8.revalidate();
+		button8.repaint();
+	    }
+	if(e.getSource() == button9)
+	    {
+		button9.setIcon(/*asdasd*/);
+		button9.revalidate();
+		button9.repaint();
+	    }
+	if(e.getSource() == ticButton)
+	    {
+		mainMenuPanel.setVisible(false);
+		ticPanel.setVisible(true);
+		frame.revalidate();
+		frame.repaint();
+	    }
+	if(e.getSource() == blackButton)
+	    {
+		mainMenuPanel.setVisible(false);
+		
+	    }
     }
 }
