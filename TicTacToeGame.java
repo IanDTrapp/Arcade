@@ -14,10 +14,10 @@ public class TicTacToeGame {
 		gui.movePanelUpdate("Player 1, please pick a space!");
 		fillArray(player1.pickSpace());
 		if (turn >= 5) break;
-		if (tic.isWinner != 0) break;
+		if (tic.isWinner() != 0) break;
 		gui.movePanelUpdate("Player 2, please pick a space!");
 		fillArray(player2.pickSpace());
-		if (tic.isWinner != 0) break;
+		if (tic.isWinner() != 0) break;
 	    }
 	    return tic.isWinner();
 	}
@@ -29,10 +29,10 @@ public class TicTacToeGame {
 		gui.movePanelUpdate("Player 1, please pick a space!");
 		fillArray(player1.pickSpace());
 		if (turn >= 5) break;
-		if (tic.isWinner != 0) break;
+		if (tic.isWinner() != 0) break;
 		gui.movePanelUpdate("Player 2, please pick a space!");
 		player2.pickSpace();
-		if (tic.isWinner != 0) break;
+		if (tic.isWinner() != 0) break;
 	    }
 	    return tic.isWinner();
 	}
