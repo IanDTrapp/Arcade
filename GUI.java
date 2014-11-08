@@ -29,7 +29,7 @@ public class GUI implements ActionListener
     private CardLayout cardLayout;
     private HumanPlayer hp;
     private HumanPlayer humanPlayer, humanPlayer2;
-    private ComputerPlayer computerPlayer;
+    //private ComputerPlayer computerPlayer;
     public static String mainMenu = "Main Menu";
     public static String ticTacToe = "Tic Tac Toe";
     public static String numDecks = "Num Decks";
@@ -224,7 +224,7 @@ public class GUI implements ActionListener
 	    {
 		if(humanPlayer != null)
                     {
-                        humanPlayer.pickSpace(1, 1);
+                        tic.fillArray(humanPlayer.pickSpace(1, 1));
 			button1.setText("X");
                     }
                 if(humanPlayer2 != null)
@@ -232,11 +232,11 @@ public class GUI implements ActionListener
                         humanPlayer2.pickSpace(1, 2);
 			button1.setText("O");
                     }
-                if(computerPlayer != null)
-                    {
-                        computerPlayer.pickSpace();
-			button1.setText("O");
-                    }
+                //if(computerPlayer != null)
+		// {
+		//      computerPlayer.pickSpace();
+		//	button1.setText("O");
+		//  }
 		button1.setFont(new Font("Serif", Font.BOLD, 25));
 		button1.revalidate();
 		button1.repaint();
@@ -252,10 +252,10 @@ public class GUI implements ActionListener
                     {
                         humanPlayer2.pickSpace(2, 2);
                     }
-                if(computerPlayer != null)
-                    {
-                        computerPlayer.pickSpace();
-                    }
+		// if(computerPlayer != null)
+		//  {
+		//      computerPlayer.pickSpace();
+		//  }
 
 		button2.revalidate();
 		button2.repaint();
@@ -271,10 +271,10 @@ public class GUI implements ActionListener
                     {
                         humanPlayer2.pickSpace(3, 2);
                     }
-                if(computerPlayer != null)
-                    {
-                        computerPlayer.pickSpace();
-                    }
+                //if(computerPlayer != null)
+		//  {
+		//computerPlayer.pickSpace();
+		//  }
 		button3.revalidate();
 		button3.repaint();
 	    }
@@ -289,10 +289,10 @@ public class GUI implements ActionListener
                     {
                         humanPlayer2.pickSpace(4, 2);
                     }
-                if(computerPlayer != null)
-                    {
-                        computerPlayer.pickSpace();
-                    }
+                //if(computerPlayer != null)
+		//  {
+		//      computerPlayer.pickSpace();
+		//  }
 		button4.revalidate();
 		button4.repaint();
 	    }
@@ -307,10 +307,10 @@ public class GUI implements ActionListener
                     {
                         humanPlayer2.pickSpace(5, 2);
                     }
-                if(computerPlayer != null)
-                    {
-                        computerPlayer.pickSpace();
-                    }
+                //if(computerPlayer != null)
+		//  {
+		//      computerPlayer.pickSpace();
+		//  }
 		button5.revalidate();
 		button5.repaint();
 	    }
@@ -325,10 +325,10 @@ public class GUI implements ActionListener
                     {
                         humanPlayer2.pickSpace(6, 2);
                     }
-                if(computerPlayer != null)
-                    {
-                        computerPlayer.pickSpace();
-                    }
+                //if(computerPlayer != null)
+		//  {
+		//      computerPlayer.pickSpace();
+		//  }
 		button6.revalidate();
 		button6.repaint();
 	    }
@@ -343,10 +343,10 @@ public class GUI implements ActionListener
                     {
                         humanPlayer2.pickSpace(7, 2);
                     }
-                if(computerPlayer != null)
-                    {
-                        computerPlayer.pickSpace();
-                    }
+                //if(computerPlayer != null)
+		//  {
+		//      computerPlayer.pickSpace();
+		//  }
 		button7.revalidate();
 		button7.repaint();
 	    }
@@ -361,10 +361,10 @@ public class GUI implements ActionListener
                     {
                         humanPlayer2.pickSpace(8, 2);
                     }
-                if(computerPlayer != null)
-                    {
-                        computerPlayer.pickSpace();
-                    }
+                //if(computerPlayer != null)
+		//  {
+		//      computerPlayer.pickSpace();
+		//  }
 		button8.revalidate();
 		button8.repaint();
 	    }
@@ -379,10 +379,10 @@ public class GUI implements ActionListener
                     {
                         humanPlayer2.pickSpace(9, 2);
                     }
-                if(computerPlayer != null)
-                    {
-                        computerPlayer.pickSpace();
-                    }
+                //if(computerPlayer != null)
+		//  {
+		//      computerPlayer.pickSpace();
+		//  }
 		button9.revalidate();
 		button9.repaint();
 	    }
@@ -403,7 +403,7 @@ public class GUI implements ActionListener
 	if(e.getSource() == computerButton)
 	    {
 		humanPlayer = new HumanPlayer(1);
-		computerPlayer = new ComputerPlayer(2);
+		//computerPlayer = new ComputerPlayer(2);
 		cardLayout.show(master, ticTacToe);
 		master.revalidate();
 		master.repaint();
