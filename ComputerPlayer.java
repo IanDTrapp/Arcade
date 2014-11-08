@@ -1,4 +1,4 @@
-public ComputerPlayer {
+public class ComputerPlayer {
 
     public ComputerPlayer() {
 	// Default constructor
