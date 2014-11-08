@@ -1,238 +1,332 @@
 public class ComputerPlayer {
 
-    public ComputerPlayer() {
+    private TicTacToeGame tic = new TicTacToeGame();
+    
+    public ComputerPlayer() 
+    {
 	// Default constructor
     }
 
     // Method for picking the optimal spot
-    public int pickSpace(int[] takenSpaces) {
-	//Find a win in space 2
-	if(((takenSpaces[0]==playerNumber)&&(takenSpaces[1]==playerNumber))||((takenSpaces[5]==playerNumber)&&(takenSpaces[8]==playerNumber))
-	   ||((takenSpaces[4]==playerNumber)&&(takenSpaces[6]==playerNumber))){
-	    if(takenSpaces[2]==0){
-		return 2;
-	    }
-	}
-	//Find a win in space 1
-	if(((takenSpaces[0]==playerNumber)&&(takenSpaces[2]==playerNumber))||((takenSpaces[4]==playerNumber)&&(takenSpaces[7]==playerNumber))){
-	    if(takenSpaces[1]==0){
-		return 1;
-	    }
-	}
-	//Find a win in space 0
-	if(((takenSpaces[1]==playerNumber)&&(takenSpaces[2]==playerNumber))||((takenSpaces[3]==playerNumber)&&(takenSpaces[6]==playerNumber))
-	   ||((takenSpaces[4]==playerNumber)&&(takenSpaces[8]==playerNumber))){
-	    if(takenSpaces[0]==0){
-		return 0;
-	    }
-	}
-	//Find a win in space 5
-	if(((takenSpaces[2]==playerNumber)&&(takenSpaces[8]==playerNumber))||((takenSpaces[3]==playerNumber)&&(takenSpaces[4]==playerNumber))){
-	    if(takenSpaces[5]==0){
-		return 5;
-	    }
-	} 
-	//Find a win in space 4
-	if(((takenSpaces[3]==playerNumber)&&(takenSpaces[5]==playerNumber))||((takenSpaces[1]==playerNumber)&&(takenSpaces[7]==playerNumber))
-	   ||((takenSpaces[0]==playerNumber)&&(takenSpaces[8]==playerNumber))){
-	    if(takenSpaces[4]==0){
-		return 4;
-	    }
-	}
-	//Find a win in space 3
-	if(((takenSpaces[0]==playerNumber)&&(takenSpaces[6]==playerNumber))||((takenSpaces[4]==playerNumber)&&(takenSpaces[5]==playerNumber))){
-	    if(takenSpaces[3]==0){
-		return 3;
-	    }
-	}
-	//Find a win in space 8
-	if(((takenSpaces[2]==playerNumber)&&(takenSpaces[5]==playerNumber))||((takenSpaces[6]==playerNumber)&&(takenSpaces[7]==playerNumber))
-	   ||((takenSpaces[0]==playerNumber)&&(takenSpaces[4]==playerNumber))){
-	    if(takenSpaces[8]==0){
-		return 8;
-	    }
-	}
-	//Find a win in space 7
-	if(((takenSpaces[6]==playerNumber)&&(takenSpaces[8]==playerNumber))||((takenSpaces[1]==playerNumber)&&(takenSpaces[4]==playerNumber))){
-	    if(takenSpaces[7]==0){
-		return 7;
-	    }
-	}
-	//Find a win in space 6
-	if(((takenSpaces[7]==playerNumber)&&(takenSpaces[8]==playerNumber))||((takenSpaces[0]==playerNumber)&&(takenSpaces[3]==playerNumber))
-	   ||((takenSpaces[4]==playerNumber)&&(takenSpaces[2]==playerNumber))){
-	    if(takenSpaces[6]==0){
-		return 6;
-	    }
-	}
-
-	//Block a win in space 2
-	if(((takenSpaces[0]==opponentNumber)&&(takenSpaces[1]==opponentNumber))||((takenSpaces[5]==opponentNumber)&&(takenSpaces[8]==opponentNumber))
-	   ||((takenSpaces[4]==opponentNumber)&&(takenSpaces[6]==opponentNumber))){
-	    if(takenSpaces[2]==0){
-		return 2;
-	    }
-	}
-	//Block a win in space 1
-	if(((takenSpaces[0]==opponentNumber)&&(takenSpaces[2]==opponentNumber))||((takenSpaces[4]==opponentNumber)&&(takenSpaces[7]==opponentNumber))){
-	    if(takenSpaces[1]==0){
-		return 1;
-	    }
-	}
-	//Block a win in space 0
-	if(((takenSpaces[1]==opponentNumber)&&(takenSpaces[2]==opponentNumber))||((takenSpaces[3]==opponentNumber)&&(takenSpaces[6]==opponentNumber))
-	   ||((takenSpaces[4]==opponentNumber)&&(takenSpaces[8]==opponentNumber))){
-	    if(takenSpaces[0]==0){
-		return 0;
-	    }
-	}
-	//Block a win in space 5
-	if(((takenSpaces[2]==opponentNumber)&&(takenSpaces[8]==opponentNumber))||((takenSpaces[3]==opponentNumber)&&(takenSpaces[4]==opponentNumber))){
-	    if(takenSpaces[5]==0){
-		return 5;
-	    }
-	}
-	//Block a win in space 4
-	if(((takenSpaces[3]==opponentNumber)&&(takenSpaces[5]==opponentNumber))||((takenSpaces[1]==opponentNumber)&&(takenSpaces[7]==opponentNumber))
-	   ||((takenSpaces[0]==opponentNumber)&&(takenSpaces[8]==opponentNumber))){
-	    if(takenSpaces[4]==0){
-		return 4;
-	    }
-	}
-	//Block a win in space 3
-	if(((takenSpaces[0]==opponentNumber)&&(takenSpaces[6]==opponentNumber))||((takenSpaces[4]==opponentNumber)&&(takenSpaces[5]==opponentNumber))){
-	    if(takenSpaces[3]==0){
-		return 3;
-	    }
-	}
-	//Block a win in space 8
-	if(((takenSpaces[2]==opponentNumber)&&(takenSpaces[5]==opponentNumber))||((takenSpaces[6]==opponentNumber)&&(takenSpaces[7]==opponentNumber))
-	   ||((takenSpaces[0]==opponentNumber)&&(takenSpaces[4]==opponentNumber))){
-	    if(takenSpaces[8]==0){
-		return 8;
-	    }
-	}
-	//Block a win in space 7
-	if(((takenSpaces[6]==opponentNumber)&&(takenSpaces[8]==opponentNumber))||((takenSpaces[1]==opponentNumber)&&(takenSpaces[4]==opponentNumber))){
-	    if(takenSpaces[7]==0){
-		return 7;
-	    }
-	}
-	//Block a win in space 6
-	if(((takenSpaces[7]==opponentNumber)&&(takenSpaces[8]==opponentNumber))||((takenSpaces[0]==opponentNumber)&&(takenSpaces[3]==opponentNumber))
-	   ||((takenSpaces[4]==opponentNumber)&&(takenSpaces[2]==opponentNumber))){
-	    if(takenSpaces[6]==0){
-		return 6;
-	    }
-        }
-	
-	// Create a fork if player 1
-	if (playerNumber == 1){
-	    if(takenSpaces[0] == 1 && takenSpaces[8] == 0){
-		return 8;
-	    }
-	    if(takenSpaces[8] == 1 && takenSpaces[0] == 0){
-		return 0;
-	    }
-	    if(takenSpaces[2] == 1 && takenSpaces[6] == 0){
-		return 6;
-	    }
-	    if(takenSpaces[6] == 1 && takenSpaces[2] == 0){
-		return 2;
-	    }
-	        
-	    if(takenSpaces[0] == 0){
-		return 0;
-	    }
-	    if(takenSpaces[2] == 0){
-		return 2;
-	    }
-	    if(takenSpaces[6] == 0){
-		return 6;
-	    }
-	    if(takenSpaces[8] == 0){
-		return 8;
-	    }
-	}    
-
-	// Block an opponent's fork if player 2
-	if (playerNumber == 2){
-	    //Check if opponent has opposite corners
-	    if (takenSpaces[0] == 1 && takenSpaces[8] == 1){
-		//Play an empty side                         
-		if(takenSpaces[1]==0){
+    public int pickSpace(int[] takenSpaces) 
+    {
+	public int turn(String[] spaces, String symbol)
+	{
+	    //Win logic. Checks if you have two in a row, play the third to get three in a row.
+	    //Update this tomorrow!!!
+	    if(spaces[0].equals(symbol) && spaces[0].equals(spaces[1]) && spaces[2].equals(" "))
+		{
+		    tic.fillArray(2,2);
+		}
+	    else if(spaces[3].equals(symbol) && spaces[3].equals(spaces[4]) && spaces[5].equals(" "))
+		{
+		    return 6;
+		}
+	    else if(spaces[6].equals(symbol) && spaces[6].equals(spaces[7]) && spaces[8].equals(" "))
+		{
+		    return 9;
+		}
+	    else if(spaces[6].equals(symbol) && spaces[6].equals(spaces[3]) && spaces[0].equals(" "))
+		{
 		    return 1;
 		}
-		if(takenSpaces[3]==0){
+	    else if(spaces[7].equals(symbol) && spaces[4].equals(spaces[7]) && spaces[1].equals(" "))
+		{
+		    return 2;
+		}
+	    else if(spaces[8].equals(symbol) && spaces[5].equals(spaces[8]) && spaces[2].equals(" "))
+		{
 		    return 3;
 		}
-		if(takenSpaces[5]==0){
-		    return 5;
-		}
-		if(takenSpaces[7]==0){
-		    return 7;
-		}
-	    }
-	    //Check if opponent has opposie corners
-	    if (takenSpaces[2] == 1 && takenSpaces[6] == 1){
-		//Play an empty side                                                                                                                                 
-		if(takenSpaces[1]==0){
+	    else if(spaces[2].equals(symbol) && spaces[2].equals(spaces[1]) && spaces[0].equals(" "))
+		{
 		    return 1;
 		}
-		if(takenSpaces[3]==0){
-		    return 3;
+	    else if(spaces[5].equals(symbol) && spaces[5].equals(spaces[4]) && spaces[3].equals(" "))
+		{
+		    return 4;
 		}
-		if(takenSpaces[5]==0){
-		    return 5;
-		}
-		if(takenSpaces[7]==0){
+	    else if(spaces[8].equals(symbol) && spaces[8].equals(spaces[7]) && spaces[6].equals(" "))
+		{
 		    return 7;
 		}
+	    else if(spaces[0].equals(symbol) && spaces[0].equals(spaces[3]) && spaces[6].equals(" "))
+		{
+		    return 7;
+		}
+	    else if(spaces[1].equals(symbol) && spaces[1].equals(spaces[4]) && spaces[7].equals(" "))
+		{
+		    return 8;
+		}
+	    else if(spaces[2].equals(symbol) && spaces[2].equals(spaces[5]) && spaces[8].equals(" "))
+		{
+		    return 9;
+		}
+	    else if(spaces[6].equals(symbol) && spaces[6].equals(spaces[4]) && spaces[2].equals(" ")
+		    ){
+		return 3;
 	    }
-	}
-      
-	//Plsite corner
-	if((takenSpaces[0]==opponentNumber)&&(takenSpaces[8]==0)){
-	    return 8;
-	}
-	if((takenSpaces[2]==opponentNumber)&&(takenSpaces[6]==0)){
-	    return 6;
-	}
-	if((takenSpaces[6]==opponentNumber)&&(takenSpaces[2]==0)){
-	    return 2;
-	}
-	if((takenSpaces[8]==opponentNumber)&&(takenSpaces[0]==0)){
-	    return 0;
-	}
+	    else if(spaces[2].equals(symbol) && spaces[2].equals(spaces[4]) && spaces[6].equals(" "))
+		{
+		    return 7;
+		}
+	    else if(spaces[8].equals(symbol) && spaces[8].equals(spaces[4]) && spaces[0].equals(" "))
+		{
+		    return 1;
+		}
+	    else if(spaces[0].equals(symbol) && spaces[0].equals(spaces[4]) && spaces[8].equals(" "))
+		{
+		    return 9;
+		}
+	    else if(spaces[0].equals(symbol) && spaces[0].equals(spaces[6]) && spaces[3].equals(" "))
+		{
+		    return 4;
+		}
+	    else if(spaces[6].equals(symbol) && spaces[8].equals(spaces[6]) && spaces[7].equals(" "))
+		{
+		    return 8;
+		}
+	    else if(spaces[8].equals(symbol) && spaces[2].equals(spaces[8]) && spaces[5].equals(" "))
+		{
+		    return 6;
+		}
+	    else if(spaces[2].equals(symbol) && spaces[2].equals(spaces[0]) && spaces[1].equals(" "))
+		{
+		    return 2;
+		}
+	    else if(spaces[0].equals(symbol) && spaces[0].equals(spaces[8]) && spaces[4].equals(" "))
+		{
+		    return 5;
+		}
+	    else if(spaces[2].equals(symbol) && spaces[2].equals(spaces[6]) && spaces[4].equals(" "))
+		{
+		    return 5;
+		}
+	    
 
-	//Play an empty corner
-	if(takenSpaces[8]==0){
-	    return 8;
-	} 
-	if(takenSpaces[2]==0){
-	    return 2;
-	}
-	if(takenSpaces[6]==0){
-	    return 6;
-	}
-	if(takenSpaces[0]==0){
-	    return 0;
-	}
+	    //Block logic. If the opponent has two in a row, play the third to block them.
+	    if(!spaces[0].equals(symbol) && spaces[0].equals(spaces[1]) && !spaces[0].equals(" ") && spaces[2].equals(" "))
+		{
+		    return 3;
+		}
+	    else if(!spaces[3].equals(symbol) && spaces[3].equals(spaces[4]) && !spaces[3].equals(" ") && spaces[5].equals(" "))
+		{
+		    return 6;
+		}
+	    else if(!spaces[6].equals(symbol) && spaces[6].equals(spaces[7]) && !spaces[6].equals(" ") && spaces[8].equals(" "))
+		{
+		    return 9;
+		}
+	    else if(!spaces[6].equals(symbol) && spaces[6].equals(spaces[3]) && !spaces[6].equals(" ") && spaces[0].equals(" "))
+		{
+		    return 1;
+		}
+	    else if(!spaces[7].equals(symbol) && spaces[4].equals(spaces[7]) && !spaces[7].equals(" ") && spaces[1].equals(" "))
+		{
+		    return 2;
+		}
+	    else if(!spaces[8].equals(symbol) && spaces[5].equals(spaces[8]) && !spaces[8].equals(" ") && spaces[2].equals(" "))
+		{
+		    return 3;
+		}
+	    else if(!spaces[2].equals(symbol) && spaces[2].equals(spaces[1]) && !spaces[2].equals(" ") && spaces[0].equals(" "))
+		{
+		    return 1;
+		}
+	    else if(!spaces[5].equals(symbol) && spaces[5].equals(spaces[4]) && !spaces[5].equals(" ") && spaces[3].equals(" "))
+		{
+		    return 4;
+		}
+	    else if(!spaces[8].equals(symbol) && spaces[8].equals(spaces[7]) && !spaces[8].equals(" ") && spaces[6].equals(" "))
+		{
+		    return 7;
+		}
+	    else if(!spaces[0].equals(symbol) && spaces[0].equals(spaces[3]) && !spaces[0].equals(" ") && spaces[6].equals(" "))
+		{
+		    return 7;
+		}
+	    else if(!spaces[1].equals(symbol) && spaces[1].equals(spaces[4]) && !spaces[1].equals(" ") && spaces[7].equals(" "))
+		{
+		    return 8;
+		}
+	    else if(!spaces[2].equals(symbol) && spaces[2].equals(spaces[5]) && !spaces[2].equals(" ") && spaces[8].equals(" "))
+		{
+		    return 9;
+		}
+	    else if(!spaces[6].equals(symbol) && spaces[6].equals(spaces[4]) && !spaces[6].equals(" ") && spaces[2].equals(" "))
+		{
+		    return 3;
+		}
+	    else if(!spaces[2].equals(symbol) && spaces[2].equals(spaces[4]) && !spaces[2].equals(" ") && spaces[6].equals(" "))
+		{
+		    return 7;
+		}
+	    else if(!spaces[8].equals(symbol) && spaces[8].equals(spaces[4]) && !spaces[8].equals(" ") && spaces[0].equals(" "))
+		{
+		    return 1;
+		}
+	    else if(!spaces[0].equals(symbol) && spaces[0].equals(spaces[4]) && !spaces[0].equals(" ") && spaces[8].equals( " "))
+		{
+		    return 9;
+		}
+	    else if(!spaces[0].equals(symbol) && spaces[0].equals(spaces[8]) && !spaces[0].equals(" ") && spaces[4].equals(" "))
+		{
+		    return 5;
+		}
+	    else if(!spaces[6].equals(symbol) && spaces[6].equals(spaces[2]) && !spaces[6].equals(" ") && spaces[4].equals(" "))
+		{
+		    return 5;
+		}
+	    else if(!spaces[0].equals(symbol) && spaces[0].equals(spaces[6]) && !spaces[0].equals(" ") && spaces[3].equals(" "))
+		{
+		    return 4;
+		}
+	    else if(!spaces[6].equals(symbol) && spaces[8].equals(spaces[6]) && !spaces[6].equals(" ") && spaces[7].equals(" "))
+		{
+		    return 8;
+		}
+	    else if(!spaces[8].equals(symbol) && spaces[8].equals(spaces[2]) && !spaces[8].equals(" ") && spaces[5].equals(" "))
+		{
+		    return 6;
+		}
+	    else if(!spaces[2].equals(symbol) && spaces[0].equals(spaces[2]) && !spaces[0].equals(" ") && spaces[1].equals(" "))
+		{
+		    return 2;
+		}
 
-	//Play an empty side
-	if(takenSpaces[1]==0){
-	    return 1;
+	    //Play a fork. Create an opportunity where computer can win in two ways.
+	    else if((spaces[0].equals(symbol) && spaces[2].equals(symbol) && spaces[4].equals(" ")) && spaces[6].equals(" ") && spaces[8].equals(" "))
+		{
+		    return 5;
+		}
+        
+	    else if((spaces[6].equals(symbol) && spaces[8].equals(symbol) && spaces[4].equals(" ")) && spaces[0].equals(" ") && spaces[2].equals(" "))
+		{
+		    return 5;
+		}
+	    else if((spaces[6].equals(symbol) && spaces[0].equals(symbol) && spaces[4].equals(" ")) && spaces[8].equals(" ") && spaces[2].equals(" "))
+		{
+		    return 5;
+		}
+	    else if((spaces[2].equals(symbol) && spaces[8].equals(symbol) && spaces[4].equals(" ")) && spaces[0].equals(" ") && spaces[6].equals(" "))
+		{
+		    return 5;
+		}
+	    else if((spaces[6].equals(symbol) && spaces[2].equals(symbol) && spaces[8].equals(" ")) && spaces[7].equals(" ") && spaces[5].equals(" "))
+		{
+		    return 9;
+		}
+	    else if((spaces[6].equals(symbol) && spaces[2].equals(symbol) && spaces[0].equals(" ")) && spaces[1].equals(" ") && spaces[3].equals(" "))
+		{
+		    return 1;
+		}
+	    else if((spaces[8].equals(symbol) && spaces[0].equals(symbol) && spaces[6].equals(" ")) && spaces[7].equals(" ") && spaces[3].equals(" "))
+		{
+		    return 7;
+		}
+	    else if((spaces[8].equals(symbol) && spaces[0].equals(symbol) && spaces[2].equals(" ")) && spaces[5].equals(" ") && spaces[1].equals(" "))
+		{
+		    return 3;
+		}
+	    
+
+	    //Block a fork
+	    if((!spaces[0].equals(symbol) && !spaces[0].equals(" ") && spaces[2].equals(spaces[0]) && spaces[4].equals(" ")) && spaces[6].equals(" ") && spaces[8].equals(" "))
+		{
+		    return 5;
+		}
+	    else if((!spaces[0].equals(symbol) && !spaces[0].equals(" ") && spaces[6].equals(spaces[0]) && spaces[4].equals(" ")) && spaces[2].equals(" ") && spaces[8].equals(" "))
+		{
+		    return 5;
+		}
+	    else if((!spaces[6].equals(symbol) && !spaces[6].equals(" ") && spaces[6].equals(spaces[8]) && spaces[4].equals(" ")) && spaces[2].equals(" ") && spaces[0].equals(" "))
+		{
+		    return 5;
+		}
+	    else if((!spaces[8].equals(symbol) && !spaces[8].equals(" ") && spaces[2].equals(spaces[8]) && spaces[4].equals(" ")) && spaces[6].equals(" ") && spaces[0].equals(" "))
+		{
+		    return 5;
+		}
+	    else if((!spaces[6].equals(symbol) && !spaces[6].equals(" ") && spaces[2].equals(spaces[6]) && spaces[8].equals(" ")) && spaces[7].equals(" ") && spaces[5].equals(" "))
+		{
+		    return 9;
+		}
+	    else if((!spaces[6].equals(symbol) && !spaces[6].equals(" ") && spaces[2].equals(spaces[6]) && spaces[0].equals(" ")) && spaces[3].equals(" ") && spaces[1].equals(" "))
+		{
+		    return 1;
+		}
+	    else if((!spaces[8].equals(symbol) && !spaces[8].equals(" ") && spaces[0].equals(spaces[8]) && spaces[6].equals(" ")) && spaces[3].equals(" ") && spaces[7].equals(" "))
+		{
+		    return 7;
+		}
+	    else if((!spaces[8].equals(symbol) && !spaces[8].equals(" ") && spaces[0].equals(spaces[8]) && spaces[1].equals(" ")) && spaces[2].equals(" ") && spaces[5].equals(" "))
+		{
+		    return 3;
+		}
+
+	    //Play center if everything above is fails
+	    if(spaces[4].equals(" "))
+		{
+		    return 5;
+		}
+
+	    //Play opposite corner. Player corner if opponent is in the corner
+	    if(!spaces[0].equals(symbol) && spaces[8].equals(" ") && !spaces[0].equals(" "))
+
+		{
+		    return 9;
+		}
+	    else if(!spaces[2].equals(symbol) && spaces[6].equals(" ") && !spaces[2].equals(" "))
+		{
+		    return 7;
+		}
+	    else if(!spaces[8].equals(symbol) && spaces[0].equals(" ") && !spaces[8].equals(" "))
+		{
+		    return 1;
+		}
+	    else if(!spaces[6].equals(symbol) && spaces[2].equals(" ") && !spaces[6].equals(" "))
+		{
+		    return 3;
+		}
+
+	    //Play an empty corner
+	    if(spaces[6].equals(" "))
+		{
+		    return 7;
+		}
+	    else if(spaces[8].equals(" "))
+		{
+		    return 9;
+		}
+	    else if(spaces[0].equals(" "))
+		{
+		    return 1;
+		}
+	    else if(spaces[2].equals(" "))
+		{
+		    return 3;
+		}
+
+	    //Play an empty side. if everything above fails.
+	    if(spaces[3].equals(" "))
+		{
+		    return 4;
+		}
+	    else if(spaces[5].equals(" "))
+		{
+		    return 6;
+		}
+	    else if(spaces[7].equals(" "))
+		{
+		    return 8;
+		}
+	    else if(spaces[1].equals(" "))
+		{
+		    return 2;
+		}
+
+	    else
+		return 0;
 	}
-	if(takenSpaces[3]==0){
-	    return 3;
-	}
-	if(takenSpaces[5]==0){
-	    return 5;
-	}
-	if(takenSpaces[7]==0){
-	    return 7;
-	}
-	
-	return -1;
     }
 }

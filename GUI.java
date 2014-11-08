@@ -222,18 +222,20 @@ public class GUI implements ActionListener
     {
 	if(e.getSource() == button1)
 	    {
-		//button1.setIcon(/*asdasd*/);
 		if(humanPlayer != null)
                     {
                         humanPlayer.pickSpace(1, 1);
+			button1.setText("X");
                     }
                 if(humanPlayer2 != null)
                     {
                         humanPlayer2.pickSpace(1, 2);
+			button1.setText("O");
                     }
                 if(computerPlayer != null)
                     {
-                        computerPlayer.pickSpace(1, 2);
+                        computerPlayer.pickSpace();
+			button1.setText("O");
                     }
 		button1.revalidate();
 		button1.repaint();
@@ -251,7 +253,7 @@ public class GUI implements ActionListener
                     }
                 if(computerPlayer != null)
                     {
-                        computerPlayer.pickSpace(2, 2);
+                        computerPlayer.pickSpace();
                     }
 
 		button2.revalidate();
@@ -270,7 +272,7 @@ public class GUI implements ActionListener
                     }
                 if(computerPlayer != null)
                     {
-                        computerPlayer.pickSpace(3, 2);
+                        computerPlayer.pickSpace();
                     }
 		button3.revalidate();
 		button3.repaint();
@@ -288,7 +290,7 @@ public class GUI implements ActionListener
                     }
                 if(computerPlayer != null)
                     {
-                        computerPlayer.pickSpace(4, 2);
+                        computerPlayer.pickSpace();
                     }
 		button4.revalidate();
 		button4.repaint();
@@ -306,7 +308,7 @@ public class GUI implements ActionListener
                     }
                 if(computerPlayer != null)
                     {
-                        computerPlayer.pickSpace(5, 2);
+                        computerPlayer.pickSpace();
                     }
 		button5.revalidate();
 		button5.repaint();
@@ -324,7 +326,7 @@ public class GUI implements ActionListener
                     }
                 if(computerPlayer != null)
                     {
-                        computerPlayer.pickSpace(6, 2);
+                        computerPlayer.pickSpace();
                     }
 		button6.revalidate();
 		button6.repaint();
@@ -342,7 +344,7 @@ public class GUI implements ActionListener
                     }
                 if(computerPlayer != null)
                     {
-                        computerPlayer.pickSpace(7, 2);
+                        computerPlayer.pickSpace();
                     }
 		button7.revalidate();
 		button7.repaint();
@@ -360,7 +362,7 @@ public class GUI implements ActionListener
                     }
                 if(computerPlayer != null)
                     {
-                        computerPlayer.pickSpace(8, 2);
+                        computerPlayer.pickSpace();
                     }
 		button8.revalidate();
 		button8.repaint();
@@ -378,7 +380,7 @@ public class GUI implements ActionListener
                     }
                 if(computerPlayer != null)
                     {
-                        computerPlayer.pickSpace(9, 2);
+                        computerPlayer.pickSpace();
                     }
 		button9.revalidate();
 		button9.repaint();
