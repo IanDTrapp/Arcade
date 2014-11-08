@@ -10,7 +10,9 @@ public class HumanPlayer
 
     public int[] pickSpace(int space, int symbo)
     {
-	int[] info = new int{space, symbo};
+	int[] info = new int[2];
+	info[0] = space;
+	info[1] = symbo;
     }
 }
 
