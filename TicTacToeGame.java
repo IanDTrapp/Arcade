@@ -1,6 +1,6 @@
 public class TicTacToeGame {
 
-    int[] takenSpaces = new int{0,0,0,0,0,0,0,0,0};
+    int[] takenSpaces = {0,0,0,0,0,0,0,0,0};
     GUI gui = new GUI();
 
     public int playGame(String gameType) {
