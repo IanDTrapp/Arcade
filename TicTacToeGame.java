@@ -8,8 +8,8 @@ public class TicTacToeGame {
 	int turn = 0;
 	// Game of human vs human
 	if (gameType.equalsIgnoreCase("human")) {
-	    HumanPlayer player1 = new HumanPlayer();
-	    HumanPlayer player2 = new HumanPlayer();
+	    HumanPlayer player1 = new HumanPlayer(1);
+	    HumanPlayer player2 = new HumanPlayer(2);
 	    while (turn <= 5) {
 		gui.movePanelUpdate("Player 1, please pick a space!");
 		fillArray(player1.pickSpace());
@@ -23,7 +23,7 @@ public class TicTacToeGame {
 	}
 	// Game of human vs computer
 	if (gameType.equalsIgnoreCase("Computer")) {
-	    HumanPlayer player1 = new HumanPlayer();
+	    HumanPlayer player1 = new HumanPlayer(1);
 	    ComputerPlayer player2 = new ComputerPlayer();
 	    while (turn  >= 5) {
 		gui.movePanelUpdate("Player 1, please pick a space!");
@@ -39,7 +39,9 @@ public class TicTacToeGame {
 	
     }
     // Fills the array with taken spots
-    public void fillArray(int space, int symbol) {
+    public void fillArray(int[] info) {
+	int space = info[0];
+	int symbol = info[1];
 	if (space == 0) {    
 	    takenSpaces[space] = symbol;
 	}
