@@ -46,7 +46,7 @@ public class TicTacToeGame {
 	else gui.movePanelUpdate("Please pick another space");
     }
     // Checks to see if there is a winner 
-    public int isWinner(takenSpaces[]) {
+    public int isWinner() {
 	if((takenSpaces[0] == 1 && takenSpaces[1] == 1 && takenSpaces[2] == 1)
 	   || (takenSpaces[3] == 1 && takenSpaces[4] == 1 && takenSpaces[5] == 1)
 	   || (takenSpaces[6] == 1 && takenSpaces[7] == 1 && takenSpaces[8] == 1)
