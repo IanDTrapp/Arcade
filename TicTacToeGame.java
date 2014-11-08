@@ -12,11 +12,13 @@ public class TicTacToeGame {
 	    HumanPlayer player2 = new HumanPlayer(2);
 	    while (turn <= 5) {
 		gui.movePanelUpdate("Player 1, please pick a space!");
-		fillArray(player1.pickSpace());
+		if (player1.hasMoved() == true) 
+		turn++;
 		if (turn >= 5) break;
 		if (tic.isWinner() != 0) break;
 		gui.movePanelUpdate("Player 2, please pick a space!");
 		fillArray(player2.pickSpace());
+		turn++;
 		if (tic.isWinner() != 0) break;
 	    }
 	    return tic.isWinner();
@@ -24,14 +26,16 @@ public class TicTacToeGame {
 	// Game of human vs computer
 	if (gameType.equalsIgnoreCase("Computer")) {
 	    HumanPlayer player1 = new HumanPlayer(1);
-	    ComputerPlayer player2 = new ComputerPlayer();
+	    // ComputerPlayer player2 = new ComputerPlayer();
 	    while (turn  >= 5) {
 		gui.movePanelUpdate("Player 1, please pick a space!");
 		fillArray(player1.pickSpace());
+		turn++;
 		if (turn >= 5) break;
 		if (tic.isWinner() != 0) break;
 		gui.movePanelUpdate("Player 2, please pick a space!");
 		player2.pickSpace();
+		turn++;
 		if (tic.isWinner() != 0) break;
 	    }
 	    return tic.isWinner();
