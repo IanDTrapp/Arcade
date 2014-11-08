@@ -1,0 +1,9 @@
+public Card {
+
+    public card() {
+    }
+
+    public card(char suit, String value) {
+    }
+
+}

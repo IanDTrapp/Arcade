@@ -1,9 +1,16 @@
-public class HumanPlayer {
+public class HumanPlayer 
+{
+    
+    private int sym;
 
-    public humanPlayer() {
+    public HumanPlayer (int symbol) 
+    {
+	sym = symbol;
     }
 
-    public int pickSpace(){
-	// May need a parameter change, communicate with buttons etc.
+    public int[] pickSpace(int space, int symbo)
+    {
+	int[] info = new int{space, symbo};
     }
 }
+
