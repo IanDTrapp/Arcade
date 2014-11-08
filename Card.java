@@ -1,4 +1,4 @@
-public class Card {
+/* public class Card {
 
     // Default constructor
     public card() {
@@ -17,4 +17,4 @@ public class Card {
     }
 }
 
-
+*/

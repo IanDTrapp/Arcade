@@ -1,4 +1,4 @@
-public class BlackJackGame {
+/* public class BlackJackGame {
 
     // Default constructor
     public BlackJackGame() {
@@ -11,3 +11,5 @@ public class BlackJackGame {
 	    
 	}
     }
+
+*/
