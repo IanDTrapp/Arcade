@@ -262,7 +262,6 @@ public class GUI implements ActionListener
 			tic.fillArray(passArray());
 			button1.setText("X");
 			humanPlayer.setHasMoved();
-			humanPlayer.debugArray();
                     }
                 if(getTurn() == 2)
                     {
@@ -270,7 +269,6 @@ public class GUI implements ActionListener
 			tic.fillArray(passArray());
 			button1.setText("O");
 			humanPlayer2.setHasMoved();
-			humanPlayer2.debugArray();
 		    }
 
 		button1.setFont(new Font("Serif", Font.BOLD, 25));
