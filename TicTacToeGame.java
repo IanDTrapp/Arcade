@@ -25,7 +25,6 @@ public class TicTacToeGame
 		    if (player1.hasMoved() == true)
 		    { 
 			turn++;
-			player1.getArray(takenSpaces);
 		    }
 		}
 		
@@ -42,7 +41,6 @@ public class TicTacToeGame
 		    if(player2.hasMoved() == true)
 		    {
 			turn++;
-			player2.getArray(takenSpaces);
 		    }	
 		}
 		// Display game results in movePanel
