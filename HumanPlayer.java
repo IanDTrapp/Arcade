@@ -1,4 +1,4 @@
-B0;136;0cpublic class HumanPlayer 
+public class HumanPlayer 
 {
     private boolean hasMoved;
     int[] takenSpaces = new int[9];

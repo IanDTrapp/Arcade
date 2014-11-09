@@ -298,7 +298,7 @@ public class GUI implements ActionListener
                 button4.revalidate();
                 button4.repaint();
 	    }
-	if(e.getSource() = button5)
+	if(e.getSource() == button5)
 	    {
 		if(humanPlayer.getTurn() == 1)
                     {
