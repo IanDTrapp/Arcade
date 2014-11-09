@@ -235,9 +235,10 @@ public class GUI implements ActionListener
                     {
                         computerPlayer.pickSpace(1, 2);
                     }
+	
 		button1.revalidate();
 		button1.repaint();
-
+		
 	    }
 	if(e.getSource() == button2)
 	    {

@@ -24,6 +24,7 @@ public class TicTacToeGame
 		    if (player1.hasMoved() == true)
 		    { 
 			turn++;
+			humanplayer1.getArray(takenSpaces);
 		    }
 		}
 		
@@ -40,8 +41,19 @@ public class TicTacToeGame
 		    if(player2.hasMoved() == true)
 		    {
 			turn++;
+			player2.getArray(takenSpaces);
 		    }	
 		}
+		// Display game results in movePanel
+		if (tic.isWinner == 1)
+		    {
+			gui.movePanelUpdate("Player X has won!");
+		    }
+		if (tic.isWinner == 2)
+		    {
+			gui.movePanelUpdate("Player O has won!");
+		    }
+		else gui.movePanelUpdate("There is a tie!");
 	    }
 	}
 
