@@ -213,178 +213,185 @@ public class GUI implements ActionListener
 
     public void movePanelUpdate(String update)
     {
-	moveLabel = update;
+	moveLabel.setText(update);
 	movePanel.revalidate();
 	movePanel.repaint();
     }
 
     public void actionPerformed(ActionEvent e)
     {
+	TicTacToeGame tic = new TicTacToeGame();
+
 	if(e.getSource() == button1)
 	    {
 		if(humanPlayer != null)
                     {
                         tic.fillArray(humanPlayer.pickSpace(1, 1));
 			button1.setText("X");
+			humanPlayer.setHasMoved();
                     }
                 if(humanPlayer2 != null)
                     {
-                        humanPlayer2.pickSpace(1, 2);
+                        tic.fillArray(humanPlayer2.pickSpace(1, 2));
 			button1.setText("O");
-                    }
-                //if(computerPlayer != null)
-		// {
-		//      computerPlayer.pickSpace();
-		//	button1.setText("O");
-		//  }
+			humanPlayer2.setHasMoved();
+		    }
+
 		button1.setFont(new Font("Serif", Font.BOLD, 25));
 		button1.revalidate();
 		button1.repaint();
 	    }
 	if(e.getSource() == button2)
 	    {
-		//button2.setIcon(/*asdasd*/);
 		if(humanPlayer != null)
                     {
-                        humanPlayer.pickSpace(2, 1);
+                        tic.fillArray(humanPlayer.pickSpace(2, 1));
+                        button2.setText("X");
+                        humanPlayer.setHasMoved();
                     }
                 if(humanPlayer2 != null)
                     {
-                        humanPlayer2.pickSpace(2, 2);
+                        tic.fillArray(humanPlayer2.pickSpace(2, 2));
+                        button2.setText("O");
+                        humanPlayer2.setHasMoved();
                     }
-		// if(computerPlayer != null)
-		//  {
-		//      computerPlayer.pickSpace();
-		//  }
 
-		button2.revalidate();
-		button2.repaint();
+                button2.setFont(new Font("Serif", Font.BOLD, 25));
+                button2.revalidate();
+                button2.repaint();
 	    }
 	if(e.getSource() == button3)
 	    {
-		//button3.setIcon(/*asdasd*/);
 		if(humanPlayer != null)
                     {
-                        humanPlayer.pickSpace(3, 1);
+                        tic.fillArray(humanPlayer.pickSpace(3, 1));
+                        button3.setText("X");
+                        humanPlayer.setHasMoved();
                     }
                 if(humanPlayer2 != null)
                     {
-                        humanPlayer2.pickSpace(3, 2);
+                        tic.fillArray(humanPlayer2.pickSpace(3, 2));
+                        button3.setText("O");
+                        humanPlayer2.setHasMoved();
                     }
-                //if(computerPlayer != null)
-		//  {
-		//computerPlayer.pickSpace();
-		//  }
-		button3.revalidate();
-		button3.repaint();
+
+                button3.setFont(new Font("Serif", Font.BOLD, 25));
+                button3.revalidate();
+                button3.repaint();
 	    }
 	if(e.getSource() == button4)
 	    {
-		//button4.setIcon(/*asdasd*/);
 		if(humanPlayer != null)
                     {
-                        humanPlayer.pickSpace(4, 1);
+                        tic.fillArray(humanPlayer.pickSpace(4, 1));
+                        button4.setText("X");
+                        humanPlayer.setHasMoved();
                     }
                 if(humanPlayer2 != null)
                     {
-                        humanPlayer2.pickSpace(4, 2);
+                        tic.fillArray(humanPlayer2.pickSpace(4, 2));
+                        button4.setText("O");
+                        humanPlayer2.setHasMoved();
                     }
-                //if(computerPlayer != null)
-		//  {
-		//      computerPlayer.pickSpace();
-		//  }
-		button4.revalidate();
-		button4.repaint();
+
+                button4.setFont(new Font("Serif", Font.BOLD, 25));
+                button4.revalidate();
+                button4.repaint();
 	    }
 	if(e.getSource() == button5)
 	    {
-		//button5.setIcon(/*asdasd*/);
 		if(humanPlayer != null)
                     {
-                        humanPlayer.pickSpace(5, 1);
+                        tic.fillArray(humanPlayer.pickSpace(5, 1));
+                        button5.setText("X");
+                        humanPlayer.setHasMoved();
                     }
                 if(humanPlayer2 != null)
                     {
-                        humanPlayer2.pickSpace(5, 2);
+                        tic.fillArray(humanPlayer2.pickSpace(5, 2));
+                        button5.setText("O");
+                        humanPlayer2.setHasMoved();
                     }
-                //if(computerPlayer != null)
-		//  {
-		//      computerPlayer.pickSpace();
-		//  }
-		button5.revalidate();
-		button5.repaint();
+
+                button5.setFont(new Font("Serif", Font.BOLD, 25));
+                button5.revalidate();
+                button5.repaint();
 	    }
 	if(e.getSource() == button6)
 	    {
-		//button6.setIcon(/*asdasd*/);
 		if(humanPlayer != null)
                     {
-                        humanPlayer.pickSpace(6, 1);
+                        tic.fillArray(humanPlayer.pickSpace(6, 1));
+                        button6.setText("X");
+                        humanPlayer.setHasMoved();
                     }
                 if(humanPlayer2 != null)
                     {
-                        humanPlayer2.pickSpace(6, 2);
+                        tic.fillArray(humanPlayer2.pickSpace(6, 2));
+                        button6.setText("O");
+                        humanPlayer2.setHasMoved();
                     }
-                //if(computerPlayer != null)
-		//  {
-		//      computerPlayer.pickSpace();
-		//  }
-		button6.revalidate();
-		button6.repaint();
+
+                button6.setFont(new Font("Serif", Font.BOLD, 25));
+                button6.revalidate();
+                button6.repaint();
 	    }
 	if(e.getSource() == button7)
 	    {
-		//button7.setIcon(/*asdasd*/);
 		if(humanPlayer != null)
                     {
-                        humanPlayer.pickSpace(7, 1);
+                        tic.fillArray(humanPlayer.pickSpace(7, 1));
+                        button7.setText("X");
+                        humanPlayer.setHasMoved();
                     }
                 if(humanPlayer2 != null)
                     {
-                        humanPlayer2.pickSpace(7, 2);
+                        tic.fillArray(humanPlayer2.pickSpace(7, 2));
+                        button7.setText("O");
+                        humanPlayer2.setHasMoved();
                     }
-                //if(computerPlayer != null)
-		//  {
-		//      computerPlayer.pickSpace();
-		//  }
-		button7.revalidate();
-		button7.repaint();
+
+                button7.setFont(new Font("Serif", Font.BOLD, 25));
+                button7.revalidate();
+                button7.repaint();
 	    }
 	if(e.getSource() == button8)
 	    {
-		//button8.setIcon(/*asdasd*/);
 		if(humanPlayer != null)
                     {
-                        humanPlayer.pickSpace(8, 1);
+                        tic.fillArray(humanPlayer.pickSpace(8, 1));
+                        button8.setText("X");
+                        humanPlayer.setHasMoved();
                     }
                 if(humanPlayer2 != null)
                     {
-                        humanPlayer2.pickSpace(8, 2);
+                        tic.fillArray(humanPlayer2.pickSpace(8, 2));
+                        button8.setText("O");
+                        humanPlayer2.setHasMoved();
                     }
-                //if(computerPlayer != null)
-		//  {
-		//      computerPlayer.pickSpace();
-		//  }
-		button8.revalidate();
-		button8.repaint();
+
+                button8.setFont(new Font("Serif", Font.BOLD, 25));
+                button8.revalidate();
+                button8.repaint();
 	    }
 	if(e.getSource() == button9)
 	    {
-		//button9.setIcon(/*asdasd*/);
 		if(humanPlayer != null)
                     {
-                        humanPlayer.pickSpace(9, 1);
+                        tic.fillArray(humanPlayer.pickSpace(9, 1));
+                        button9.setText("X");
+                        humanPlayer.setHasMoved();
                     }
                 if(humanPlayer2 != null)
                     {
-                        humanPlayer2.pickSpace(9, 2);
+                        tic.fillArray(humanPlayer2.pickSpace(9, 2));
+                        button9.setText("O");
+                        humanPlayer2.setHasMoved();
                     }
-                //if(computerPlayer != null)
-		//  {
-		//      computerPlayer.pickSpace();
-		//  }
-		button9.revalidate();
-		button9.repaint();
+
+                button9.setFont(new Font("Serif", Font.BOLD, 25));
+                button9.revalidate();
+                button9.repaint();
 	    }
 	if(e.getSource() == ticButton)
 	    {
@@ -395,14 +402,14 @@ public class GUI implements ActionListener
 	if(e.getSource() == humanButton)
 	    {
 		cardLayout.show(master, ticTacToe);
-		humanPlayer = new HumanPlayer(1);
-		humanPlayer2 = new HumanPlayer(2);
+		humanPlayer = new HumanPlayer();
+		humanPlayer2 = new HumanPlayer();
 		master.revalidate();
 		master.repaint();
 	    }
 	if(e.getSource() == computerButton)
 	    {
-		humanPlayer = new HumanPlayer(1);
+		humanPlayer = new HumanPlayer();
 		//computerPlayer = new ComputerPlayer(2);
 		cardLayout.show(master, ticTacToe);
 		master.revalidate();

@@ -1,56 +1,96 @@
-public class TicTacToeGame {
-
+public class TicTacToeGame 
+{
     int[] takenSpaces = {0,0,0,0,0,0,0,0,0};
     GUI gui = new GUI();
 
-    public int playGame(String gameType) {
+    public int playGame(String gameType) 
+    {
 	TicTacToeGame tic = new TicTacToeGame();
 	int turn = 0;
+
 	// Game of human vs human
-	if (gameType.equalsIgnoreCase("human")) {
-	    HumanPlayer player1 = new HumanPlayer(1);
-	    HumanPlayer player2 = new HumanPlayer(2);
-	    while (turn <= 5) {
-		gui.movePanelUpdate("Player 1, please pick a space!");
-		if (player1.hasMoved() == true) 
-		turn++;
-		if (turn >= 5) break;
-		if (tic.isWinner() != 0) break;
-		gui.movePanelUpdate("Player 2, please pick a space!");
-		fillArray(player2.pickSpace());
-		turn++;
-		if (tic.isWinner() != 0) break;
+	if (gameType.equalsIgnoreCase("human")) 
+	{
+	    HumanPlayer player1 = new HumanPlayer();
+	    HumanPlayer player2 = new HumanPlayer();
+
+	    //Start game loop
+	    while(tic.isWinner() == 0)
+	    {
+		//Player 1's move
+		while (player1.hasMoved() == false) 
+		{
+		    gui.movePanelUpdate("Player X, please pick a space!");
+		    if (player1.hasMoved() == true)
+		    { 
+			turn++;
+		    }
+		}
+		
+		//Check if there is a winner
+		if(tic.isWinner() != 0)
+		{
+		    break;
+		}
+
+		//Player 2's turn
+		while(player2.hasMoved() == false)
+		{
+		    gui.movePanelUpdate("Player O, please pick a space!");
+		    if(player2.hasMoved() == true)
+		    {
+			turn++;
+		    }	
+		}
 	    }
-	    return tic.isWinner();
 	}
+
 	// Game of human vs computer
-	if (gameType.equalsIgnoreCase("Computer")) {
-	    HumanPlayer player1 = new HumanPlayer(1);
-	    // ComputerPlayer player2 = new ComputerPlayer();
-	    while (turn  >= 5) {
-		gui.movePanelUpdate("Player 1, please pick a space!");
-		fillArray(player1.pickSpace());
-		turn++;
-		if (turn >= 5) break;
-		if (tic.isWinner() != 0) break;
-		gui.movePanelUpdate("Player 2, please pick a space!");
-		player2.pickSpace();
-		turn++;
-		if (tic.isWinner() != 0) break;
-	    }
-	    return tic.isWinner();
-	}
-	
-    }
+	if (gameType.equalsIgnoreCase("Computer")) 
+	{
+	    HumanPlayer player1 = new HumanPlayer();
+            //ComputerPlayer player2 = new ComputerPlayer();
+
+            //Start game loop
+            while(tic.isWinner() == 0)
+		{
+		    //Player 1's move
+		    while (player1.hasMoved() == false)
+			{
+			    gui.movePanelUpdate("Player X, please pick a space!");
+			    if (player1.hasMoved() == true)
+				{
+				    turn++;
+				}
+			}
+
+		    //Check if there is a winner
+		    if(tic.isWinner() != 0)
+			{
+			    break;
+			}
+
+		    //Player 2's turn
+		    gui.movePanelUpdate("Player O, please pick a space!");
+		    turn++;
+		}
+        }
+	return tic.isWinner();
+    }	
+
     // Fills the array with taken spots
-    public void fillArray(int[] info) {
+    public void fillArray(int[] info) 
+    {
 	int space = info[0];
 	int symbol = info[1];
-	if (space == 0) {    
-	    takenSpaces[space] = symbol;
+	if (takenSpaces[space-1] == 0) 
+	{    
+	    takenSpaces[space-1] = symbol;
 	}
-	else gui.movePanelUpdate("Please pick another space");
+	else 
+	    gui.movePanelUpdate("Please pick another space");
     }
+
     // Checks to see if there is a winner 
     public int isWinner() {
 	if((takenSpaces[0] == 1 && takenSpaces[1] == 1 && takenSpaces[2] == 1)
@@ -75,7 +115,7 @@ public class TicTacToeGame {
 	    // If condidtion is met, return 2 signifying player 2 has won
 	    return 2;
 	}
-	// If no condition is met, return 9 signifying a draw
+	// If no condition is met, return 0 signifying a draw
 	return 0;
     }
 }
