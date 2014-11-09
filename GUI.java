@@ -37,7 +37,7 @@ public class GUI implements ActionListener
     public static TicTacToeGame tic = new TicTacToeGame();
     public static HumanPlayer humanPlayer = new HumanPlayer();
     public static HumanPlayer humanPlayer2 = new HumanPlayer();
-    public int[] takenSpaces = {0,0,0,0,0,0,0,0,0}
+    public int[] takenSpaces = {0,0,0,0,0,0,0,0,0};
 
     public static void main(String[] args)
     {
@@ -222,12 +222,31 @@ public class GUI implements ActionListener
 
     public void updateArray(int space)
     {
-	takenSpaces[space-1] = player1.getTurn();
+	takenSpaces[space-1] = getTurn();
     }
 
     public int[] passArray()
     {
 	return takenSpaces;
+    }
+    
+    public int getTurn()
+    {
+        int count = 0;
+
+        for(int j = 0; j < takenSpaces.length; j++)
+            {
+                if(takenSpaces[j] != 0)
+                    {
+                        count++;
+                    }
+            }
+        if(count%2 == 0)
+            {
+                return 2;
+            }
+        else
+            return 1;
     }
 
     public void actionPerformed(ActionEvent e)
@@ -237,17 +256,17 @@ public class GUI implements ActionListener
 	
 	if(e.getSource() == button1)
 	    {
-		if(humanPlayer.getTurn() == 1)
+		if(getTurn() == 1)
                     {
-                        gui.updateArray(1);
+                        updateArray(1);
 			tic.fillArray(passArray());
 			button1.setText("X");
 			humanPlayer.setHasMoved();
 			humanPlayer.debugArray();
                     }
-                if(humanPlayer2.getTurn() == 2)
+                if(getTurn() == 2)
                     {
-                        gui.updateArray(1);
+                        updateArray(1);
 			tic.fillArray(passArray());
 			button1.setText("O");
 			humanPlayer2.setHasMoved();
@@ -260,15 +279,17 @@ public class GUI implements ActionListener
 	    }
 	if(e.getSource() == button2)
 	    {
-		if(humanPlayer.getTurn() == 1)
+		if(getTurn() == 1)
                     {
-                        tic.fillArray(humanPlayer.pickSpace(2));
+			updateArray(2);
+                        tic.fillArray(passArray());
                         button2.setText("X");
                         humanPlayer.setHasMoved();
                     }
-                if(humanPlayer2.getTurn() == 2)
+                if(getTurn() == 2)
                     {
-                        tic.fillArray(humanPlayer2.pickSpace(2));
+			updateArray(2);
+                        tic.fillArray(passArray());
                         button2.setText("O");
                         humanPlayer2.setHasMoved();
                     }
@@ -279,15 +300,17 @@ public class GUI implements ActionListener
 	    }
 	if(e.getSource() == button3)
 	    {
-		if(humanPlayer.getTurn() == 1)
+		if(getTurn() == 1)
                     {
-                        tic.fillArray(humanPlayer.pickSpace(3));
+			updateArray(3);
+                        tic.fillArray(passArray());
                         button3.setText("X");
                         humanPlayer.setHasMoved();
                     }
-                if(humanPlayer2.getTurn() == 2)
+                if(getTurn() == 2)
                     {
-                        tic.fillArray(humanPlayer2.pickSpace(3));
+                        updateArray(3);
+			tic.fillArray(passArray());
                         button3.setText("O");
                         humanPlayer2.setHasMoved();
                     }
@@ -298,15 +321,17 @@ public class GUI implements ActionListener
 	    }
 	if(e.getSource() == button4)
 	    {
-		if(humanPlayer.getTurn() == 1)
+		if(getTurn() == 1)
                     {
-                        tic.fillArray(humanPlayer.pickSpace(4));
+			updateArray(4);
+                        tic.fillArray(passArray());
                         button4.setText("X");
                         humanPlayer.setHasMoved();
                     }
-                if(humanPlayer2.getTurn() == 2)
+                if(getTurn() == 2)
                     {
-                        tic.fillArray(humanPlayer2.pickSpace(4));
+			updateArray(4);
+                        tic.fillArray(passArray());
                         button4.setText("O");
                         humanPlayer2.setHasMoved();
                     }
@@ -317,15 +342,17 @@ public class GUI implements ActionListener
 	    }
 	if(e.getSource() == button5)
 	    {
-		if(humanPlayer.getTurn() == 1)
+		if(getTurn() == 1)
                     {
-                        tic.fillArray(humanPlayer.pickSpace(5));
+			updateArray(5);
+                        tic.fillArray(passArray());
                         button5.setText("X");
                         humanPlayer.setHasMoved();
                     }
-                if(humanPlayer2.getTurn() == 2)
+                if(getTurn() == 2)
                     {
-                        tic.fillArray(humanPlayer2.pickSpace(5));
+			updateArray(5);
+                        tic.fillArray(passArray());
                         button5.setText("O");
                         humanPlayer2.setHasMoved();
                     }
@@ -336,15 +363,17 @@ public class GUI implements ActionListener
 	    }
 	if(e.getSource() == button6)
 	    {
-		if(humanPlayer.getTurn() == 1)
+		if(getTurn() == 1)
                     {
-                        tic.fillArray(humanPlayer.pickSpace(6));
+			updateArray(6);
+                        tic.fillArray(passArray());
                         button6.setText("X");
                         humanPlayer.setHasMoved();
                     }
-                if(humanPlayer2.getTurn() == 2)
+                if(getTurn() == 2)
                     {
-                        tic.fillArray(humanPlayer2.pickSpace(6));
+			updateArray(6);
+                        tic.fillArray(passArray());
                         button6.setText("O");
                         humanPlayer2.setHasMoved();
                     }
@@ -355,15 +384,17 @@ public class GUI implements ActionListener
 	    }
 	if(e.getSource() == button7)
 	    {
-		if(humanPlayer.getTurn() == 1)
+		if(getTurn() == 1)
                     {
-                        tic.fillArray(humanPlayer.pickSpace(7));
+			updateArray(7);
+                        tic.fillArray(passArray());
                         button7.setText("X");
                         humanPlayer.setHasMoved();
                     }
-                if(humanPlayer2.getTurn() == 2)
+                if(getTurn() == 2)
                     {
-                        tic.fillArray(humanPlayer2.pickSpace(7));
+			updateArray(7);
+                        tic.fillArray(passArray());
                         button7.setText("O");
                         humanPlayer2.setHasMoved();
                     }
@@ -374,15 +405,17 @@ public class GUI implements ActionListener
 	    }
 	if(e.getSource() == button8)
 	    {
-		if(humanPlayer.getTurn() == 1)
+		if(getTurn() == 1)
                     {
-                        tic.fillArray(humanPlayer.pickSpace(8));
+			updateArray(8);
+                        tic.fillArray(passArray());
                         button8.setText("X");
                         humanPlayer.setHasMoved();
                     }
-                if(humanPlayer2.getTurn() == 2)
+                if(getTurn() == 2)
                     {
-                        tic.fillArray(humanPlayer2.pickSpace(8));
+			updateArray(8);
+                        tic.fillArray(passArray());
                         button8.setText("O");
                         humanPlayer2.setHasMoved();
                     }
@@ -393,15 +426,17 @@ public class GUI implements ActionListener
 	    }
 	if(e.getSource() == button9)
 	    {
-		if(humanPlayer.getTurn() == 1)
+		if(getTurn() == 1)
                     {
-                        tic.fillArray(humanPlayer.pickSpace(9));
+			updateArray(9);
+                        tic.fillArray(passArray());
                         button9.setText("X");
                         humanPlayer.setHasMoved();
                     }
-                if(humanPlayer2.getTurn() == 2)
+                if(getTurn() == 2)
                     {
-                        tic.fillArray(humanPlayer2.pickSpace(9));
+			updateArray(9);
+                        tic.fillArray(passArray());
                         button9.setText("O");
                         humanPlayer2.setHasMoved();
                     }
