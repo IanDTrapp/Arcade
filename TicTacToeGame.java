@@ -3,6 +3,9 @@ public class TicTacToeGame
     int[] takenSpaces = {0,0,0,0,0,0,0,0,0};
     GUI gui = new GUI();
 
+    HumanPlayer player1 = new HumanPlayer();
+    HumanPlayer player2 = new HumanPlayer();
+
     public int playGame(String gameType) 
     {
 	TicTacToeGame tic = new TicTacToeGame();
@@ -11,8 +14,6 @@ public class TicTacToeGame
 	// Game of human vs human
 	if (gameType.equalsIgnoreCase("human")) 
 	{
-	    HumanPlayer player1 = new HumanPlayer();
-	    HumanPlayer player2 = new HumanPlayer();
 
 	    //Start game loop
 	    while(tic.isWinner() == 0)
@@ -60,8 +61,6 @@ public class TicTacToeGame
 	// Game of human vs computer
 	if (gameType.equalsIgnoreCase("Computer")) 
 	{
-	    HumanPlayer player1 = new HumanPlayer();
-            //ComputerPlayer player2 = new ComputerPlayer();
 
             //Start game loop
             while(tic.isWinner() == 0)
@@ -90,17 +89,18 @@ public class TicTacToeGame
 	return tic.isWinner();
     }	
 
+
     // Fills the array with taken spots
-    public void fillArray(int[] info) 
+    public void fillArray(int space) 
     {
-	int space = info[0];
-	int symbol = info[1];
-	if (takenSpaces[space-1] == 0) 
-	{    
-	    takenSpaces[space-1] = symbol;
-	}
-	else 
-	    gui.movePanelUpdate("Please pick another space");
+	int temp;
+	temp = player1.getTurn();
+	takenSpaces[space-1] = temp;
+
+	for(int i = 0; i < takenSpaces.length; i++)
+	    {
+		System.out.println(takenSpaces[i]);
+	    }
     }
 
     // Checks to see if there is a winner 

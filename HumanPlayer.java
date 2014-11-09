@@ -3,13 +3,9 @@ public class HumanPlayer
     private boolean hasMoved;
     int[] takenSpaces = new int[9];
 
-    public int[] pickSpace(int space, int symbo)
+    public int pickSpace(int space)
     {
-	int[] info = new int[2];
-	info[0] = space;
-	info[1] = symbo;
-
-	return info;
+	return space;
     }
 
     public boolean hasMoved()
@@ -53,6 +49,14 @@ public class HumanPlayer
 	for(int i = 0; i < takenSpaces.length; i++)
 	    {
 		takenSpaces[i] = takenSpacesArray[i];
+	    }
+    }
+
+    public void debugArray()
+    {
+	for(int k = 0; k < takenSpaces.length; k++)
+	    {
+		System.out.println(takenSpaces[k]);
 	    }
     }
 }
