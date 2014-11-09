@@ -37,7 +37,8 @@ public class GUI implements ActionListener
     public static TicTacToeGame tic = new TicTacToeGame();
     public static HumanPlayer humanPlayer = new HumanPlayer();
     public static HumanPlayer humanPlayer2 = new HumanPlayer();
-    
+    public int[] takenSpaces = {0,0,0,0,0,0,0,0,0}
+
     public static void main(String[] args)
     {
 	GUI gui = new GUI();
@@ -219,6 +220,16 @@ public class GUI implements ActionListener
 	frame.repaint();
     }
 
+    public void updateArray(int space)
+    {
+	takenSpaces[space-1] = player1.getTurn();
+    }
+
+    public int[] passArray()
+    {
+	return takenSpaces;
+    }
+
     public void actionPerformed(ActionEvent e)
     {
 
@@ -228,16 +239,16 @@ public class GUI implements ActionListener
 	    {
 		if(humanPlayer.getTurn() == 1)
                     {
-                        temp = humanPlayer.pickSpace(1);
-			tic.fillArray(temp);
+                        gui.updateArray(1);
+			tic.fillArray(passArray());
 			button1.setText("X");
 			humanPlayer.setHasMoved();
 			humanPlayer.debugArray();
                     }
                 if(humanPlayer2.getTurn() == 2)
                     {
-                        temp = humanPlayer2.pickSpace(1);
-			tic.fillArray(temp);
+                        gui.updateArray(1);
+			tic.fillArray(passArray());
 			button1.setText("O");
 			humanPlayer2.setHasMoved();
 			humanPlayer2.debugArray();
