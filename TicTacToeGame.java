@@ -93,16 +93,14 @@ public class TicTacToeGame
     // Fills the array with taken spots
     public void fillArray(int space) 
     {
-	int temp;
-	temp = player1.getTurn();
-	takenSpaces[space-1] = temp;
-
 	for(int i = 0; i < takenSpaces.length; i++)
 	    {
+		takenSpaces[space-1] = player1.getTurn();
 		System.out.println(takenSpaces[i]);
 	    }
-    }
 
+    } 
+    
     // Checks to see if there is a winner 
     public int isWinner() {
 	if((takenSpaces[0] == 1 && takenSpaces[1] == 1 && takenSpaces[2] == 1)
