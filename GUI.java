@@ -1,3 +1,5 @@
+package arcade;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Component.*;
