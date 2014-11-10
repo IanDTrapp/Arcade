@@ -1,20 +1,20 @@
-/* public class Card {
+package arcade;
 
-    // Default constructor
-    public card() {
-    }
-    
-    // Constructor for creating a new playing card
-    public card(char suit, String value) {
-	
-	public char getSuit() {
-	    return suit;
-	}
+public class Card {
+    private Suit suit;
+    private Value value;
 
-	public String getValue() {
-	    return value;
-	}
+    public Card (Value value, Suit suit, String filePath) {
+	this.Value = value;
+	this.Suit = suit;
     }
+
+    public Suit getSuit() {
+	return suit;
+    }
+
+    public Value getValue() {
+	return value;
+    }
+
 }
-
-*/

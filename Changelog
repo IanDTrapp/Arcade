@@ -1,0 +1,18 @@
+Changelog -
+	- Started the blackjack card enum classes
+	- Google "How to program with java" card enum for exmaple of
+		what I'm doing
+	- Finished the Card.java file for the most part
+	- Create the Value.java file and create the enum inside
+	- Create the Suit.java file and create the enum inside
+	- Create Deck.java class that creates the deck, adds it
+		to the stack. If we use the proper array, we can 
+		use collections.shuffle to shuffle the deck 		
+		hopefully 
+
+	To do next:
+	- Add package acade; to the top of ALL files to make sure enums
+		work correctly
+	- Test and likely debug shuffling, priting of cards
+	- getNumDecks to pass number of decks to Shoe.java class 
+	
