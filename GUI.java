@@ -39,6 +39,7 @@ public class GUI implements ActionListener
     public static TicTacToeGame tic = new TicTacToeGame();
     public static HumanPlayer humanPlayer = new HumanPlayer();
     public static HumanPlayer humanPlayer2 = new HumanPlayer();
+    public JOptionPane gameOverPane = new JOptionPane();
     public int[] takenSpaces = {0,0,0,0,0,0,0,0,0};
 
     public static void main(String[] args)
@@ -264,6 +265,15 @@ public class GUI implements ActionListener
 		tic.setHasMoved();
 		button1.setEnabled(false);
 		movePanelUpdate("Player X, it's your turn!");
+		if(tic.isWinner() == 2)
+		{
+		    int selected = gameOverPane.showConfirmDialog(null, "Player X has won!", "Game over!", JOptionPane.OK_OPTION);
+		    if(selected == JOptionPane.OK_OPTION)
+		    {
+			cardLayout.show(master, ticTacToe);
+			tic.playGame(tic.getGameType());
+		    }
+		}
 	    }
 	    else if(getTurn() == 1)
 	    {
@@ -273,6 +283,15 @@ public class GUI implements ActionListener
 		tic.setHasMoved();
 		button1.setEnabled(false);
 		movePanelUpdate("Player O, it's your turn!");
+		if(tic.isWinner() == 1)
+		{
+		    int selected = gameOverPane.showConfirmDialog(null, "Player O has won!", "Game over!", JOptionPane.OK_OPTION);
+		    if(selected == JOptionPane.OK_OPTION)
+                    {
+                        cardLayout.show(master, ticTacToe);
+                        tic.playGame(tic.getGameType());
+                    }
+		}
 	    }
 
 	    button1.setFont(new Font("Serif", Font.BOLD, 25));
@@ -289,6 +308,15 @@ public class GUI implements ActionListener
 		    tic.setHasMoved();
 		    button2.setEnabled(false);
 		    movePanelUpdate("Player X, it's your turn!");
+		    if(tic.isWinner() == 2)
+			{
+			    int selected = gameOverPane.showConfirmDialog(null, "Player X has won!", "Game over!", JOptionPane.OK_OPTION);
+			    if(selected == JOptionPane.OK_OPTION)
+				{
+				    cardLayout.show(master, ticTacToe);
+				    tic.playGame(tic.getGameType());
+				}
+			}
 		}
                 else if(getTurn() == 1)
                 {
@@ -298,6 +326,15 @@ public class GUI implements ActionListener
 		    tic.setHasMoved();
 		    button2.setEnabled(false);
 		    movePanelUpdate("Player O, it's your turn!");
+		    if(tic.isWinner() == 1)
+			{
+			    int selected = gameOverPane.showConfirmDialog(null, "Player O has won!", "Game over!", JOptionPane.OK_OPTION);
+			    if(selected == JOptionPane.OK_OPTION)
+				{
+				    cardLayout.show(master, ticTacToe);
+				    tic.playGame(tic.getGameType());
+				}
+			}
 		}
 		
                 button2.setFont(new Font("Serif", Font.BOLD, 25));
@@ -314,6 +351,15 @@ public class GUI implements ActionListener
 		tic.setHasMoved();
 		button3.setEnabled(false);
 		movePanelUpdate("Player X, it's your turn!");
+		if(tic.isWinner() == 1)
+		    {
+			int selected = gameOverPane.showConfirmDialog(null, "Player X has won!", "Game over!", JOptionPane.OK_OPTION);
+			if(selected == JOptionPane.OK_OPTION)
+			    {
+				cardLayout.show(master, ticTacToe);
+				tic.playGame(tic.getGameType());
+			    }
+		    }
 	    }
 	    else if(getTurn() == 1)
 	    {
@@ -323,6 +369,15 @@ public class GUI implements ActionListener
 		tic.setHasMoved();
 		button3.setEnabled(false);
 		movePanelUpdate("Player O, it's your turn!");
+		if(tic.isWinner() == 2)
+		    {
+			int selected = gameOverPane.showConfirmDialog(null, "Player O has won!", "Game over!", JOptionPane.OK_OPTION);
+			if(selected == JOptionPane.OK_OPTION)
+			    {
+				cardLayout.show(master, ticTacToe);
+				tic.playGame(tic.getGameType());
+			    }
+		    }
 	    }
 
 	    button3.setFont(new Font("Serif", Font.BOLD, 25));
@@ -339,6 +394,15 @@ public class GUI implements ActionListener
 		tic.setHasMoved();
 		button4.setEnabled(false);
 		movePanelUpdate("Player X, it's your turn!");
+		if(tic.isWinner() == 1)
+		    {
+			int selected = gameOverPane.showConfirmDialog(null, "Player X has won!", "Game over!", JOptionPane.OK_OPTION);
+			if(selected == JOptionPane.OK_OPTION)
+			    {
+				cardLayout.show(master, ticTacToe);
+				tic.playGame(tic.getGameType());
+			    }
+		    }
 	    }
 	    else if(getTurn() == 1)
 	    {
@@ -348,6 +412,15 @@ public class GUI implements ActionListener
 		tic.setHasMoved();
 		button4.setEnabled(false);
 		movePanelUpdate("Player O, it's your turn!");
+		if(tic.isWinner() == 2)
+		    {
+			int selected = gameOverPane.showConfirmDialog(null, "Player O has won!", "Game over!", JOptionPane.OK_OPTION);
+			if(selected == JOptionPane.OK_OPTION)
+			    {
+				cardLayout.show(master, ticTacToe);
+				tic.playGame(tic.getGameType());
+			    }
+		    }
 	    }
 
 	    button4.setFont(new Font("Serif", Font.BOLD, 25));
@@ -364,6 +437,15 @@ public class GUI implements ActionListener
                         tic.setHasMoved();
 			button5.setEnabled(false);
 			movePanelUpdate("Player X, it's your turn!");
+			if(tic.isWinner() == 1)
+			    {
+				int selected = gameOverPane.showConfirmDialog(null, "Player X has won!", "Game over!", JOptionPane.OK_OPTION);
+				if(selected == JOptionPane.OK_OPTION)
+				    {
+					cardLayout.show(master, ticTacToe);
+					tic.playGame(tic.getGameType());
+				    }
+			    }
 		}
 		else if(getTurn() == 1)
                 {
@@ -373,6 +455,15 @@ public class GUI implements ActionListener
 		    tic.setHasMoved();
 		    button5.setEnabled(false);
 		    movePanelUpdate("Player O, it's your turn!");
+		    if(tic.isWinner() == 2)
+			{
+			    int selected = gameOverPane.showConfirmDialog(null, "Player O has won!", "Game over!", JOptionPane.OK_OPTION);
+			    if(selected == JOptionPane.OK_OPTION)
+				{
+				    cardLayout.show(master, ticTacToe);
+				    tic.playGame(tic.getGameType());
+				}
+			}
 		}
 
 	    button5.setFont(new Font("Serif", Font.BOLD, 25));
@@ -389,6 +480,15 @@ public class GUI implements ActionListener
 		tic.setHasMoved();
 		button6.setEnabled(false);
 		movePanelUpdate("Player X, it's your turn!");
+		if(tic.isWinner() == 1)
+		    {
+			int selected = gameOverPane.showConfirmDialog(null, "Player X has won!", "Game over!", JOptionPane.OK_OPTION);
+			if(selected == JOptionPane.OK_OPTION)
+			    {
+				cardLayout.show(master, ticTacToe);
+				tic.playGame(tic.getGameType());
+			    }
+		    }
 	    }
 	    else if(getTurn() == 1)
 	    {
@@ -398,6 +498,15 @@ public class GUI implements ActionListener
 		tic.setHasMoved();
 		button6.setEnabled(false);
 		movePanelUpdate("Player O, it's your turn!");
+		if(tic.isWinner() == 2)
+		    {
+			int selected = gameOverPane.showConfirmDialog(null, "Player O has won!", "Game over!", JOptionPane.OK_OPTION);
+			if(selected == JOptionPane.OK_OPTION)
+			    {
+				cardLayout.show(master, ticTacToe);
+				tic.playGame(tic.getGameType());
+			    }
+		    }
 	    }
 
 	    button6.setFont(new Font("Serif", Font.BOLD, 25));
@@ -414,6 +523,15 @@ public class GUI implements ActionListener
 		tic.setHasMoved();
 		button7.setEnabled(false);
 		movePanelUpdate("Player X, it's your turn!");
+		if(tic.isWinner() == 1)
+		    {
+			int selected = gameOverPane.showConfirmDialog(null, "Player X has won!", "Game over!", JOptionPane.OK_OPTION);
+			if(selected == JOptionPane.OK_OPTION)
+			    {
+				cardLayout.show(master, ticTacToe);
+				tic.playGame(tic.getGameType());
+			    }
+		    }
 	    }
 	    else if(getTurn() == 1)
 	    {
@@ -423,6 +541,15 @@ public class GUI implements ActionListener
 		tic.setHasMoved();
 		button7.setEnabled(false);
 		movePanelUpdate("Player O, it's your turn!");
+		if(tic.isWinner() == 2)
+		    {
+			int selected = gameOverPane.showConfirmDialog(null, "Player O has won!", "Game over!", JOptionPane.OK_OPTION);
+			if(selected == JOptionPane.OK_OPTION)
+			    {
+				cardLayout.show(master, ticTacToe);
+				tic.playGame(tic.getGameType());
+			    }
+		    }
 	    }
 
 	    button7.setFont(new Font("Serif", Font.BOLD, 25));
@@ -439,6 +566,15 @@ public class GUI implements ActionListener
 		tic.setHasMoved();
 		button8.setEnabled(false);
 		movePanelUpdate("Player X, it's your turn!");
+		if(tic.isWinner() == 1)
+		    {
+			int selected = gameOverPane.showConfirmDialog(null, "Player X has won!", "Game over!", JOptionPane.OK_OPTION);
+			if(selected == JOptionPane.OK_OPTION)
+			    {
+				cardLayout.show(master, ticTacToe);
+				tic.playGame(tic.getGameType());
+			    }
+		    }
 	    }
 	    else if(getTurn() == 1)
 	    {
@@ -448,6 +584,15 @@ public class GUI implements ActionListener
 		tic.setHasMoved();
 		button8.setEnabled(false);
 		movePanelUpdate("Player O, it's your turn!");
+		if(tic.isWinner() == 2)
+		    {
+			int selected = gameOverPane.showConfirmDialog(null, "Player O has won!", "Game over!", JOptionPane.OK_OPTION);
+			if(selected == JOptionPane.OK_OPTION)
+			    {
+				cardLayout.show(master, ticTacToe);
+				tic.playGame(tic.getGameType());
+			    }
+		    }
 	    }
 
 	    button8.setFont(new Font("Serif", Font.BOLD, 25));
@@ -464,6 +609,15 @@ public class GUI implements ActionListener
 		tic.setHasMoved();
 		button9.setEnabled(false);
 		movePanelUpdate("Player X, it's your turn!");
+		if(tic.isWinner() == 1)
+		    {
+			int selected = gameOverPane.showConfirmDialog(null, "Player X has won!", "Game over!", JOptionPane.OK_OPTION);
+			if(selected == JOptionPane.OK_OPTION)
+			    {
+				cardLayout.show(master, ticTacToe);
+				tic.playGame(tic.getGameType());
+			    }
+		    }
 	    }
 	    else if(getTurn() == 1)
 	    {
@@ -473,6 +627,15 @@ public class GUI implements ActionListener
 		tic.setHasMoved();
 		button9.setEnabled(false);
 		movePanelUpdate("Player O, it's your turn!");
+		if(tic.isWinner() == 2)
+		    {
+			int selected = gameOverPane.showConfirmDialog(null, "Player O has won!", "Game over!", JOptionPane.OK_OPTION);
+			if(selected == JOptionPane.OK_OPTION)
+			    {
+				cardLayout.show(master, ticTacToe);
+				tic.playGame(tic.getGameType());
+			    }
+		    }
 	    }
 
 	    button9.setFont(new Font("Serif", Font.BOLD, 25));
