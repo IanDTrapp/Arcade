@@ -61,7 +61,7 @@ public class GUI implements ActionListener
 	ticLabel = new JLabel("Tic Tac Toe");
 	titlePanel.add(ticLabel);
 	movePanel = new JPanel();
-	moveLabel = new JLabel("Player X, please pick a space!");
+	moveLabel = new JLabel("Player X, it's your turn!");
 	movePanel.add(moveLabel);
 	playerXPanel = new JPanel();
 	playerXLabel = new JLabel("Test");
@@ -216,8 +216,8 @@ public class GUI implements ActionListener
     public void movePanelUpdate(String update)
     {
 	moveLabel.setText(update);
-	frame.revalidate();
-	frame.repaint();
+	moveLabel.revalidate();
+	moveLabel.repaint();
     }
 
     public void updateArray(int space)
@@ -249,230 +249,265 @@ public class GUI implements ActionListener
             return 2;
     }
 
+    //Action listeners
     public void actionPerformed(ActionEvent e)
     {
-
-	int temp;
-	
 	if(e.getSource() == button1)
+	{   
+	    if(getTurn() == 2)
 	    {
-		if(getTurn() == 2)
-                    {
-                        updateArray(1);
-			tic.fillArray(passArray());
-			button1.setText("O");
-			humanPlayer.setHasMoved();
-                    }
-                else if(getTurn() == 1)
-                    {
-                        updateArray(1);
-			tic.fillArray(passArray());
-			button1.setText("X");
-			humanPlayer2.setHasMoved();
-		    }
-
-		button1.setFont(new Font("Serif", Font.BOLD, 25));
-		button1.revalidate();
-		button1.repaint();
+		updateArray(1);
+		tic.fillArray(passArray());
+		button1.setText("O");
+		tic.setHasMoved();
+		button1.setEnabled(false);
+		movePanelUpdate("Player X, it's your turn!");
 	    }
-	if(e.getSource() == button2)
+	    else if(getTurn() == 1)
 	    {
-		if(getTurn() == 2)
-                    {
-			updateArray(2);
-                        tic.fillArray(passArray());
-                        button2.setText("O");
-                        humanPlayer.setHasMoved();
-                    }
-                else if(getTurn() == 1)
-                    {
-			updateArray(2);
-                        tic.fillArray(passArray());
-                        button2.setText("X");
-                        humanPlayer2.setHasMoved();
-                    }
+		updateArray(1);
+		tic.fillArray(passArray());
+		button1.setText("X");
+		tic.setHasMoved();
+		button1.setEnabled(false);
+		movePanelUpdate("Player O, it's your turn!");
+	    }
 
+	    button1.setFont(new Font("Serif", Font.BOLD, 25));
+	    button1.revalidate();
+	    button1.repaint();
+	}
+	if(e.getSource() == button2)
+	{
+		if(getTurn() == 2)
+                {
+		    updateArray(2);
+		    tic.fillArray(passArray());
+		    button2.setText("O");
+		    tic.setHasMoved();
+		    button2.setEnabled(false);
+		    movePanelUpdate("Player X, it's your turn!");
+		}
+                else if(getTurn() == 1)
+                {
+		    updateArray(2);
+		    tic.fillArray(passArray());
+		    button2.setText("X");
+		    tic.setHasMoved();
+		    button2.setEnabled(false);
+		    movePanelUpdate("Player O, it's your turn!");
+		}
+		
                 button2.setFont(new Font("Serif", Font.BOLD, 25));
                 button2.revalidate();
                 button2.repaint();
-	    }
+	}
 	if(e.getSource() == button3)
+	{
+	    if(getTurn() == 2)
 	    {
-		if(getTurn() == 2)
-                    {
-			updateArray(3);
-                        tic.fillArray(passArray());
-                        button3.setText("O");
-                        humanPlayer.setHasMoved();
-                    }
-                else if(getTurn() == 1)
-                    {
-                        updateArray(3);
-			tic.fillArray(passArray());
-                        button3.setText("X");
-                        humanPlayer2.setHasMoved();
-                    }
-
-                button3.setFont(new Font("Serif", Font.BOLD, 25));
-                button3.revalidate();
-                button3.repaint();
+		updateArray(3);
+		tic.fillArray(passArray());
+		button3.setText("O");
+		tic.setHasMoved();
+		button3.setEnabled(false);
+		movePanelUpdate("Player X, it's your turn!");
 	    }
+	    else if(getTurn() == 1)
+	    {
+		updateArray(3);
+		tic.fillArray(passArray());
+		button3.setText("X");
+		tic.setHasMoved();
+		button3.setEnabled(false);
+		movePanelUpdate("Player O, it's your turn!");
+	    }
+
+	    button3.setFont(new Font("Serif", Font.BOLD, 25));
+	    button3.revalidate();
+	    button3.repaint();
+	}
 	if(e.getSource() == button4)
+	{
+	    if(getTurn() == 2)
 	    {
-		if(getTurn() == 2)
-                    {
-			updateArray(4);
-                        tic.fillArray(passArray());
-                        button4.setText("O");
-                        humanPlayer.setHasMoved();
-                    }
-                else if(getTurn() == 1)
-                    {
-			updateArray(4);
-                        tic.fillArray(passArray());
-                        button4.setText("X");
-                        humanPlayer2.setHasMoved();
-                    }
-
-                button4.setFont(new Font("Serif", Font.BOLD, 25));
-                button4.revalidate();
-                button4.repaint();
+		updateArray(4);
+		tic.fillArray(passArray());
+		button4.setText("O");
+		tic.setHasMoved();
+		button4.setEnabled(false);
+		movePanelUpdate("Player X, it's your turn!");
 	    }
-	if(e.getSource() == button5)
+	    else if(getTurn() == 1)
 	    {
-		if(getTurn() == 2)
-                    {
+		updateArray(4);
+		tic.fillArray(passArray());
+		button4.setText("X");
+		tic.setHasMoved();
+		button4.setEnabled(false);
+		movePanelUpdate("Player O, it's your turn!");
+	    }
+
+	    button4.setFont(new Font("Serif", Font.BOLD, 25));
+	    button4.revalidate();
+	    button4.repaint();
+	}
+	if(e.getSource() == button5)
+	{   
+	    if(getTurn() == 2)
+		{
 			updateArray(5);
                         tic.fillArray(passArray());
                         button5.setText("O");
-                        humanPlayer.setHasMoved();
-                    }
+                        tic.setHasMoved();
+			button5.setEnabled(false);
+			movePanelUpdate("Player X, it's your turn!");
+		}
 		else if(getTurn() == 1)
-                    {
-			updateArray(5);
-                        tic.fillArray(passArray());
-                        button5.setText("X");
-                        humanPlayer2.setHasMoved();
-                    }
+                {
+		    updateArray(5);
+		    tic.fillArray(passArray());
+		    button5.setText("X");
+		    tic.setHasMoved();
+		    button5.setEnabled(false);
+		    movePanelUpdate("Player O, it's your turn!");
+		}
 
-                button5.setFont(new Font("Serif", Font.BOLD, 25));
-                button5.revalidate();
-                button5.repaint();
-	    }
+	    button5.setFont(new Font("Serif", Font.BOLD, 25));
+	    button5.revalidate();
+	    button5.repaint();
+	}
 	if(e.getSource() == button6)
+	{   
+	    if(getTurn() == 2)
 	    {
-		if(getTurn() == 2)
-                    {
-			updateArray(6);
-                        tic.fillArray(passArray());
-                        button6.setText("O");
-                        humanPlayer.setHasMoved();
-                    }
-                else if(getTurn() == 1)
-                    {
-			updateArray(6);
-                        tic.fillArray(passArray());
-                        button6.setText("X");
-                        humanPlayer2.setHasMoved();
-                    }
-
-                button6.setFont(new Font("Serif", Font.BOLD, 25));
-                button6.revalidate();
-                button6.repaint();
+		updateArray(6);
+		tic.fillArray(passArray());
+		button6.setText("O");
+		tic.setHasMoved();
+		button6.setEnabled(false);
+		movePanelUpdate("Player X, it's your turn!");
 	    }
+	    else if(getTurn() == 1)
+	    {
+		updateArray(6);
+		tic.fillArray(passArray());
+		button6.setText("X");
+		tic.setHasMoved();
+		button6.setEnabled(false);
+		movePanelUpdate("Player O, it's your turn!");
+	    }
+
+	    button6.setFont(new Font("Serif", Font.BOLD, 25));
+	    button6.revalidate();
+	    button6.repaint();
+	}
 	if(e.getSource() == button7)
+	{
+	    if(getTurn() == 2)
 	    {
-		if(getTurn() == 2)
-                    {
-			updateArray(7);
-                        tic.fillArray(passArray());
-                        button7.setText("O");
-                        humanPlayer.setHasMoved();
-                    }
-                else if(getTurn() == 1)
-                    {
-			updateArray(7);
-                        tic.fillArray(passArray());
-                        button7.setText("X");
-                        humanPlayer2.setHasMoved();
-                    }
-
-                button7.setFont(new Font("Serif", Font.BOLD, 25));
-                button7.revalidate();
-                button7.repaint();
+		updateArray(7);
+		tic.fillArray(passArray());
+		button7.setText("O");
+		tic.setHasMoved();
+		button7.setEnabled(false);
+		movePanelUpdate("Player X, it's your turn!");
 	    }
+	    else if(getTurn() == 1)
+	    {
+		updateArray(7);
+		tic.fillArray(passArray());
+		button7.setText("X");
+		tic.setHasMoved();
+		button7.setEnabled(false);
+		movePanelUpdate("Player O, it's your turn!");
+	    }
+
+	    button7.setFont(new Font("Serif", Font.BOLD, 25));
+	    button7.revalidate();
+	    button7.repaint();
+	}
 	if(e.getSource() == button8)
+	{   
+	    if(getTurn() == 2)
 	    {
-		if(getTurn() == 2)
-                    {
-			updateArray(8);
-                        tic.fillArray(passArray());
-                        button8.setText("O");
-                        humanPlayer.setHasMoved();
-                    }
-                else if(getTurn() == 1)
-                    {
-			updateArray(8);
-                        tic.fillArray(passArray());
-                        button8.setText("X");
-                        humanPlayer2.setHasMoved();
-                    }
-
-                button8.setFont(new Font("Serif", Font.BOLD, 25));
-                button8.revalidate();
-                button8.repaint();
+		updateArray(8);
+		tic.fillArray(passArray());
+		button8.setText("O");
+		tic.setHasMoved();
+		button8.setEnabled(false);
+		movePanelUpdate("Player X, it's your turn!");
 	    }
+	    else if(getTurn() == 1)
+	    {
+		updateArray(8);
+		tic.fillArray(passArray());
+		button8.setText("X");
+		tic.setHasMoved();
+		button8.setEnabled(false);
+		movePanelUpdate("Player O, it's your turn!");
+	    }
+
+	    button8.setFont(new Font("Serif", Font.BOLD, 25));
+	    button8.revalidate();
+	    button8.repaint();
+	}
 	if(e.getSource() == button9)
+	{
+	    if(getTurn() == 2)
 	    {
-		if(getTurn() == 2)
-                    {
-			updateArray(9);
-                        tic.fillArray(passArray());
-                        button9.setText("O");
-                        humanPlayer.setHasMoved();
-                    }
-                else if(getTurn() == 1)
-                    {
-			updateArray(9);
-                        tic.fillArray(passArray());
-                        button9.setText("X");
-                        humanPlayer2.setHasMoved();
-                    }
+		updateArray(9);
+		tic.fillArray(passArray());
+		button9.setText("O");
+		tic.setHasMoved();
+		button9.setEnabled(false);
+		movePanelUpdate("Player X, it's your turn!");
+	    }
+	    else if(getTurn() == 1)
+	    {
+		updateArray(9);
+		tic.fillArray(passArray());
+		button9.setText("X");
+		tic.setHasMoved();
+		button9.setEnabled(false);
+		movePanelUpdate("Player O, it's your turn!");
+	    }
 
-                button9.setFont(new Font("Serif", Font.BOLD, 25));
-                button9.revalidate();
-                button9.repaint();
-	    }
+	    button9.setFont(new Font("Serif", Font.BOLD, 25));
+	    button9.revalidate();
+	    button9.repaint();
+	}
 	if(e.getSource() == ticButton)
-	    {
-	        cardLayout.show(master, selectPlayer);
-		master.revalidate();
-		master.repaint();
-	    }
+	{
+	    cardLayout.show(master, selectPlayer);
+	    master.revalidate();
+	    master.repaint();
+	}
 	if(e.getSource() == humanButton)
-	    {
-		cardLayout.show(master, ticTacToe);
-		master.revalidate();
-		master.repaint();
-	    }
+	{
+	    tic.playGame("human");
+	    cardLayout.show(master, ticTacToe);
+	    master.revalidate();
+	    master.repaint();
+	}
 	if(e.getSource() == computerButton)
-	    {
-		//computerPlayer = new ComputerPlayer(2);
-		cardLayout.show(master, ticTacToe);
-		master.revalidate();
-		master.repaint();
-	    }
+	{
+	    tic.playGame("computer");
+	    cardLayout.show(master, ticTacToe);
+	    master.revalidate();
+	    master.repaint();
+	}
 	if(e.getSource() == blackButton)
-	    {
-		cardLayout.show(master, numDecks);
-		master.revalidate();
-		master.repaint();
-	    }
+	{
+	    cardLayout.show(master, numDecks);
+	    master.revalidate();
+	    master.repaint();
+	}
 	if(e.getSource() == okButton)
-	    {
-		cardLayout.show(master, blackJack);
-		master.revalidate();
-		master.repaint();
-	    }
+	{
+	    cardLayout.show(master, blackJack);
+	    master.revalidate();
+	    master.repaint();
+	}
     }
 }
