@@ -4,7 +4,7 @@ public class Card {
     private Suit suit;
     private Value value;
 
-    public Card (Value value, Suit suit) {
+    public Card (Value value, Suit suit, String filePath) {
 	this.Value = value;
 	this.Suit = suit;
     }

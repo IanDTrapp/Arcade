@@ -8,18 +8,23 @@ public class Shoe {
 
     public Shoe() {
 	for (a = 0; a < numDecks; a++) {
+	    int count = 1;
 	    // Creates a single deck of each card value and rank and shuffles it
-	    for (int i = 0; i < 13; i++) {
-		Value value = Value.values()[i];
+	    for (int i = 0; i < 4; i++) {
+		Suit suit = Suit.values()[i];
 		
-		for (int j = 0; j < 4; j++) {
-		    Card card = new Card(value, Suit.values()[j]);
-		    System.out.println(this.value + " of " + this.Suit.values[j]);
+		for (int j = 0; j < 13; j++) {
+		    // Creates a new card referencing the proper value, suit, and image associated
+		    Card card = new Card(Values.values()[j], suit, "classic-cards/" + count + ".png");
+		    System.out.println(this.Value.values[j] + " of " + this.suit);
+
 		    this.shoe.push(card);
+		    count++;
 		}
 	    }
-	}
 	    // Applies the shuffle routine found in Collections API
-	Collections.shuffle(shoe);
+	    Collections.shuffle(shoe);
+	}
     }
 }
+
