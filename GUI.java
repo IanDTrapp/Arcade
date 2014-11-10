@@ -41,6 +41,7 @@ public class GUI implements ActionListener
     public static HumanPlayer humanPlayer2 = new HumanPlayer();
     public JOptionPane gameOverPane = new JOptionPane();
     public int[] takenSpaces = {0,0,0,0,0,0,0,0,0};
+    public int numOfDecks;
 
     public static void main(String[] args)
     {
@@ -250,6 +251,11 @@ public class GUI implements ActionListener
             }
         else
             return 2;
+    }
+
+    public int getNumDecks()
+    {
+	return numOfDecks;
     }
 
     //Action listeners
@@ -671,6 +677,7 @@ public class GUI implements ActionListener
 	if(e.getSource() == okButton)
 	{
 	    cardLayout.show(master, blackJack);
+	    numOfDecks = slider.getValue();
 	    master.revalidate();
 	    master.repaint();
 	}
