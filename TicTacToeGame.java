@@ -1,3 +1,5 @@
+package arcade;
+
 import javax.swing.*;
 
 public class TicTacToeGame 
@@ -39,7 +41,7 @@ public class TicTacToeGame
 		    }
 		
 		    //Check if there is a winner
-		    if(isWinner() != 0)
+		    if(isWinner() == 1)
 		    {
 			gameOverPane.showConfirmDialog(null, "Player X won!", "Game over!", JOptionPane.OK_OPTION);
 		    }
