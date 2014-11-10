@@ -1,13 +1,13 @@
 package arcade;
 
 import java.util.Collections;
-import java.util.Stack<E>; 
+import java.util.Stack; 
 
 public class Shoe {
-    Stack shoe = new Stack<Card>;
+    Stack shoe = new Stack();
 
     public Shoe() {
-	for (a = 0; a < numDecks; a++) {
+	for (int a = 0; a < numDecks; a++) {
 	    int count = 1;
 	    // Creates a single deck of each card value and rank and shuffles it
 	    for (int i = 0; i < 4; i++) {
@@ -15,10 +15,10 @@ public class Shoe {
 		
 		for (int j = 0; j < 13; j++) {
 		    // Creates a new card referencing the proper value, suit, and image associated
-		    Card card = new Card(Values.values()[j], suit, "classic-cards/" + count + ".png");
-		    System.out.println(this.Value.values[j] + " of " + this.suit);
+		    Card card = new Card(Value.values()[j], suit, "classic-cards/" + count + ".png");
+		    System.out.println(Value.values[j] + " of " + suit);
 
-		    this.shoe.push(card);
+		    shoe.push(card);
 		    count++;
 		}
 	    }
