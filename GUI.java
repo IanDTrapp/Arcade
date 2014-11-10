@@ -243,10 +243,10 @@ public class GUI implements ActionListener
             }
         if(count%2 == 0)
             {
-                return 2;
+                return 1;
             }
         else
-            return 1;
+            return 2;
     }
 
     public void actionPerformed(ActionEvent e)
@@ -256,18 +256,18 @@ public class GUI implements ActionListener
 	
 	if(e.getSource() == button1)
 	    {
-		if(getTurn() == 1)
-                    {
-                        updateArray(1);
-			tic.fillArray(passArray());
-			button1.setText("X");
-			humanPlayer.setHasMoved();
-                    }
-                if(getTurn() == 2)
+		if(getTurn() == 2)
                     {
                         updateArray(1);
 			tic.fillArray(passArray());
 			button1.setText("O");
+			humanPlayer.setHasMoved();
+                    }
+                else if(getTurn() == 1)
+                    {
+                        updateArray(1);
+			tic.fillArray(passArray());
+			button1.setText("X");
 			humanPlayer2.setHasMoved();
 		    }
 
@@ -277,18 +277,18 @@ public class GUI implements ActionListener
 	    }
 	if(e.getSource() == button2)
 	    {
-		if(getTurn() == 1)
-                    {
-			updateArray(2);
-                        tic.fillArray(passArray());
-                        button2.setText("X");
-                        humanPlayer.setHasMoved();
-                    }
-                if(getTurn() == 2)
+		if(getTurn() == 2)
                     {
 			updateArray(2);
                         tic.fillArray(passArray());
                         button2.setText("O");
+                        humanPlayer.setHasMoved();
+                    }
+                else if(getTurn() == 1)
+                    {
+			updateArray(2);
+                        tic.fillArray(passArray());
+                        button2.setText("X");
                         humanPlayer2.setHasMoved();
                     }
 
@@ -298,18 +298,18 @@ public class GUI implements ActionListener
 	    }
 	if(e.getSource() == button3)
 	    {
-		if(getTurn() == 1)
+		if(getTurn() == 2)
                     {
 			updateArray(3);
                         tic.fillArray(passArray());
-                        button3.setText("X");
+                        button3.setText("O");
                         humanPlayer.setHasMoved();
                     }
-                if(getTurn() == 2)
+                else if(getTurn() == 1)
                     {
                         updateArray(3);
 			tic.fillArray(passArray());
-                        button3.setText("O");
+                        button3.setText("X");
                         humanPlayer2.setHasMoved();
                     }
 
@@ -319,18 +319,18 @@ public class GUI implements ActionListener
 	    }
 	if(e.getSource() == button4)
 	    {
-		if(getTurn() == 1)
-                    {
-			updateArray(4);
-                        tic.fillArray(passArray());
-                        button4.setText("X");
-                        humanPlayer.setHasMoved();
-                    }
-                if(getTurn() == 2)
+		if(getTurn() == 2)
                     {
 			updateArray(4);
                         tic.fillArray(passArray());
                         button4.setText("O");
+                        humanPlayer.setHasMoved();
+                    }
+                else if(getTurn() == 1)
+                    {
+			updateArray(4);
+                        tic.fillArray(passArray());
+                        button4.setText("X");
                         humanPlayer2.setHasMoved();
                     }
 
@@ -340,18 +340,18 @@ public class GUI implements ActionListener
 	    }
 	if(e.getSource() == button5)
 	    {
-		if(getTurn() == 1)
-                    {
-			updateArray(5);
-                        tic.fillArray(passArray());
-                        button5.setText("X");
-                        humanPlayer.setHasMoved();
-                    }
-                if(getTurn() == 2)
+		if(getTurn() == 2)
                     {
 			updateArray(5);
                         tic.fillArray(passArray());
                         button5.setText("O");
+                        humanPlayer.setHasMoved();
+                    }
+		else if(getTurn() == 1)
+                    {
+			updateArray(5);
+                        tic.fillArray(passArray());
+                        button5.setText("X");
                         humanPlayer2.setHasMoved();
                     }
 
@@ -361,18 +361,18 @@ public class GUI implements ActionListener
 	    }
 	if(e.getSource() == button6)
 	    {
-		if(getTurn() == 1)
-                    {
-			updateArray(6);
-                        tic.fillArray(passArray());
-                        button6.setText("X");
-                        humanPlayer.setHasMoved();
-                    }
-                if(getTurn() == 2)
+		if(getTurn() == 2)
                     {
 			updateArray(6);
                         tic.fillArray(passArray());
                         button6.setText("O");
+                        humanPlayer.setHasMoved();
+                    }
+                else if(getTurn() == 1)
+                    {
+			updateArray(6);
+                        tic.fillArray(passArray());
+                        button6.setText("X");
                         humanPlayer2.setHasMoved();
                     }
 
@@ -382,18 +382,18 @@ public class GUI implements ActionListener
 	    }
 	if(e.getSource() == button7)
 	    {
-		if(getTurn() == 1)
-                    {
-			updateArray(7);
-                        tic.fillArray(passArray());
-                        button7.setText("X");
-                        humanPlayer.setHasMoved();
-                    }
-                if(getTurn() == 2)
+		if(getTurn() == 2)
                     {
 			updateArray(7);
                         tic.fillArray(passArray());
                         button7.setText("O");
+                        humanPlayer.setHasMoved();
+                    }
+                else if(getTurn() == 1)
+                    {
+			updateArray(7);
+                        tic.fillArray(passArray());
+                        button7.setText("X");
                         humanPlayer2.setHasMoved();
                     }
 
@@ -403,18 +403,18 @@ public class GUI implements ActionListener
 	    }
 	if(e.getSource() == button8)
 	    {
-		if(getTurn() == 1)
-                    {
-			updateArray(8);
-                        tic.fillArray(passArray());
-                        button8.setText("X");
-                        humanPlayer.setHasMoved();
-                    }
-                if(getTurn() == 2)
+		if(getTurn() == 2)
                     {
 			updateArray(8);
                         tic.fillArray(passArray());
                         button8.setText("O");
+                        humanPlayer.setHasMoved();
+                    }
+                else if(getTurn() == 1)
+                    {
+			updateArray(8);
+                        tic.fillArray(passArray());
+                        button8.setText("X");
                         humanPlayer2.setHasMoved();
                     }
 
@@ -424,18 +424,18 @@ public class GUI implements ActionListener
 	    }
 	if(e.getSource() == button9)
 	    {
-		if(getTurn() == 1)
-                    {
-			updateArray(9);
-                        tic.fillArray(passArray());
-                        button9.setText("X");
-                        humanPlayer.setHasMoved();
-                    }
-                if(getTurn() == 2)
+		if(getTurn() == 2)
                     {
 			updateArray(9);
                         tic.fillArray(passArray());
                         button9.setText("O");
+                        humanPlayer.setHasMoved();
+                    }
+                else if(getTurn() == 1)
+                    {
+			updateArray(9);
+                        tic.fillArray(passArray());
+                        button9.setText("X");
                         humanPlayer2.setHasMoved();
                     }
 
