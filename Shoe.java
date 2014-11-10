@@ -8,7 +8,7 @@ public class Shoe {
 
     public Shoe() {
 	GUI gui = new GUI();
-	for (int a = 0; a < gui.getNumDecks; a++) {
+	for (int a = 0; a < gui.getNumDecks(); a++) {
 	    int count = 1;
 	    // Creates a single deck of each card value and rank and shuffles it
 	    for (int i = 0; i < 4; i++) {
