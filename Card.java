@@ -5,8 +5,8 @@ public class Card {
     private Value value;
 
     public Card (Value value, Suit suit, String filePath) {
-	this.Value = value;
-	this.Suit = suit;
+	this.value = value;
+	this.suit = suit;
     }
 
     public Suit getSuit() {
