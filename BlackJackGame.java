@@ -1,3 +1,5 @@
+package arcade;
+
 /* public class BlackJackGame {
 
     // Default constructor
