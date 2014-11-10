@@ -9,10 +9,11 @@ Changelog -
 		to the stack. If we use the proper array, we can 
 		use collections.shuffle to shuffle the deck 		
 		hopefully 
-
-	To do next:
 	- Add package acade; to the top of ALL files to make sure enums
 		work correctly
+	
+	To do next:
+	
 	- Test and likely debug shuffling, priting of cards
 	- getNumDecks to pass number of decks to Shoe.java class 
 	
