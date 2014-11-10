@@ -11,6 +11,7 @@ public class TicTacToeGame
     HumanPlayer player2 = new HumanPlayer();
 
     private boolean hasMoved;
+    private boolean humanGame;
 
     public int playGame(String gameType) 
     {
@@ -22,6 +23,8 @@ public class TicTacToeGame
 	    // Game of human vs human
 	    if (gameType.equalsIgnoreCase("human")) 
 	    {
+		setGameType("human");
+
 		//Start game loop
 		while(isWinner() == 0)
 		{
@@ -83,6 +86,8 @@ public class TicTacToeGame
 	    // Game of human vs computer
 	    if (gameType.equalsIgnoreCase("Computer")) 
 	    {
+		
+		setGameType("computer");
 
 		//Start game loop
 		while(isWinner() == 0)
@@ -122,18 +127,37 @@ public class TicTacToeGame
 	return isWinner();
     }
 
-	
-	
-	public void setHasMoved()
+    public void setGameType(String gameType)
+    {
+	if(gameType.equalsIgnoreCase("human"))
 	{
-	    hasMoved = true;
+	    humanGame = true;
 	}
+	else
+	    humanGame = false;
+    }
+
+    public String getGameType()
+    {
+	if(humanGame == true)
+	{
+	    return "human";
+	}
+	else
+	    return "computer";
+    }
+	
+    
+    public void setHasMoved()
+    {
+	hasMoved = true;
+    }
 	
 
-	// Fills the array with taken spots
-	public void fillArray(int[] spacesArray) 
-	{
-	    for(int i = 0; i < takenSpaces.length; i++)
+    // Fills the array with taken spots
+    public void fillArray(int[] spacesArray) 
+    {
+	for(int i = 0; i < takenSpaces.length; i++)
 		{
 		    takenSpaces[i] = spacesArray[i];
 		    System.out.println(takenSpaces[i]);
