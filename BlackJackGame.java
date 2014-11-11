@@ -1,41 +1,64 @@
+import java.util.Stack;
+import java.util.ArrayList;
+
 public class BlackJackGame 
 {
     private GUI gui;
-    private ArrayList dealerCards, playerCards;
-    private ArrayList dealerCardImages, playerCardImages;
-    private Stack deck;
-   
+    private ArrayList dealerCards = new ArrayList();
+    private ArrayList playerCards = new ArrayList();
+    private ArrayList dealerCardImages = new ArrayList();
+    private ArrayList playerCardImages = new ArrayList();
+    private Stack deck = new Stack();
+    private Card card1, card2, card3, card4;
+
     public void playBlackJack(GUI Gui) 
     {
 	gui = Gui;
 	Shoe shoe = new Shoe(gui);
 	deck = shoe.getShuffledDeck();
-
-	
+	originalDeal();
+	fillImageArrays();
+	gui.updateCards(dealerCardImages, "dealer");
+	gui.updateCards(playerCardImages, "player");
     }
 
     public void originalDeal()
     {
-	dealerCards.add(deck.pop());
-	dealerCards.add(deck.pop());
+	card1 = (Card)deck.pop();
+	System.out.println(card1.getValue());
+	System.out.println(card1.getSuit());
+	card2 = (Card)deck.pop();
+	System.out.println(card2.getValue());
+	System.out.println(card2.getSuit());
+	card3 = (Card)deck.pop();
+	System.out.println(card3.getValue());
+	System.out.println(card3.getSuit());
+	card4 = (Card)deck.pop();
+	System.out.println(card4.getValue());
+	System.out.println(card4.getSuit());
 
-	playerCards.add(deck.pop());
-	playerCards.add(deck.pop());
+	dealerCards.add(card1);
+	dealerCards.add(card2);
+
+	playerCards.add(card3);
+	playerCards.add(card4);
     }
     
-    public ArrayList updateDisplayedCards()
+    public void fillImageArrays()
     {
 	int size = dealerCards.size();
 	for(int i = 0; i < size; i++)
 	{
-	    dealerCardImages.removeRange(0, size);
-	    dealerCardImages.add(dealerCards[i].getImage());
+	    dealerCardImages.subList(0, size-2).clear();
+	    dealerCardImages.add(card1.getImage());
+	    dealerCardImages.add(card2.getImage());
 	}
 	int size1 = playerCards.size();
 	for(int j = 0; j < size1; j++)
 	{
-	    playerCardImages.removeRange(0, size1);
-	    playerCardImages.add(playerCards[j].getImage());
+	    playerCardImages.subList(0, size-2).clear();
+	    playerCardImages.add(card3.getImage());
+	    playerCardImages.add(card4.getImage());
 	}
     }
     
