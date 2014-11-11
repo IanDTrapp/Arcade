@@ -471,6 +471,20 @@ public class GUI implements ActionListener
 		}
 	    }
 	}
+	frame.revalidate();
+	frame.repaint();
+    }
+
+    public void hit(ArrayList passedList, String player)
+    {
+	Card hitCard = passedList.pop();
+	
+	BufferedImage img = passedList.get(
+	
+	if(player.equalsIgnoreCase("player")
+	{
+	    
+	}
     }
 
 
@@ -899,6 +913,10 @@ public class GUI implements ActionListener
 	    blackJackOb.fillImageArrays();
 	    master.revalidate();
 	    master.repaint();
+	}
+	if(e.getSource() == hit)
+	{
+	    blackJackOb.hit("player");
 	}
     }
 }

@@ -46,17 +46,34 @@ public class BlackJackGame
     
     public void fillImageArrays()
     {
-	int size = dealerCards.size();
+	int size = dealerCardImages.size();
 	
 	dealerCardImages.subList(0, size-2).clear();
 	dealerCardImages.add(card1.getImage());
 	dealerCardImages.add(card2.getImage());
-	
-	int size1 = playerCards.size();
        
+	int size1 = playerCardImages.size();
+	
 	playerCardImages.subList(0, size-2).clear();
 	playerCardImages.add(card3.getImage());
 	playerCardImages.add(card4.getImage());
+    }
+
+    public void hit(String player)
+    {
+	Card card5 = (Card)deck.pop();
+	if(player.equalsIgnoreCase("player"))
+	{
+	    playerCards.add(card5);
+	    playerCardImages.add(card5.getImage());
+	    gui.updateCards(playerCardImages, "player");
+	}
+	else if(player.equalsIgnoreCase("dealer"))
+	{
+	    dealerCards.add(card5);
+	    playerCardImages.add(card5.getImage());
+	    gui.updateCards(dealerCardImages, "dealer");
+	}
     }
 
     
