@@ -48,13 +48,13 @@ public class BlackJackGame
     {
 	int size = dealerCardImages.size();
 	
-	dealerCardImages.subList(0, size-2).clear();
+	dealerCardImages.subList(0, size).clear();
 	dealerCardImages.add(card1.getImage());
 	dealerCardImages.add(card2.getImage());
        
 	int size1 = playerCardImages.size();
 	
-	playerCardImages.subList(0, size-2).clear();
+	playerCardImages.subList(0, size).clear();
 	playerCardImages.add(card3.getImage());
 	playerCardImages.add(card4.getImage());
     }
