@@ -10,12 +10,14 @@ Changelog -
 		use collections.shuffle to shuffle the deck 		
 		hopefully 
 	- Fixed TicTacToe mostly!
+	- Fixed TicTacToe's score panels and popups
 	
 	To do next:
-	- Fix popup action on Tic Tac Toe (yes/no)
+	- Troubleshoot TTT's ComputerPlayer
 	- Fix cards not appearing on blackjack
 	- Make the "x" appear, or implement a back button
 	- Leaderboards, etc.
 	- Fix spacing issues on TicTacToe player X and player Y panels
+	- Resize buttons and sliders
 	
 	
