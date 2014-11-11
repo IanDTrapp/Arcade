@@ -41,6 +41,7 @@ public class GUI implements ActionListener
     private int[] takenSpaces = {0,0,0,0,0,0,0,0,0};
     private int numOfDecks;
     private static GUI gui;
+    private BlackJackGame blackJackOb = new BlackJackGame();
 
     public static void main(String[] args)
     {
@@ -680,6 +681,7 @@ public class GUI implements ActionListener
 	{
 	    cardLayout.show(master, blackJack);
 	    numOfDecks = slider.getValue();
+	    blackJackOb.playBlackJack(gui);
 	    master.revalidate();
 	    master.repaint();
 	}
