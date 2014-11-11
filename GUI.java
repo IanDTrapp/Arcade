@@ -12,7 +12,7 @@ public class GUI implements ActionListener
     private JPanel master;
     private JPanel titlePanel, movePanel, playerXPanel, playerOPanel, boardPanel, ticPanel;
     private JButton button1, button2, button3, button4, button5, button6, button7, button8, button9;
-    private JLabel ticLabel, moveLabel, playerXLabel, playerOLabel;
+    private JLabel ticLabel, moveLabel, playerXLabel, playerOLabel, playerXWinsLabel, playerOWinsLabel;
     private JPanel mainMenuPanel, mainTitlePanel;
     private JLabel mainTitleLabel;
     private JButton ticButton, blackButton;
@@ -29,7 +29,7 @@ public class GUI implements ActionListener
     private JTextArea leaderTextArea;
     private JButton allTime, sinceStart;
     private CardLayout cardLayout;
-    //private ComputerPlayer computerPlayer;
+    private ComputerPlayer computerPlayer;
     public String mainMenu = "Main Menu";
     public String ticTacToe = "Tic Tac Toe";
     public String numDecks = "Num Decks";
@@ -43,7 +43,9 @@ public class GUI implements ActionListener
     private int[] takenSpaces = {0,0,0,0,0,0,0,0,0};
     private int numOfDecks;
     private static GUI gui;
+    private static int playerXWins, playerOWins;
     private BlackJackGame blackJackOb = new BlackJackGame();
+    private static int turn = 0;
 
     public static void main(String[] args)
     {
@@ -57,7 +59,7 @@ public class GUI implements ActionListener
 	Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
 	frame = new JFrame("Arcade");
 	frame.setLayout(new BorderLayout());
-	frame.setPreferredSize(size);
+	frame.setSize(size);
 	frame.setVisible(true);
 	cardLayout = new CardLayout();
 	master = new JPanel(cardLayout);
@@ -69,10 +71,18 @@ public class GUI implements ActionListener
 	movePanel = new JPanel();
 	moveLabel = new JLabel("Player X, it's your turn!");
 	movePanel.add(moveLabel);
-	playerXPanel = new JPanel();
-	playerXLabel = new JLabel("Test");
-	playerOPanel = new JPanel();
-	playerOLabel = new JLabel("Test2");
+	playerXPanel = new JPanel(new BorderLayout());
+	playerXLabel = new JLabel("Player X Wins:");
+	playerXWinsLabel = new JLabel("" + playerXWins);
+	playerXWinsLabel.setFont(new Font("Serif", Font.BOLD, 25));
+	playerXPanel.add(playerXLabel, BorderLayout.NORTH);
+	playerXPanel.add(playerXWinsLabel, BorderLayout.CENTER);
+	playerOPanel = new JPanel(new BorderLayout());
+	playerOLabel = new JLabel("Player O Wins:");
+	playerOWinsLabel = new JLabel("" + playerOWins);
+	playerOWinsLabel.setFont(new Font("Serif", Font.BOLD, 25));
+	playerOPanel.add(playerOLabel, BorderLayout.NORTH);
+	playerOPanel.add(playerOWinsLabel, BorderLayout.CENTER);
 	boardPanel = new JPanel(new GridLayout(3,3));
 	ticPanel = new JPanel(new BorderLayout());
 	
@@ -222,11 +232,29 @@ public class GUI implements ActionListener
 	frame.add(master, BorderLayout.CENTER);
     }
 
+    public void computerPress(int num)
+    {
+	switch(num)
+	{
+	case 1: button1.doClick();
+	case 2: button2.doClick();
+	case 3: button3.doClick();
+	case 4: button4.doClick();
+	case 5: button5.doClick();
+	case 6: button6.doClick();
+	case 7: button7.doClick();
+	case 8: button8.doClick();
+	case 9: button9.doClick();
+	}
+    }
+
     public void movePanelUpdate(String update)
     {
 	moveLabel.setText(update);
 	moveLabel.revalidate();
 	moveLabel.repaint();
+
+	gameOver();
     }
 
     public void updateArray(int space)
@@ -475,7 +503,7 @@ public class GUI implements ActionListener
 	frame.repaint();
     }
 
-    public void hit(ArrayList passedList, String player)
+    /*public void hit(ArrayList passedList, String player)
     {
 	Card hitCard = passedList.pop();
 	
@@ -485,396 +513,383 @@ public class GUI implements ActionListener
 	{
 	    
 	}
-    }
+	}*/
 
 
     //Action listeners
+
+    public void gameOver()
+    {
+	if(tic.isWinner() == 1)
+	{
+	    int selected = gameOverPane.showConfirmDialog(null, "Player X has won!", "Game over!", JOptionPane.OK_OPTION);
+	    if(selected == JOptionPane.OK_OPTION)
+            {
+		playerXWins++;
+		ticRefresh();
+		cardLayout.show(master, ticTacToe);
+	    }
+	}
+	else if(tic.isWinner() == 2)
+	{
+	    int selected = gameOverPane.showConfirmDialog(null, "Player O has won!", "Game over!", JOptionPane.OK_OPTION);
+	    if(selected == JOptionPane.OK_OPTION)
+	    {
+		playerOWins++;
+		ticRefresh();
+		cardLayout.show(master, ticTacToe);
+	    }
+	}
+	else if(tic.isWinner() == 0 && turn == 9)
+	{
+	    int selected = gameOverPane.showConfirmDialog(null, "It's a tie!", "Game over!", JOptionPane.OK_OPTION);
+	    if(selected == JOptionPane.OK_OPTION)
+	    {
+		ticRefresh();
+		cardLayout.show(master, ticTacToe);
+	    }
+	}
+	
+	master.repaint();
+	master.revalidate();
+    }
+
+    public void ticRefresh()
+    {
+	button1.setText("");
+	button1.setEnabled(true);
+	button2.setText("");
+	button2.setEnabled(true);
+	button3.setText("");
+	button3.setEnabled(true);
+	button4.setText("");
+	button4.setEnabled(true);
+	button5.setText("");
+	button5.setEnabled(true);
+	button6.setText("");
+	button6.setEnabled(true);
+	button7.setText("");
+	button7.setEnabled(true);
+	button8.setText("");
+	button8.setEnabled(true);
+	button9.setText("");
+	button9.setEnabled(true);
+	
+	for(int i = 0; i < 9; i++)
+	{
+	    takenSpaces[i] = 0;
+	}
+
+	turn = 0;
+	tic.resetArray();
+    }
+
     public void actionPerformed(ActionEvent e)
     {
 	if(e.getSource() == button1)
 	{   
+	    button1.setFont(new Font("Serif", Font.BOLD, 25));
+	    
 	    if(getTurn() == 2)
 	    {
 		updateArray(1);
 		tic.fillArray(passArray());
 		button1.setText("O");
-		tic.setHasMoved();
 		button1.setEnabled(false);
 		movePanelUpdate("Player X, it's your turn!");
-		if(tic.isWinner() == 2)
-		{
-		    int selected = gameOverPane.showConfirmDialog(null, "Player X has won!", "Game over!", JOptionPane.OK_OPTION);
-		    if(selected == JOptionPane.OK_OPTION)
-		    {
-			cardLayout.show(master, ticTacToe);
-			tic.playGame(tic.getGameType(), gui);
-		    }
-		}
 	    }
 	    else if(getTurn() == 1)
 	    {
 		updateArray(1);
 		tic.fillArray(passArray());
 		button1.setText("X");
-		tic.setHasMoved();
 		button1.setEnabled(false);
 		movePanelUpdate("Player O, it's your turn!");
-		if(tic.isWinner() == 1)
-		{
-		    int selected = gameOverPane.showConfirmDialog(null, "Player O has won!", "Game over!", JOptionPane.OK_OPTION);
-		    if(selected == JOptionPane.OK_OPTION)
-                    {
-                        cardLayout.show(master, ticTacToe);
-                        tic.playGame(tic.getGameType(), gui);
-                    }
-		}
 	    }
-
-	    button1.setFont(new Font("Serif", Font.BOLD, 25));
+	    if(getTurn() == 1 && (tic.getGameType()).equalsIgnoreCase("computer"))
+	    {
+		updateArray(1);
+		tic.fillArray(passArray());
+		button1.setText("X");
+		button1.setEnabled(false);
+		movePanelUpdate("Player O, it's your turn!");
+		computerPlayer.pickSpace(takenSpaces, gui);
+	    }
+	    
+	    turn++;
 	    button1.revalidate();
 	    button1.repaint();
 	}
 	if(e.getSource() == button2)
 	{
+	    button2.setFont(new Font("Serif", Font.BOLD, 25));
+
 		if(getTurn() == 2)
                 {
 		    updateArray(2);
 		    tic.fillArray(passArray());
 		    button2.setText("O");
-		    tic.setHasMoved();
 		    button2.setEnabled(false);
 		    movePanelUpdate("Player X, it's your turn!");
-		    if(tic.isWinner() == 2)
-			{
-			    int selected = gameOverPane.showConfirmDialog(null, "Player X has won!", "Game over!", JOptionPane.OK_OPTION);
-			    if(selected == JOptionPane.OK_OPTION)
-				{
-				    cardLayout.show(master, ticTacToe);
-				    tic.playGame(tic.getGameType(), gui);
-				}
-			}
 		}
                 else if(getTurn() == 1)
                 {
 		    updateArray(2);
 		    tic.fillArray(passArray());
 		    button2.setText("X");
-		    tic.setHasMoved();
 		    button2.setEnabled(false);
 		    movePanelUpdate("Player O, it's your turn!");
-		    if(tic.isWinner() == 1)
-			{
-			    int selected = gameOverPane.showConfirmDialog(null, "Player O has won!", "Game over!", JOptionPane.OK_OPTION);
-			    if(selected == JOptionPane.OK_OPTION)
-				{
-				    cardLayout.show(master, ticTacToe);
-				    tic.playGame(tic.getGameType(), gui);
-				}
-			}
+		}
+		else if(getTurn() == 1 && tic.getGameType().equalsIgnoreCase("computer"))
+		{
+		    updateArray(2);
+		    tic.fillArray(passArray());
+		    button2.setText("X");
+		    button2.setEnabled(false);
+		    movePanelUpdate("Player O, it's your turn!");
+		    computerPlayer.pickSpace(takenSpaces, gui);
 		}
 		
-                button2.setFont(new Font("Serif", Font.BOLD, 25));
+		turn++;
                 button2.revalidate();
                 button2.repaint();
 	}
 	if(e.getSource() == button3)
 	{
+	    button3.setFont(new Font("Serif", Font.BOLD, 25));
+
 	    if(getTurn() == 2)
 	    {
 		updateArray(3);
 		tic.fillArray(passArray());
 		button3.setText("O");
-		tic.setHasMoved();
 		button3.setEnabled(false);
 		movePanelUpdate("Player X, it's your turn!");
-		if(tic.isWinner() == 1)
-		    {
-			int selected = gameOverPane.showConfirmDialog(null, "Player X has won!", "Game over!", JOptionPane.OK_OPTION);
-			if(selected == JOptionPane.OK_OPTION)
-			    {
-				cardLayout.show(master, ticTacToe);
-				tic.playGame(tic.getGameType(), gui);
-			    }
-		    }
-	    }
+	    } 
 	    else if(getTurn() == 1)
 	    {
 		updateArray(3);
 		tic.fillArray(passArray());
 		button3.setText("X");
-		tic.setHasMoved();
+		button3.setEnabled(false);
+		movePanelUpdate("Player O, it's your turn!");    
+	    }
+	    else if(getTurn() == 1 && tic.getGameType().equalsIgnoreCase("computer"))
+	    {
+		updateArray(3);
+		tic.fillArray(passArray());
+		button3.setText("X");
 		button3.setEnabled(false);
 		movePanelUpdate("Player O, it's your turn!");
-		if(tic.isWinner() == 2)
-		    {
-			int selected = gameOverPane.showConfirmDialog(null, "Player O has won!", "Game over!", JOptionPane.OK_OPTION);
-			if(selected == JOptionPane.OK_OPTION)
-			    {
-				cardLayout.show(master, ticTacToe);
-				tic.playGame(tic.getGameType(), gui);
-			    }
-		    }
+		computerPlayer.pickSpace(takenSpaces, gui);
 	    }
 
-	    button3.setFont(new Font("Serif", Font.BOLD, 25));
+	    turn++;
 	    button3.revalidate();
 	    button3.repaint();
 	}
 	if(e.getSource() == button4)
 	{
+	    button4.setFont(new Font("Serif", Font.BOLD, 25));
+
 	    if(getTurn() == 2)
 	    {
 		updateArray(4);
 		tic.fillArray(passArray());
 		button4.setText("O");
-		tic.setHasMoved();
 		button4.setEnabled(false);
 		movePanelUpdate("Player X, it's your turn!");
-		if(tic.isWinner() == 1)
-		    {
-			int selected = gameOverPane.showConfirmDialog(null, "Player X has won!", "Game over!", JOptionPane.OK_OPTION);
-			if(selected == JOptionPane.OK_OPTION)
-			    {
-				cardLayout.show(master, ticTacToe);
-				tic.playGame(tic.getGameType(), gui);
-			    }
-		    }
 	    }
 	    else if(getTurn() == 1)
 	    {
 		updateArray(4);
 		tic.fillArray(passArray());
 		button4.setText("X");
-		tic.setHasMoved();
 		button4.setEnabled(false);
 		movePanelUpdate("Player O, it's your turn!");
-		if(tic.isWinner() == 2)
-		    {
-			int selected = gameOverPane.showConfirmDialog(null, "Player O has won!", "Game over!", JOptionPane.OK_OPTION);
-			if(selected == JOptionPane.OK_OPTION)
-			    {
-				cardLayout.show(master, ticTacToe);
-				tic.playGame(tic.getGameType(), gui);
-			    }
-		    }
+	    }
+	    else if(getTurn() == 1 && tic.getGameType().equalsIgnoreCase("computer"))
+	    {
+		updateArray(4);
+		tic.fillArray(passArray());
+		button4.setText("X");
+		button4.setEnabled(false);
+		movePanelUpdate("Player O, it's your turn!");
+		computerPlayer.pickSpace(takenSpaces, gui);
 	    }
 
-	    button4.setFont(new Font("Serif", Font.BOLD, 25));
+	    turn++;
 	    button4.revalidate();
 	    button4.repaint();
 	}
 	if(e.getSource() == button5)
-	{   
-	    if(getTurn() == 2)
-		{
-			updateArray(5);
-                        tic.fillArray(passArray());
-                        button5.setText("O");
-                        tic.setHasMoved();
-			button5.setEnabled(false);
-			movePanelUpdate("Player X, it's your turn!");
-			if(tic.isWinner() == 1)
-			    {
-				int selected = gameOverPane.showConfirmDialog(null, "Player X has won!", "Game over!", JOptionPane.OK_OPTION);
-				if(selected == JOptionPane.OK_OPTION)
-				    {
-					cardLayout.show(master, ticTacToe);
-					tic.playGame(tic.getGameType(), gui);
-				    }
-			    }
-		}
-		else if(getTurn() == 1)
-                {
-		    updateArray(5);
-		    tic.fillArray(passArray());
-		    button5.setText("X");
-		    tic.setHasMoved();
-		    button5.setEnabled(false);
-		    movePanelUpdate("Player O, it's your turn!");
-		    if(tic.isWinner() == 2)
-			{
-			    int selected = gameOverPane.showConfirmDialog(null, "Player O has won!", "Game over!", JOptionPane.OK_OPTION);
-			    if(selected == JOptionPane.OK_OPTION)
-				{
-				    cardLayout.show(master, ticTacToe);
-				    tic.playGame(tic.getGameType(), gui);
-				}
-			}
-		}
+	{
+	    button5.setFont(new Font("Serif", Font.BOLD, 25));
 
+	    if(getTurn() == 2)
+	    {
+		updateArray(5);
+		tic.fillArray(passArray());
+		button5.setText("O");
+		button5.setEnabled(false);
+		movePanelUpdate("Player X, it's your turn!");	
+	    }
+	    else if(getTurn() == 1)
+            {
+		updateArray(5);
+		tic.fillArray(passArray());
+		button5.setText("X");
+		button5.setEnabled(false);
+		movePanelUpdate("Player O, it's your turn!");	
+	    }
+	    else if(getTurn() == 1 && tic.getGameType().equalsIgnoreCase("computer"))
+	    {
+		updateArray(5);
+		tic.fillArray(passArray());
+		button5.setText("X");
+		button5.setEnabled(false);
+		movePanelUpdate("Player O, it's your turn!");
+		computerPlayer.pickSpace(takenSpaces, gui);
+	    }
+
+	    turn++;
 	    button5.setFont(new Font("Serif", Font.BOLD, 25));
 	    button5.revalidate();
 	    button5.repaint();
 	}
 	if(e.getSource() == button6)
 	{   
+	    button6.setFont(new Font("Serif", Font.BOLD, 25));
+
 	    if(getTurn() == 2)
 	    {
 		updateArray(6);
 		tic.fillArray(passArray());
 		button6.setText("O");
-		tic.setHasMoved();
 		button6.setEnabled(false);
 		movePanelUpdate("Player X, it's your turn!");
-		if(tic.isWinner() == 1)
-		    {
-			int selected = gameOverPane.showConfirmDialog(null, "Player X has won!", "Game over!", JOptionPane.OK_OPTION);
-			if(selected == JOptionPane.OK_OPTION)
-			    {
-				cardLayout.show(master, ticTacToe);
-				tic.playGame(tic.getGameType(), gui);
-			    }
-		    }
 	    }
 	    else if(getTurn() == 1)
 	    {
 		updateArray(6);
 		tic.fillArray(passArray());
 		button6.setText("X");
-		tic.setHasMoved();
 		button6.setEnabled(false);
 		movePanelUpdate("Player O, it's your turn!");
-		if(tic.isWinner() == 2)
-		    {
-			int selected = gameOverPane.showConfirmDialog(null, "Player O has won!", "Game over!", JOptionPane.OK_OPTION);
-			if(selected == JOptionPane.OK_OPTION)
-			    {
-				cardLayout.show(master, ticTacToe);
-				tic.playGame(tic.getGameType(), gui);
-			    }
-		    }
+	    }
+	    else if(getTurn() == 1 && tic.getGameType().equalsIgnoreCase("computer"))
+	    {
+		updateArray(6);
+		tic.fillArray(passArray());
+		button6.setText("X");
+		button6.setEnabled(false);
+		movePanelUpdate("Player O, it's your turn!");
+		computerPlayer.pickSpace(takenSpaces, gui);
 	    }
 
-	    button6.setFont(new Font("Serif", Font.BOLD, 25));
+	    turn++;
 	    button6.revalidate();
 	    button6.repaint();
 	}
 	if(e.getSource() == button7)
 	{
+	    button7.setFont(new Font("Serif", Font.BOLD, 25));
+
 	    if(getTurn() == 2)
 	    {
 		updateArray(7);
 		tic.fillArray(passArray());
 		button7.setText("O");
-		tic.setHasMoved();
 		button7.setEnabled(false);
 		movePanelUpdate("Player X, it's your turn!");
-		if(tic.isWinner() == 1)
-		    {
-			int selected = gameOverPane.showConfirmDialog(null, "Player X has won!", "Game over!", JOptionPane.OK_OPTION);
-			if(selected == JOptionPane.OK_OPTION)
-			    {
-				cardLayout.show(master, ticTacToe);
-				tic.playGame(tic.getGameType(), gui);
-			    }
-		    }
 	    }
 	    else if(getTurn() == 1)
 	    {
 		updateArray(7);
 		tic.fillArray(passArray());
 		button7.setText("X");
-		tic.setHasMoved();
 		button7.setEnabled(false);
 		movePanelUpdate("Player O, it's your turn!");
-		if(tic.isWinner() == 2)
-		    {
-			int selected = gameOverPane.showConfirmDialog(null, "Player O has won!", "Game over!", JOptionPane.OK_OPTION);
-			if(selected == JOptionPane.OK_OPTION)
-			    {
-				cardLayout.show(master, ticTacToe);
-				tic.playGame(tic.getGameType(), gui);
-			    }
-		    }
+	    }
+	    else if(getTurn() == 1 && tic.getGameType().equalsIgnoreCase("computer"))
+	    {
+		updateArray(7);
+		tic.fillArray(passArray());
+		button7.setText("X");
+		button7.setEnabled(false);
+		movePanelUpdate("Player O, it's your turn!");
+		computerPlayer.pickSpace(takenSpaces, gui);
 	    }
 
-	    button7.setFont(new Font("Serif", Font.BOLD, 25));
+	    turn++;
 	    button7.revalidate();
 	    button7.repaint();
 	}
 	if(e.getSource() == button8)
 	{   
+	    button8.setFont(new Font("Serif", Font.BOLD, 25));
+
 	    if(getTurn() == 2)
 	    {
 		updateArray(8);
 		tic.fillArray(passArray());
 		button8.setText("O");
-		tic.setHasMoved();
 		button8.setEnabled(false);
 		movePanelUpdate("Player X, it's your turn!");
-		if(tic.isWinner() == 1)
-		    {
-			int selected = gameOverPane.showConfirmDialog(null, "Player X has won!", "Game over!", JOptionPane.OK_OPTION);
-			if(selected == JOptionPane.OK_OPTION)
-			    {
-				cardLayout.show(master, ticTacToe);
-				tic.playGame(tic.getGameType(), gui);
-			    }
-		    }
 	    }
 	    else if(getTurn() == 1)
 	    {
 		updateArray(8);
 		tic.fillArray(passArray());
 		button8.setText("X");
-		tic.setHasMoved();
 		button8.setEnabled(false);
 		movePanelUpdate("Player O, it's your turn!");
-		if(tic.isWinner() == 2)
-		    {
-			int selected = gameOverPane.showConfirmDialog(null, "Player O has won!", "Game over!", JOptionPane.OK_OPTION);
-			if(selected == JOptionPane.OK_OPTION)
-			    {
-				cardLayout.show(master, ticTacToe);
-				tic.playGame(tic.getGameType(), gui);
-			    }
-		    }
+	    }
+	    else if(getTurn() == 1 && tic.getGameType().equalsIgnoreCase("computer"))
+	    {
+		updateArray(8);
+		tic.fillArray(passArray());
+		button8.setText("X");
+		button8.setEnabled(false);
+		movePanelUpdate("Player O, it's your turn!");
+		computerPlayer.pickSpace(takenSpaces, gui);
 	    }
 
-	    button8.setFont(new Font("Serif", Font.BOLD, 25));
+	    turn++;
 	    button8.revalidate();
 	    button8.repaint();
 	}
 	if(e.getSource() == button9)
 	{
+	    button9.setFont(new Font("Serif", Font.BOLD, 25));
+
 	    if(getTurn() == 2)
 	    {
 		updateArray(9);
 		tic.fillArray(passArray());
 		button9.setText("O");
-		tic.setHasMoved();
 		button9.setEnabled(false);
 		movePanelUpdate("Player X, it's your turn!");
-		if(tic.isWinner() == 1)
-		    {
-			int selected = gameOverPane.showConfirmDialog(null, "Player X has won!", "Game over!", JOptionPane.OK_OPTION);
-			if(selected == JOptionPane.OK_OPTION)
-			    {
-				cardLayout.show(master, ticTacToe);
-				tic.playGame(tic.getGameType(), gui);
-			    }
-		    }
 	    }
 	    else if(getTurn() == 1)
 	    {
 		updateArray(9);
 		tic.fillArray(passArray());
 		button9.setText("X");
-		tic.setHasMoved();
 		button9.setEnabled(false);
 		movePanelUpdate("Player O, it's your turn!");
-		if(tic.isWinner() == 2)
-		    {
-			int selected = gameOverPane.showConfirmDialog(null, "Player O has won!", "Game over!", JOptionPane.OK_OPTION);
-			if(selected == JOptionPane.OK_OPTION)
-			    {
-				cardLayout.show(master, ticTacToe);
-				tic.playGame(tic.getGameType(), gui);
-			    }
-		    }
+	    }
+	    else if(getTurn() == 1 && tic.getGameType().equalsIgnoreCase("computer"))
+	    {
+		updateArray(9);
+		tic.fillArray(passArray());
+		button9.setText("X");
+		button9.setEnabled(false);
+		movePanelUpdate("Player O, it's your turn!");
+		computerPlayer.pickSpace(takenSpaces, gui);
 	    }
 
-	    button9.setFont(new Font("Serif", Font.BOLD, 25));
+	    turn++;
 	    button9.revalidate();
 	    button9.repaint();
 	}
@@ -886,14 +901,14 @@ public class GUI implements ActionListener
 	}
 	if(e.getSource() == humanButton)
 	{
-	    tic.playGame("human", gui);
+	    tic.setGameType("human");
 	    cardLayout.show(master, ticTacToe);
 	    master.revalidate();
 	    master.repaint();
 	}
 	if(e.getSource() == computerButton)
 	{
-	    tic.playGame("computer", gui);
+	    tic.setGameType("computer");
 	    cardLayout.show(master, ticTacToe);
 	    master.revalidate();
 	    master.repaint();

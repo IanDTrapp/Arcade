@@ -6,102 +6,16 @@ public class TicTacToeGame
     HumanPlayer player1 = new HumanPlayer();
     HumanPlayer player2 = new HumanPlayer();
 
-    private boolean hasMoved;
-    private boolean humanGame;
+    boolean humanGame;
 
-    public int playGame(String gameType, GUI Gui) 
+    public void resetArray()
     {
-	try
-	{
-	    this.gui = Gui;
-	    int turn = 0;
-
-	    // Game of human vs human
-	    if(gameType.equalsIgnoreCase("human")) 
-	    {
-		setGameType("human");
-
-		//Start game loop
-		while(gameOver() == false)
-		{
-		    hasMoved = false;
-		    turn = 0;
-
-		    //Player 1's move
-		    while(hasMoved == false) 
-		    {
-			if(hasMoved == true)
-			{
-			    turn++;
-			    break;
-			}
-			else
-			    Thread.sleep(3000);	
-		    }
-
-		    if(gameOver() == true)
-		    {
-			break;
-		    }
-
-		    hasMoved = false;
-		
-		    //Player 2's turn
-		    while(hasMoved == false)
-		    {
-			if(hasMoved == true)
-			{
-			    turn++;
-			    break;
-			}	
-			else
-			    Thread.sleep(3000);
-		    }
-		}
-	    }
+	int size = takenSpaces.length;
 	
-	
-	    // Game of human vs computer
-	    if (gameType.equalsIgnoreCase("Computer")) 
-	    {
-		
-		setGameType("computer");
-
-		//Start game loop
-		while(isWinner() == 0)
-		{
-		    turn = 0;
-		
-		    //Player 1's move
-		    while(hasMoved == false)
-		    {
-			hasMoved = false;
-		    
-			gui.movePanelUpdate("Player X, please pick a space!");
-			if(hasMoved == true)
-			{
-			    turn++;
-			    break;
-			}
-		    }
-		    
-		    //Check if there is a winner
-		    if(isWinner() != 0)
-		    {
-			break;
-		    }
-		    
-		    //Player 2's turn
-		    gui.movePanelUpdate("Player O, please pick a space!");
-		    turn++;
-		}
-	    }
-	}
-	catch(Exception e)
+	for(int i = 0; i < size; i++)
 	{
-	    System.out.println(e.getMessage());
+	    takenSpaces[i] = 0;
 	}
-	return isWinner();
     }
 
     public void setGameType(String gameType)
@@ -123,21 +37,14 @@ public class TicTacToeGame
 	else
 	    return "computer";
     }
-	
-    public void setHasMoved()
-    {
-	hasMoved = true;
-    }
-	
+    	
     // Fills the array with taken spots
     public void fillArray(int[] spacesArray) 
     {
 	for(int i = 0; i < takenSpaces.length; i++)
 	{
 	    takenSpaces[i] = spacesArray[i];
-	    System.out.println(takenSpaces[i]);
 	}
-
     } 
 
     public boolean gameOver()
