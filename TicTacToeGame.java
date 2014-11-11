@@ -7,6 +7,33 @@ public class TicTacToeGame
     HumanPlayer player2 = new HumanPlayer();
 
     boolean humanGame;
+    boolean humanTurn;
+
+    public void playGame(GUI Gui, ComputerPlayer computerPlayer)
+    {
+	try
+	{
+	    gui = Gui;
+	    humanTurn = true;
+ 
+	    if(humanTurn == true)
+	    {
+		Thread.sleep(2000);
+	    }
+	
+	    if(humanTurn == false)
+		computerPlayer.pickSpace(takenSpaces, gui);
+	}
+	catch(Exception e)
+	{
+	    System.err.println(e.getMessage());
+	}
+    }
+
+    public void setHumanTurn(boolean boo)
+    {
+	humanTurn = boo;
+    }
 
     public void resetArray()
     {
