@@ -1,7 +1,7 @@
 public class TicTacToeGame 
 {
     int[] takenSpaces = {0,0,0,0,0,0,0,0,0};
-    GUI gui = new GUI();
+    GUI gui = null;
 
     HumanPlayer player1 = new HumanPlayer();
     HumanPlayer player2 = new HumanPlayer();
@@ -9,10 +9,11 @@ public class TicTacToeGame
     private boolean hasMoved;
     private boolean humanGame;
 
-    public int playGame(String gameType) 
+    public int playGame(String gameType, GUI Gui) 
     {
 	try
 	{
+	    this.gui = Gui;
 	    int turn = 0;
 
 	    // Game of human vs human

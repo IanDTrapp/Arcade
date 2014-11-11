@@ -1,0 +1,7 @@
+public class BlackJackGame 
+{
+    public void playBlackJack() 
+    {
+	return 1
+    }
+}

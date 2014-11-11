@@ -28,22 +28,23 @@ public class GUI implements ActionListener
     private JButton allTime, sinceStart;
     private CardLayout cardLayout;
     //private ComputerPlayer computerPlayer;
-    public static String mainMenu = "Main Menu";
-    public static String ticTacToe = "Tic Tac Toe";
-    public static String numDecks = "Num Decks";
-    public static String blackJack = "Black Jack";
-    public static String selectPlayer = "Select Player";
-    public static String leaderBoard = "Leaderboard";
-    public static TicTacToeGame tic = new TicTacToeGame();
-    public static HumanPlayer humanPlayer = new HumanPlayer();
-    public static HumanPlayer humanPlayer2 = new HumanPlayer();
-    public JOptionPane gameOverPane = new JOptionPane();
-    public int[] takenSpaces = {0,0,0,0,0,0,0,0,0};
-    public int numOfDecks;
+    public String mainMenu = "Main Menu";
+    public String ticTacToe = "Tic Tac Toe";
+    public String numDecks = "Num Decks";
+    public String blackJack = "Black Jack";
+    public String selectPlayer = "Select Player";
+    public String leaderBoard = "Leaderboard";
+    private TicTacToeGame tic = new TicTacToeGame();
+    private HumanPlayer humanPlayer = new HumanPlayer();
+    private HumanPlayer humanPlayer2 = new HumanPlayer();
+    private JOptionPane gameOverPane = new JOptionPane();
+    private int[] takenSpaces = {0,0,0,0,0,0,0,0,0};
+    private int numOfDecks;
+    private static GUI gui;
 
     public static void main(String[] args)
     {
-	GUI gui = new GUI();
+	gui = new GUI();
 	gui.GUI();
     }
 
@@ -278,7 +279,7 @@ public class GUI implements ActionListener
 		    if(selected == JOptionPane.OK_OPTION)
 		    {
 			cardLayout.show(master, ticTacToe);
-			tic.playGame(tic.getGameType());
+			tic.playGame(tic.getGameType(), gui);
 		    }
 		}
 	    }
@@ -296,7 +297,7 @@ public class GUI implements ActionListener
 		    if(selected == JOptionPane.OK_OPTION)
                     {
                         cardLayout.show(master, ticTacToe);
-                        tic.playGame(tic.getGameType());
+                        tic.playGame(tic.getGameType(), gui);
                     }
 		}
 	    }
@@ -321,7 +322,7 @@ public class GUI implements ActionListener
 			    if(selected == JOptionPane.OK_OPTION)
 				{
 				    cardLayout.show(master, ticTacToe);
-				    tic.playGame(tic.getGameType());
+				    tic.playGame(tic.getGameType(), gui);
 				}
 			}
 		}
@@ -339,7 +340,7 @@ public class GUI implements ActionListener
 			    if(selected == JOptionPane.OK_OPTION)
 				{
 				    cardLayout.show(master, ticTacToe);
-				    tic.playGame(tic.getGameType());
+				    tic.playGame(tic.getGameType(), gui);
 				}
 			}
 		}
@@ -364,7 +365,7 @@ public class GUI implements ActionListener
 			if(selected == JOptionPane.OK_OPTION)
 			    {
 				cardLayout.show(master, ticTacToe);
-				tic.playGame(tic.getGameType());
+				tic.playGame(tic.getGameType(), gui);
 			    }
 		    }
 	    }
@@ -382,7 +383,7 @@ public class GUI implements ActionListener
 			if(selected == JOptionPane.OK_OPTION)
 			    {
 				cardLayout.show(master, ticTacToe);
-				tic.playGame(tic.getGameType());
+				tic.playGame(tic.getGameType(), gui);
 			    }
 		    }
 	    }
@@ -407,7 +408,7 @@ public class GUI implements ActionListener
 			if(selected == JOptionPane.OK_OPTION)
 			    {
 				cardLayout.show(master, ticTacToe);
-				tic.playGame(tic.getGameType());
+				tic.playGame(tic.getGameType(), gui);
 			    }
 		    }
 	    }
@@ -425,7 +426,7 @@ public class GUI implements ActionListener
 			if(selected == JOptionPane.OK_OPTION)
 			    {
 				cardLayout.show(master, ticTacToe);
-				tic.playGame(tic.getGameType());
+				tic.playGame(tic.getGameType(), gui);
 			    }
 		    }
 	    }
@@ -450,7 +451,7 @@ public class GUI implements ActionListener
 				if(selected == JOptionPane.OK_OPTION)
 				    {
 					cardLayout.show(master, ticTacToe);
-					tic.playGame(tic.getGameType());
+					tic.playGame(tic.getGameType(), gui);
 				    }
 			    }
 		}
@@ -468,7 +469,7 @@ public class GUI implements ActionListener
 			    if(selected == JOptionPane.OK_OPTION)
 				{
 				    cardLayout.show(master, ticTacToe);
-				    tic.playGame(tic.getGameType());
+				    tic.playGame(tic.getGameType(), gui);
 				}
 			}
 		}
@@ -493,7 +494,7 @@ public class GUI implements ActionListener
 			if(selected == JOptionPane.OK_OPTION)
 			    {
 				cardLayout.show(master, ticTacToe);
-				tic.playGame(tic.getGameType());
+				tic.playGame(tic.getGameType(), gui);
 			    }
 		    }
 	    }
@@ -511,7 +512,7 @@ public class GUI implements ActionListener
 			if(selected == JOptionPane.OK_OPTION)
 			    {
 				cardLayout.show(master, ticTacToe);
-				tic.playGame(tic.getGameType());
+				tic.playGame(tic.getGameType(), gui);
 			    }
 		    }
 	    }
@@ -536,7 +537,7 @@ public class GUI implements ActionListener
 			if(selected == JOptionPane.OK_OPTION)
 			    {
 				cardLayout.show(master, ticTacToe);
-				tic.playGame(tic.getGameType());
+				tic.playGame(tic.getGameType(), gui);
 			    }
 		    }
 	    }
@@ -554,7 +555,7 @@ public class GUI implements ActionListener
 			if(selected == JOptionPane.OK_OPTION)
 			    {
 				cardLayout.show(master, ticTacToe);
-				tic.playGame(tic.getGameType());
+				tic.playGame(tic.getGameType(), gui);
 			    }
 		    }
 	    }
@@ -579,7 +580,7 @@ public class GUI implements ActionListener
 			if(selected == JOptionPane.OK_OPTION)
 			    {
 				cardLayout.show(master, ticTacToe);
-				tic.playGame(tic.getGameType());
+				tic.playGame(tic.getGameType(), gui);
 			    }
 		    }
 	    }
@@ -597,7 +598,7 @@ public class GUI implements ActionListener
 			if(selected == JOptionPane.OK_OPTION)
 			    {
 				cardLayout.show(master, ticTacToe);
-				tic.playGame(tic.getGameType());
+				tic.playGame(tic.getGameType(), gui);
 			    }
 		    }
 	    }
@@ -622,7 +623,7 @@ public class GUI implements ActionListener
 			if(selected == JOptionPane.OK_OPTION)
 			    {
 				cardLayout.show(master, ticTacToe);
-				tic.playGame(tic.getGameType());
+				tic.playGame(tic.getGameType(), gui);
 			    }
 		    }
 	    }
@@ -640,7 +641,7 @@ public class GUI implements ActionListener
 			if(selected == JOptionPane.OK_OPTION)
 			    {
 				cardLayout.show(master, ticTacToe);
-				tic.playGame(tic.getGameType());
+				tic.playGame(tic.getGameType(), gui);
 			    }
 		    }
 	    }
@@ -657,14 +658,14 @@ public class GUI implements ActionListener
 	}
 	if(e.getSource() == humanButton)
 	{
-	    tic.playGame("human");
+	    tic.playGame("human", gui);
 	    cardLayout.show(master, ticTacToe);
 	    master.revalidate();
 	    master.repaint();
 	}
 	if(e.getSource() == computerButton)
 	{
-	    tic.playGame("computer");
+	    tic.playGame("computer", gui);
 	    cardLayout.show(master, ticTacToe);
 	    master.revalidate();
 	    master.repaint();
