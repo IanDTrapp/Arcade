@@ -1,5 +1,3 @@
-package arcade;
-
 import javax.swing.*;
 
 public class TicTacToeGame 
@@ -26,7 +24,7 @@ public class TicTacToeGame
 		setGameType("human");
 
 		//Start game loop
-		while(isWinner() == 0)
+		while(gameOver() == false)
 		{
 		    hasMoved = false;
 		    turn = 0;
@@ -42,16 +40,6 @@ public class TicTacToeGame
 			else
 			    Thread.sleep(2000);	
 		    }
-		
-		    //Check if there is a winner
-		    if(isWinner() == 1)
-		    {
-			gameOverPane.showConfirmDialog(null, "Player X won!", "Game over!", JOptionPane.OK_OPTION);
-		    }
-		    else if(isWinner() == 0 && turn == 9)
-		    {
-			gameOverPane.showConfirmDialog(null, "There was a tie!", "Game over!", JOptionPane.OK_OPTION);
-		    }
 
 		    hasMoved = false;
 		
@@ -65,19 +53,6 @@ public class TicTacToeGame
 			}	
 			else
 			    Thread.sleep(2000);
-		    }
-		    //Display game results in movePanel
-		    if (isWinner() == 1)
-		    {
-			gameOverPane.showConfirmDialog(null, "Player X has won!", "Game over!", JOptionPane.OK_OPTION);
-		    }
-		    else if (isWinner() == 2)
-		    {
-			gameOverPane.showConfirmDialog(null, "Player O has won!", "Game over!", JOptionPane.OK_OPTION);
-		    }
-		    else if(isWinner() == 0 && turn == 9)
-		    {
-			gameOverPane.showConfirmDialog(null, "There was a tie!", "Game over!", JOptionPane.OK_OPTION);
 		    }
 		}
 	    }
@@ -147,25 +122,62 @@ public class TicTacToeGame
 	    return "computer";
     }
 	
-    
     public void setHasMoved()
     {
 	hasMoved = true;
     }
 	
-
     // Fills the array with taken spots
     public void fillArray(int[] spacesArray) 
     {
 	for(int i = 0; i < takenSpaces.length; i++)
-		{
-		    takenSpaces[i] = spacesArray[i];
-		    System.out.println(takenSpaces[i]);
-		}
+	{
+	    takenSpaces[i] = spacesArray[i];
+	    System.out.println(takenSpaces[i]);
+	}
 
-	} 
+    } 
+
+    public boolean gameOver()
+    {
+	if(takenSpaces[6] != 0 && takenSpaces[6] == takenSpaces[7] && takenSpaces[7] == takenSpaces[8])
+	    {
+		return true;
+	    }
+	if(takenSpaces[6] != 0 && takenSpaces[6] == takenSpaces[4] && takenSpaces[4] == takenSpaces[2])
+	    {
+		return true;
+	    }
+	if(takenSpaces[6] != 0 && takenSpaces[6] == takenSpaces[3] && takenSpaces[3] == takenSpaces[0])
+	    {
+		return true;
+	    }
+	if(takenSpaces[3] != 0 && takenSpaces[3] == takenSpaces[4] && takenSpaces[4] == takenSpaces[5])
+	    {
+		return true;
+	    }
+	if(takenSpaces[0] != 0 && takenSpaces[0] == takenSpaces[1] && takenSpaces[1] == takenSpaces[2])
+	    {
+		return true;
+	    }
+	if(takenSpaces[0] != 0 && takenSpaces[0] == takenSpaces[4] && takenSpaces[4] == takenSpaces[8])
+	    {
+		return true;
+	    }
+	if(takenSpaces[7] != 0 && takenSpaces[7] == takenSpaces[4] && takenSpaces[4] == takenSpaces[1])
+	    {
+		return true;
+	    }
+	if(takenSpaces[8] != 0 && takenSpaces[8] == takenSpaces[5] && takenSpaces[5] == takenSpaces[2])
+	    {
+		return true;
+	    }
+	else 
+	    return false;
+    }
+
     
-    // Checks to see if there is a winner 
+    // Checks to see who is the winner 
     public int isWinner() {
 	if((takenSpaces[0] == 1 && takenSpaces[1] == 1 && takenSpaces[2] == 1)
 	   || (takenSpaces[3] == 1 && takenSpaces[4] == 1 && takenSpaces[5] == 1)
