@@ -9,11 +9,13 @@ Changelog -
 		to the stack. If we use the proper array, we can 
 		use collections.shuffle to shuffle the deck 		
 		hopefully 
-	- Add package acade; to the top of ALL files to make sure enums
-		work correctly
+	- Fixed TicTacToe mostly!
 	
 	To do next:
+	- Fix popup action on Tic Tac Toe (yes/no)
+	- Fix cards not appearing on blackjack
+	- Make the "x" appear, or implement a back button
+	- Leaderboards, etc.
+	- Fix spacing issues on TicTacToe player X and player Y panels
 	
-	- Test and likely debug shuffling, priting of cards
-	- getNumDecks to pass number of decks to Shoe.java class 
-	- Fix TicTacToe :(
+	
