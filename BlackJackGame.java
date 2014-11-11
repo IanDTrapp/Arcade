@@ -47,20 +47,18 @@ public class BlackJackGame
     public void fillImageArrays()
     {
 	int size = dealerCards.size();
-	for(int i = 0; i < size; i++)
-	{
-	    dealerCardImages.subList(0, size-2).clear();
-	    dealerCardImages.add(card1.getImage());
-	    dealerCardImages.add(card2.getImage());
-	}
+	
+	dealerCardImages.subList(0, size-2).clear();
+	dealerCardImages.add(card1.getImage());
+	dealerCardImages.add(card2.getImage());
+	
 	int size1 = playerCards.size();
-	for(int j = 0; j < size1; j++)
-	{
-	    playerCardImages.subList(0, size-2).clear();
-	    playerCardImages.add(card3.getImage());
-	    playerCardImages.add(card4.getImage());
-	}
+       
+	playerCardImages.subList(0, size-2).clear();
+	playerCardImages.add(card3.getImage());
+	playerCardImages.add(card4.getImage());
     }
+
     
     public ArrayList getDealerImages()
     {

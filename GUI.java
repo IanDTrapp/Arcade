@@ -275,8 +275,8 @@ public class GUI implements ActionListener
 	    int labelNumber = i+1;
 	    BufferedImage buffImage = (BufferedImage)cardImages.get(i);
 	    ImageIcon image = new ImageIcon(buffImage);
-	    
-	    if(player.equalsIgnoreCase("human"))
+	
+	    if(player.equalsIgnoreCase("player"))
 	    {
 		
 		switch(labelNumber)
@@ -372,8 +372,9 @@ public class GUI implements ActionListener
 		    
 		}
 	    }
-
+	    
 	    JLabel l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13, l14, l15, l16, l17, l18, l19, l20, l21, l22;
+
 	    if(player.equalsIgnoreCase("dealer"))
 	    {
 		int labelNum = i+1;
@@ -471,7 +472,8 @@ public class GUI implements ActionListener
 	    }
 	}
     }
-    
+
+
     //Action listeners
     public void actionPerformed(ActionEvent e)
     {
