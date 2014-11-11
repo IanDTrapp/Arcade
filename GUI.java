@@ -5,6 +5,8 @@ import java.awt.event.*;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class GUI implements ActionListener
 {
@@ -43,7 +45,10 @@ public class GUI implements ActionListener
     private int[] takenSpaces = {0,0,0,0,0,0,0,0,0};
     private int numOfDecks;
     private static GUI gui;
-    private static int playerXWins, playerOWins;
+    int playerXWins = 0; 
+    int playerOWins = 0;
+    int playerVsCompWins = 0;
+    int compWins = 0;
     private BlackJackGame blackJackOb = new BlackJackGame();
     private static int turn = 0;
 
@@ -73,13 +78,13 @@ public class GUI implements ActionListener
 	movePanel.add(moveLabel);
 	playerXPanel = new JPanel(new BorderLayout());
 	playerXLabel = new JLabel("Player X Wins:");
-	playerXWinsLabel = new JLabel("" + playerXWins);
+	playerXWinsLabel = new JLabel("      " + playerXWins);
 	playerXWinsLabel.setFont(new Font("Serif", Font.BOLD, 25));
 	playerXPanel.add(playerXLabel, BorderLayout.NORTH);
 	playerXPanel.add(playerXWinsLabel, BorderLayout.CENTER);
 	playerOPanel = new JPanel(new BorderLayout());
 	playerOLabel = new JLabel("Player O Wins:");
-	playerOWinsLabel = new JLabel("" + playerOWins);
+	playerOWinsLabel = new JLabel("      " + playerOWins);
 	playerOWinsLabel.setFont(new Font("Serif", Font.BOLD, 25));
 	playerOPanel.add(playerOLabel, BorderLayout.NORTH);
 	playerOPanel.add(playerOWinsLabel, BorderLayout.CENTER);
@@ -517,36 +522,75 @@ public class GUI implements ActionListener
 
 
     //Action listeners
+    public void returnToMenu(KeyEvent e)
+    {
+	int key = e.getKeyCode();
+	if (key == KeyEvent.VK_ESCAPE)
+	{
+	    ticRefresh();
+	    cardLayout.show(master, mainMenu);
+	}
+    }
 
     public void gameOver()
     {
 	if(tic.isWinner() == 1)
 	{
-	    int selected = gameOverPane.showConfirmDialog(null, "Player X has won!", "Game over!", JOptionPane.OK_OPTION);
-	    if(selected == JOptionPane.OK_OPTION)
+	    int selected = gameOverPane.showConfirmDialog(null, "Player X has won! Play again?", "Game over!", JOptionPane.OK_OPTION);
+	    if(selected == JOptionPane.YES_OPTION)
             {
 		playerXWins++;
 		ticRefresh();
 		cardLayout.show(master, ticTacToe);
+		playerXWinsLabel.setText("      " + playerXWins);
+		playerXLabel.revalidate();
+		playerXLabel.repaint();
+	    }
+	    if(selected == JOptionPane.NO_OPTION)
+	    {
+		playerXWins++;
+		ticRefresh();
+		cardLayout.show(master, mainMenu);
+		playerXWinsLabel.setText("      " + playerXWins);
+		playerXLabel.revalidate();
+		playerXLabel.repaint();
 	    }
 	}
 	else if(tic.isWinner() == 2)
 	{
-	    int selected = gameOverPane.showConfirmDialog(null, "Player O has won!", "Game over!", JOptionPane.OK_OPTION);
-	    if(selected == JOptionPane.OK_OPTION)
+	    int selected = gameOverPane.showConfirmDialog(null, "Player O has won! Play again?", "Game over!", JOptionPane.OK_OPTION);
+	    if(selected == JOptionPane.YES_OPTION)
 	    {
 		playerOWins++;
 		ticRefresh();
 		cardLayout.show(master, ticTacToe);
+		playerOWinsLabel.setText("      " + playerOWins);
+		playerOLabel.revalidate();
+		playerOLabel.repaint();
+	    }
+	    if(selected == JOptionPane.NO_OPTION)
+	    {
+		playerOWins++;
+		ticRefresh();
+		cardLayout.show(master, mainMenu);
+		playerOWinsLabel.setText("      " + playerOWins);
+		playerOLabel.revalidate();
+		playerOLabel.repaint();
 	    }
 	}
 	else if(tic.isWinner() == 0 && turn == 9)
 	{
-	    int selected = gameOverPane.showConfirmDialog(null, "It's a tie!", "Game over!", JOptionPane.OK_OPTION);
+	    int selected = gameOverPane.showConfirmDialog(null, "It's a tie! Play again?", "Game over!", JOptionPane.OK_OPTION);
 	    if(selected == JOptionPane.OK_OPTION)
 	    {
 		ticRefresh();
 		cardLayout.show(master, ticTacToe);
+	    }
+	    if(selected == JOptionPane.NO_OPTION)
+	    {
+		ticRefresh();
+		cardLayout.show(master, mainMenu);
+
 	    }
 	}
 	
