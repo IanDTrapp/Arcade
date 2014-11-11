@@ -135,7 +135,10 @@ public class GUI implements ActionListener
 	deckMain = new JPanel(new GridLayout(3,1));
 	deckTitlePanel = new JPanel();
 	deckTitleLabel = new JLabel("Select number of decks");
-	slider = new JSlider(2,8);
+	slider = new JSlider(2,8,4);
+	slider.setMajorTickSpacing(1);
+	slider.setPaintTicks(true);
+	slider.setSnapToTicks(true);
 	okButton = new JButton("Okay");
 	okButton.addActionListener(this);
 
