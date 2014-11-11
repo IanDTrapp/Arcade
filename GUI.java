@@ -51,6 +51,9 @@ public class GUI implements ActionListener
     int compWins = 0;
     private BlackJackGame blackJackOb = new BlackJackGame();
     private static int turn = 0;
+    private JMenuBar menuBar;
+    private JMenu file, game;
+    private JMenuItem mainMenuItem, exit;
 
     public static void main(String[] args)
     {
@@ -68,6 +71,21 @@ public class GUI implements ActionListener
 	frame.setVisible(true);
 	cardLayout = new CardLayout();
 	master = new JPanel(cardLayout);
+	menuBar = new JMenuBar();
+	file = new JMenu("File");
+	exit = new JMenuItem("Exit");
+	exit.addActionListener(this);
+	file.add(exit);
+	game = new JMenu("Game");
+	mainMenuItem = new JMenuItem("Main Menu");
+	game.add(mainMenuItem);
+	game.addActionListener(this);
+	
+	menuBar.setVisible(true);
+
+	menuBar.add(file);
+	menuBar.add(game);
+	frame.setJMenuBar(menuBar);
 
 	//TicTacToe GUI
 	titlePanel = new JPanel();
@@ -976,6 +994,16 @@ public class GUI implements ActionListener
 	if(e.getSource() == hit)
 	{
 	    blackJackOb.hit("player");
+	}
+	if(e.getSource() == exit)
+	{
+	    System.exit(0);
+	    frame.dispose();
+	}
+	if(e.getSource() == mainMenuItem);
+	{
+	    cardLayout.show(master, mainMenu);
+	    ticRefresh();
 	}
     }
 }
