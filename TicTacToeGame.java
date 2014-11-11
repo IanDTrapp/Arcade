@@ -9,30 +9,14 @@ public class TicTacToeGame
     boolean humanGame;
     boolean humanTurn;
 
-    public void playGame(GUI Gui, ComputerPlayer computerPlayer)
+    public void playComputerGame(GUI Gui)
     {
-	try
-	{
-	    gui = Gui;
-	    humanTurn = true;
- 
-	    if(humanTurn == true)
-	    {
-		Thread.sleep(2000);
-	    }
-	
-	    if(humanTurn == false)
-		computerPlayer.pickSpace(takenSpaces, gui);
-	}
-	catch(Exception e)
-	{
-	    System.err.println(e.getMessage());
-	}
-    }
+	gui = Gui;
 
-    public void setHumanTurn(boolean boo)
-    {
-	humanTurn = boo;
+	if(gui.getTurn() == 1)
+	{
+	    
+	}
     }
 
     public void resetArray()
