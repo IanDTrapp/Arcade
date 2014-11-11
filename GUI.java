@@ -261,6 +261,213 @@ public class GUI implements ActionListener
 	return numOfDecks;
     }
 
+    public void updateCards(ArrayList cardImages, String player)
+    {
+	private JLabel label1, label2, label3, label4, label5, label6, label7, label8, label9, label10, label11, label12, label13, label14, label15, label16, label17, label18, label19, label20, label21, label22;
+	
+	int size = cardImages.getSize();
+
+	for(int i = 0; i < size; i++)
+	{
+	    int labelNumber = i+1;
+	    BufferedImage image = cardImages.get(i);
+	    if(player.equalsIgnoreCase("human"))
+	    {
+		switch(labelNumber)
+		{
+		case 1: label1 = new JLabel(); 
+		    label1.setIcon(image);
+		    break;
+		case 2: label2 = new JLabel();
+		    label2.setIcon(image);
+		    break;
+		case 3: label3 = new JLabel();
+		    label3.setIcon(image);
+		    break;
+		case 4: label4 = new JLabel();
+		    label4.setIcon(image);
+		    break;
+		case 5: label5 = new JLabel();
+		    label5.setIcon(image);
+		    break;
+		case 6: label6 = new JLabel();
+		    label6.setIcon(image);
+		    break;
+		case 7: label7 = new JLabel();
+		    label7.setIcon(image);
+		    break;
+		case 8: label8 = new JLabel();
+		    label8.setIcon(image);
+		    break;
+		case 9: label9 = new JLabel();
+		    label9.setIcon(image);
+		    break;
+		case 10: label10 = new JLabel();
+		    label10.setIcon(image);
+		    break;
+		case 11: label11 = new JLabel();
+		    label11.setIcon(image);
+		    break;
+		case 12: label12 = new JLabel();
+		    label12.setIcon(image);
+		    break;
+		case 13: label13 = new JLabel();
+		    label13.setIcon(image);
+		    break;
+		case 14: label14 = new JLabel();
+		    label14.setIcon(image);
+		    break;
+		case 15: label15 = new JLabel();
+		    label15.setIcon(image);
+		    break;
+		case 16: label16 = new JLabel();
+		    label16.setIcon(image);
+		    break:
+		case 17: label17 = new JLabel();
+		    label17.setIcon(image);
+		    break;
+		case 18: label18 = new JLabel();
+		    label18.setIcon(image);
+		    break;
+		case 19: label19 = new JLabel();
+		    label19.setIcon(image);
+		    break;
+		case 20: label20 = new JLabel();
+		    label20.setIcon(image);
+		    break;
+		case 21: label21 = new JLabel();
+		    label21.setIcon(image);
+		    break;
+		case 22: label22 = new JLabel();
+		    label22.setIcon(image);
+		    break;
+		    
+		}
+	    }
+
+	    JLabel l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13, l14, l15, l16, l17, l18, l19, l20, l21, l22;
+	    if(player.equalsIgnoreCase("dealer"))
+	    {
+		int labelNum = i;
+		switch(labelNum)
+		{
+		case 1: l1 = new JLabel();
+		    l1.setIcon(image);
+		    break;
+		case 2: l2 = new JLabel();
+		    l2.setIcon(image);
+		    break;
+		case 3: l3 = new JLabel();
+		    l3.setIcon(image);
+		    break;
+		case 4: l4 = new JLabel();
+		    l4.setIcon(image);
+		    break;
+		case 5: l5 = new JLabel();
+		    l5.setIcon(image);
+		    break;
+		case 6: l6 = new JLabel();
+		    l6.setIcon(image);
+		    break;
+		case 7: l7 = new JLabel();
+		    l7.setIcon(image);
+		    break;
+		case 8: l8 = new JLabel();
+		    l8.setIcon(image);
+		    break;
+		case 9: l9 = new JLabel();
+		    l9.setIcon(image);
+		    break;
+		case 10: l10 = new JLabel();
+		    l10.setIcon(image);
+		    break;
+		case 11: l11 = new JLabel();
+		    l11.setIcon(image);
+		    break;
+		case 12: l12 = new JLabel();
+		    l12.setIcon(image);
+		    break;
+		case 13: l13 = new JLabel();
+		    l13.setIcon(image);
+		    break;
+		case 14: l14 = new JLabel();
+		    l14.setIcon(image);
+		    break;
+		case 15: l15 = new JLabel();
+		    l15.setIcon(image);
+		    break;
+		case 16: l16 = new JLabel():
+		    l16.setIcon(image);
+		    break;
+		case 17: l17 = new JLabel();
+		    l17.setIcon(image);
+		    break;
+		case 18: l18 = new JLabel();
+		    l18.setIcon(image);
+		    break;
+		case 19: l19 = new JLabel();
+		    l19.setIcon(image);
+		    break;
+		case 20: l20 = new JLabel();
+		    l20.setIcon(image);
+		    break;
+		case 21: l21 = new JLabel();
+		    l21.setIcon(image);
+			   break;
+		case 22: l22 = new JLabel();
+		    l22.setIcon(image);
+		    break;
+		}
+	    }
+	    
+	    dealerPanel.add(l1);
+	    dealerPanel.add(l2);
+	    dealerPanel.add(l3);
+	    dealerPanel.add(l4);
+	    dealerPanel.add(l5);
+	    dealerPanel.add(l6);
+	    dealerPanel.add(l7);
+	    dealerPanel.add(l8);
+	    dealerPanel.add(l9);
+	    dealerPanel.add(l10);
+	    dealerPanel.add(l11);
+	    dealerPanel.add(l12);
+	    dealerPanel.add(l13);
+	    dealerPanel.add(l14);
+	    dealerPanel.add(l15);
+	    dealerPanel.add(l16);
+	    dealerPanel.add(l17);
+	    dealerPanel.add(l18);
+	    dealerPanel.add(l19);
+	    dealerPanel.add(l20);
+	    dealerPanel.add(l21);
+	    dealerPanel.add(l22);
+	    
+	    playerPanel.add(label1);
+	    playerPanel.add(label2);
+	    playerPanel.add(label3);
+	    playerPanel.add(label4);
+	    playerPanel.add(label5);
+	    playerPanel.add(label6);
+	    playerPanel.add(label7);
+	    playerPanel.add(label8);
+	    playerPanel.add(label9);
+	    playerPanel.add(label10);
+	    playerPanel.add(label11);
+	    playerPanel.add(label12);
+	    playerPanel.add(label13);
+	    playerPanel.add(label14);
+	    playerPanel.add(label15);
+	    playerPanel.add(label16);
+	    playerPanel.add(label17);
+	    playerPanel.add(label18);
+	    playerPanel.add(label19);
+	    playerPanel.add(label20);
+	    playerPanel.add(label21);
+	    playerPanel.add(label22);
+	}
+    }
+    
     //Action listeners
     public void actionPerformed(ActionEvent e)
     {
@@ -682,6 +889,8 @@ public class GUI implements ActionListener
 	    cardLayout.show(master, blackJack);
 	    numOfDecks = slider.getValue();
 	    blackJackOb.playBlackJack(gui);
+	    blackJackOb.originalDeal();
+	    blackJackOb.updateDisplayedCards();
 	    master.revalidate();
 	    master.repaint();
 	}
