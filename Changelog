@@ -16,4 +16,4 @@ Changelog -
 	
 	- Test and likely debug shuffling, priting of cards
 	- getNumDecks to pass number of decks to Shoe.java class 
-	
+	- Fix TicTacToe :(
