@@ -1,5 +1,3 @@
-import javax.swing.*;
-
 public class TicTacToeGame 
 {
     int[] takenSpaces = {0,0,0,0,0,0,0,0,0};
@@ -15,11 +13,10 @@ public class TicTacToeGame
     {
 	try
 	{
-	    JOptionPane gameOverPane = new JOptionPane();
 	    int turn = 0;
 
 	    // Game of human vs human
-	    if (gameType.equalsIgnoreCase("human")) 
+	    if(gameType.equalsIgnoreCase("human")) 
 	    {
 		setGameType("human");
 
@@ -38,7 +35,12 @@ public class TicTacToeGame
 			    break;
 			}
 			else
-			    Thread.sleep(2000);	
+			    Thread.sleep(3000);	
+		    }
+
+		    if(gameOver() == true)
+		    {
+			break;
 		    }
 
 		    hasMoved = false;
@@ -52,7 +54,7 @@ public class TicTacToeGame
 			    break;
 			}	
 			else
-			    Thread.sleep(2000);
+			    Thread.sleep(3000);
 		    }
 		}
 	    }
@@ -70,9 +72,8 @@ public class TicTacToeGame
 		    turn = 0;
 		
 		    //Player 1's move
-		    while (hasMoved == false)
+		    while(hasMoved == false)
 		    {
-		    
 			hasMoved = false;
 		    
 			gui.movePanelUpdate("Player X, please pick a space!");
