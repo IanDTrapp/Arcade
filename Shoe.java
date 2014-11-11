@@ -26,8 +26,7 @@ public class Shoe
 		    // Creates a new card referencing the proper value, suit, and image associated
 		    Card card = new Card(value, suit, "classic-cards/" + count + ".png");
 		    shoe.add(card);
-		    System.out.println(value + " of " + suit);
-		    System.out.println("Test");
+		  
 		    count++;
 		}
 	    }
