@@ -1,16 +1,6 @@
-/* public class BlackJackGame {
+public class BlackJackGame {
 
-    // Default constructor
-    public BlackJackGame() {
+    public int playBlackJack() {
+	return 1;
     }
-
-    // Constructor for a new game with a variable number of decks
-    public BlackJackGame(int deckNum) {
-
-	public createAndShuffleDeck(deckNum) {
-	    
-	}
-    }
-
-*/
-
+}

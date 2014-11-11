@@ -1,8 +1,10 @@
 import java.util.Collections;
 import java.util.Stack; 
+import java.util.ArrayList;
+import java.util.List;
 
 public class Shoe {
-    Stack shoe = new Stack();
+    List<Card> shoe = new ArrayList<Card>();
 
     public Shoe() {
 	GUI gui = new GUI();
@@ -17,14 +19,18 @@ public class Shoe {
 		    // Creates a new card referencing the proper value, suit, and image associated
 		    Card card = new Card(value, suit, "classic-cards/" + count + ".png");
 		    System.out.println(value + " of " + suit);
-
-		    shoe.push(card);
+		    System.out.println("Test");
 		    count++;
 		}
 	    }
-	    // Applies the shuffle routine found in Collections API
-	    Collections.shuffle(shoe);
 	}
+    }
+    
+    public Stack getShuffledDeck() {
+	Collections.shuffle(shoe);
+	Stack shuffled = new Stack();
+	shuffled.addAll(shoe);
+	return shuffled;
     }
 }
 
