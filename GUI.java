@@ -569,6 +569,19 @@ public class GUI implements ActionListener
 	    BufferedImage buffImage = ((BufferedImage)card7.getImage());
 	    ImageIcon image = new ImageIcon(buffImage);
 	    cardImages.add(card7);
+
+	    if(player.equalsIgnoreCase("dealer"))
+	    {
+		blackJackOb.updateLists(cardImages, "dealer");
+	    }
+	    else if(player.equalsIgnoreCase("player"))
+	    {
+		blackJackOb.updateLists(cardImages, "player");
+	    }
+	    else if(player.equalsIgnoreCase("dealero"))
+	    {
+		blackJackOb.updateLists(cardImages, "dealero");
+	    }
 	    
 	    if(player.equalsIgnoreCase("player"))
 	    {
@@ -738,21 +751,7 @@ public class GUI implements ActionListener
 		}
 	    }
 	}
-    
-    
-	if(player.equalsIgnoreCase("dealer"))
-	{
-	    blackJackOb.updateLists(cardImages, "dealer");
-	}
-	else if(player.equalsIgnoreCase("player"))
-	{
-	    blackJackOb.updateLists(cardImages, "player");
-	}
-	else if(player.equalsIgnoreCase("dealero"))
-	{
-	    blackJackOb.updateLists(cardImages, "dealero");
-	}
-	
+    	
 	temp.subList(0, temp.size()).clear();
 
 	frame.revalidate();
