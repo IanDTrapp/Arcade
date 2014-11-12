@@ -15,7 +15,7 @@ public class BlackJackGame
     private boolean isPlayerStanding = false;
     private boolean isDealerStanding = false;
     private ArrayList dealerOriginalCards = new ArrayList();
-    private ArrayList dealerOriginalImages = new ArrayList();
+    private ArrayList playerOriginalCards = new ArrayList();
     // For splitting
     private ArrayList splitDeck1 = new ArrayList();
     private ArrayList splitDeck2 = new ArrayList();
@@ -31,13 +31,16 @@ public class BlackJackGame
 	deck = shoe.getShuffledDeck();
 	
 	originalDeal();
-	gui.updateCards(dealerOriginalCards, "dealero");
-	gui.updateCards(playerCards, "player");
     }
     
     public ArrayList getDealerOriginalCards()
     {
 	return dealerOriginalCards;
+    }
+
+    public ArrayList getPlayerOriginalCards()
+    {
+	return playerOriginalCards;
     }
 
     public boolean canSplit()
@@ -46,7 +49,7 @@ public class BlackJackGame
 	
 	for(int i = 0; i < 2; i ++)
 	{
-	    temp[i] =  ((Card)playerCards.get(i)).getValue().getValue();
+	    temp[i] = ((Card)playerCards.get(i)).getValue().getValue();
 	}
 	if(temp[0] == temp[1])
 	{
@@ -74,25 +77,38 @@ public class BlackJackGame
 	dealerCards.subList(0, dealerCards.size()).clear();
 	playerCards.subList(0, playerCards.size()).clear();
 	dealerOriginalCards.subList(0, dealerOriginalCards.size()).clear();
-	dealerCardImages.subList(0, dealerCardImages.size()).clear();
-	playerCardImages.subList(0, dealerCardImages.size()).clear();
+	playerOriginalCards.subList(0, playerOriginalCards.size()).clear();
+    }
+
+    public void emptyList(String player)
+    {
+	if(player.equalsIgnoreCase("player"))
+	{
+	    playerCards.subList(0, playerCards.size()).clear();
+	}
+	if(player.equalsIgnoreCase("dealer"))
+	{
+	    dealerCards.subList(0, dealerCards.size()).clear();
+	}
     }
 
     public void updateLists(ArrayList newList, String player)
     {
 	if(player.equalsIgnoreCase("player"))
 	{
-	    playerCards.subList(0, playerCards.size()).clear();
 	    playerCards.addAll(newList);
 	}
 	else if(player.equalsIgnoreCase("dealer"))
 	{
-	    dealerCards.subList(0, dealerCards.size()).clear();
 	    dealerCards.addAll(newList);
 	}
 	else if(player.equalsIgnoreCase("dealero"))
 	{
 	    dealerOriginalCards.addAll(newList);
+	}
+	else if(player.equalsIgnoreCase("playero"))
+	{
+	    playerOriginalCards.addAll(newList);
 	}
     }
 
@@ -118,8 +134,6 @@ public class BlackJackGame
 
 	dealerOriginalCards.add(card1);
 	dealerOriginalCards.add(card2);
-	dealerOriginalImages.add(card1.getImage());
-	dealerOriginalImages.add(card2.getImage());
 	int1 = card1.getValue().getValue();
 	dealerTotal += int1;
 	int2 = card2.getValue().getValue();
@@ -127,8 +141,6 @@ public class BlackJackGame
 
 	playerCards.add(card3);
 	playerCards.add(card4);
-	playerCardImages.add(card3.getImage());
-	playerCardImages.add(card4.getImage());
 	int3 = card3.getValue().getValue();
 	playerTotal += int3;
 	int4 = card4.getValue().getValue();
@@ -138,6 +150,10 @@ public class BlackJackGame
 	{
 	   gui.setSplitButtonVis(true);
 	}
+
+	gui.refreshBJ();
+	gui.updateCards(playerCards, "player");
+	gui.updateCards(dealerOriginalCards, "dealer");
 
 	while(dealerTotal <= 16)
 	{
@@ -149,17 +165,16 @@ public class BlackJackGame
     public void hit(String player)
     {
 
-	ArrayList tempArray = new ArrayList();
 	Card card5 = (Card)deck.pop();
 	int temp = card5.getValue().getValue();
-
+	
 	if(player.equalsIgnoreCase("player"))
 	{
-	    tempArray.addAll(playerCards);
-	    playerCards.subList(0, playerCards.size()).clear();
-	    tempArray.add(card5);
+	    playerCards.add(card5);
 	    playerTotal += temp;
-	    gui.updateCards(tempArray, "player");
+	 
+	    gui.updateCards(playerCards, "player");
+
 	    if(playerTotal > 21)
 	    {
 		gui.bjGameOver("player");
