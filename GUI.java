@@ -675,7 +675,7 @@ public class GUI implements ActionListener
 		    break;
 		}
 	    }
-	    else if(player.equalsIgnoreCase("playero"))
+	    /*else if(player.equalsIgnoreCase("playero"))
 	    {
 		int labelNum = i+1;
 		
@@ -692,7 +692,7 @@ public class GUI implements ActionListener
 		    playerPanel.add(lb2);
 		    break;
 		}
-	    }
+		}*/
 	    else if(player.equalsIgnoreCase("dealero"))
 	    {
 		int labelNum = i+1;

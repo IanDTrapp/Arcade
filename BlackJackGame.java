@@ -25,7 +25,7 @@ public class BlackJackGame
 	
 	originalDeal();
 	gui.updateCards(dealerOriginalCards, "dealero");
-	gui.updateCards(playerCards, "playero");
+	gui.updateCards(playerCards, "player");
     }
 
     public boolean canSplit()
@@ -124,6 +124,11 @@ public class BlackJackGame
 	playerTotal += int3;
 	int4 = card4.getValue().getValue();
 	playerTotal += int4;
+
+	if(canSplit() == true)
+	{
+	   gui.setSplitButtonVis(true);
+	}
 
 	while(dealerTotal <= 16)
 	{
