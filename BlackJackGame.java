@@ -211,21 +211,21 @@ public class BlackJackGame
 
     public void split(String player)
     {
-	splitDeck1.add(playerCards[0]);
-	splitDeck2.add(playerCards[1]);
+	splitDeck1.add(playerCards.get(0));
+	splitDeck2.add(playerCards.get(1));
     }
 
     public void hitOnSplit(int deckNum) {
 	// 1 - Left Deck   -- 2 - Right Deck
 	Card card9 = (Card)deck.pop();
-	Card card10 = (card)deck.pop();
+	Card card10 = (Card)deck.pop();
 	int temp1 = card9.getValue().getValue();
 	int temp2 = card10.getValue().getValue();
 	
 	if(deckNum == 1){
 	    splitDeck1.add(card9);
 	    splitTotal1 += temp1;
-	    Split1CardImages.add(card9.getImage());
+	    split1CardImages.add(card9.getImage());
 	    gui.updateCards(split1CardImages, "player");
 	    if(splitTotal1 > 21)
 		{
