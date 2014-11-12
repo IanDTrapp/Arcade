@@ -58,6 +58,7 @@ public class GUI implements ActionListener
     private JMenuItem mainMenuItem, exitMenu, undoMenu;
     Card card7;
     Stack moveList = new Stack();
+    Dimension stdBtnSize = new Dimension(400, 800);
 
     public static void main(String[] args)
     {
@@ -171,9 +172,11 @@ public class GUI implements ActionListener
 	mainTitlePanel.add(mainTitleLabel);
 	mainMenuPanel.add(mainTitlePanel);
         ticButton = new JButton("Tic Tac Toe");
+	ticButton.setPreferredSize(stdBtnSize);
 	ticButton.setFont(new Font("Serif", Font.BOLD, 30));
 	ticButton.addActionListener(this);
 	blackButton = new JButton("Black Jack");
+	blackButton.setPreferredSize(stdBtnSize);
 	blackButton.setFont(new Font("Serif", Font.BOLD, 30));
 	blackButton.addActionListener(this);
 
@@ -198,9 +201,9 @@ public class GUI implements ActionListener
 	slider.setSnapToTicks(true);
 	slider.setPaintLabels(true);
 	// Might need to adjust or change based on trial and error
-	Dimension d = new Dimension(100,500);
-	slider.setPreferredSize(d);
-	okButton = new JButton("Okay");
+	slider.setPreferredSize(stdBtnSize);
+	okButton = new JButton("Let's play!");
+	okButton.setPreferredSize(stdBtnSize);
 	okButton.addActionListener(this);
 
 	deckTitlePanel.add(deckTitleLabel);
