@@ -153,15 +153,15 @@ public class GUI implements ActionListener
 	boardPanel.add(button2);
 	boardPanel.add(button3);
 
-	button1.setFont(new Font("Serif", Font.BOLD, 25));
-	button2.setFont(new Font("Serif", Font.BOLD, 25));
-	button3.setFont(new Font("Serif", Font.BOLD, 25));
-	button4.setFont(new Font("Serif", Font.BOLD, 25));
-	button5.setFont(new Font("Serif", Font.BOLD, 25));
-	button6.setFont(new Font("Serif", Font.BOLD, 25));
-	button7.setFont(new Font("Serif", Font.BOLD, 25));
-	button8.setFont(new Font("Serif", Font.BOLD, 25));
-	button9.setFont(new Font("Serif", Font.BOLD, 25));
+	button1.setFont(new Font("Serif", Font.BOLD, 50));
+	button2.setFont(new Font("Serif", Font.BOLD, 50));
+	button3.setFont(new Font("Serif", Font.BOLD, 50));
+	button4.setFont(new Font("Serif", Font.BOLD, 50));
+	button5.setFont(new Font("Serif", Font.BOLD, 50));
+	button6.setFont(new Font("Serif", Font.BOLD, 50));
+	button7.setFont(new Font("Serif", Font.BOLD, 50));
+	button8.setFont(new Font("Serif", Font.BOLD, 50));
+	button9.setFont(new Font("Serif", Font.BOLD, 50));
 
 	   
 	//Main menu GUI
@@ -171,8 +171,10 @@ public class GUI implements ActionListener
 	mainTitlePanel.add(mainTitleLabel);
 	mainMenuPanel.add(mainTitlePanel);
         ticButton = new JButton("Tic Tac Toe");
+	ticButton.setFont(new Font("Serif", Font.BOLD, 30));
 	ticButton.addActionListener(this);
 	blackButton = new JButton("Black Jack");
+	blackButton.setFont(new Font("Serif", Font.BOLD, 30));
 	blackButton.addActionListener(this);
 
 	//Adding buttons
@@ -194,6 +196,10 @@ public class GUI implements ActionListener
 	slider.setMajorTickSpacing(1);
 	slider.setPaintTicks(true);
 	slider.setSnapToTicks(true);
+	slider.setPaintLabels(true);
+	// Might need to adjust or change based on trial and error
+	Dimension d = new Dimension(100,500);
+	slider.setPreferredSize(d);
 	okButton = new JButton("Okay");
 	okButton.addActionListener(this);
 
@@ -239,8 +245,10 @@ public class GUI implements ActionListener
 	selectTitleLabel = new JLabel("Select player type");
 	selectTitlePanel.add(selectTitleLabel);
 	humanButton = new JButton("Human vs Human");
+	humanButton.setFont(new Font("serif", Font.BOLD, 30));
 	humanButton.addActionListener(this);
 	computerButton = new JButton("Human vs. Computer");
+	computerButton.setFont(new Font("serif", Font.BOLD, 30));
 	computerButton.addActionListener(this);
 
 	//Organizing selectPlayer panels
@@ -982,7 +990,7 @@ public class GUI implements ActionListener
 	{ 
 
 	    turn++;
-	    button1.setFont(new Font("Serif", Font.BOLD, 25));
+	    button1.setFont(new Font("Serif", Font.BOLD, 50));
 	    
 	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
@@ -1018,7 +1026,7 @@ public class GUI implements ActionListener
 	{
 
 	    turn++;
-	    button2.setFont(new Font("Serif", Font.BOLD, 25));
+	    button2.setFont(new Font("Serif", Font.BOLD, 50));
 
 	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
@@ -1053,7 +1061,7 @@ public class GUI implements ActionListener
 	if(e.getSource() == button3)
 	{
 	    turn++;
-	    button3.setFont(new Font("Serif", Font.BOLD, 25));
+	    button3.setFont(new Font("Serif", Font.BOLD, 50));
 	
 	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
@@ -1089,7 +1097,7 @@ public class GUI implements ActionListener
 	if(e.getSource() == button4)
 	{
 	    turn++;
-	    button4.setFont(new Font("Serif", Font.BOLD, 25));
+	    button4.setFont(new Font("Serif", Font.BOLD, 50));
 
 	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
@@ -1125,7 +1133,7 @@ public class GUI implements ActionListener
 	if(e.getSource() == button5)
 	{
 	    turn++;
-	    button5.setFont(new Font("Serif", Font.BOLD, 25));
+	    button5.setFont(new Font("Serif", Font.BOLD, 50));
 	    
 	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
@@ -1154,14 +1162,14 @@ public class GUI implements ActionListener
 		tic.playComputerGame(gui, computerPlayer);
 	    }	   
 	    moveList.push(5);
-	    button5.setFont(new Font("Serif", Font.BOLD, 25));
+	    button5.setFont(new Font("Serif", Font.BOLD, 50));
 	    button5.revalidate();
 	    button5.repaint();
 	}
 	if(e.getSource() == button6)
 	{ 
 	    turn++;
-	    button6.setFont(new Font("Serif", Font.BOLD, 25));
+	    button6.setFont(new Font("Serif", Font.BOLD, 50));
 
 	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
@@ -1196,7 +1204,7 @@ public class GUI implements ActionListener
 	if(e.getSource() == button7)
 	{
 	    turn++;
-	    button7.setFont(new Font("Serif", Font.BOLD, 25));
+	    button7.setFont(new Font("Serif", Font.BOLD, 50));
 
 	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
@@ -1231,7 +1239,7 @@ public class GUI implements ActionListener
 	if(e.getSource() == button8)
 	{
 	    turn++;
-	    button8.setFont(new Font("Serif", Font.BOLD, 25));
+	    button8.setFont(new Font("Serif", Font.BOLD, 50));
 
 	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
@@ -1266,7 +1274,7 @@ public class GUI implements ActionListener
 	if(e.getSource() == button9)
 	{
 	    turn++;
-	    button9.setFont(new Font("Serif", Font.BOLD, 25));
+	    button9.setFont(new Font("Serif", Font.BOLD, 50));
 
 	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
