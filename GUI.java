@@ -42,6 +42,7 @@ public class GUI implements ActionListener
     private HumanPlayer humanPlayer = new HumanPlayer();
     private HumanPlayer humanPlayer2 = new HumanPlayer();
     private JOptionPane gameOverPane = new JOptionPane();
+    private JOptionPane bjGameOverPane = new JOptionPane();
     private int[] takenSpaces = {0,0,0,0,0,0,0,0,0};
     private int numOfDecks;
     private static GUI gui;
@@ -145,6 +146,17 @@ public class GUI implements ActionListener
 	boardPanel.add(button1);
 	boardPanel.add(button2);
 	boardPanel.add(button3);
+
+	button1.setFont(new Font("Serif", Font.BOLD, 25));
+	button2.setFont(new Font("Serif", Font.BOLD, 25));
+	button3.setFont(new Font("Serif", Font.BOLD, 25));
+	button4.setFont(new Font("Serif", Font.BOLD, 25));
+	button5.setFont(new Font("Serif", Font.BOLD, 25));
+	button6.setFont(new Font("Serif", Font.BOLD, 25));
+	button7.setFont(new Font("Serif", Font.BOLD, 25));
+	button8.setFont(new Font("Serif", Font.BOLD, 25));
+	button9.setFont(new Font("Serif", Font.BOLD, 25));
+
 	   
 	//Main menu GUI
 	mainMenuPanel = new JPanel(new GridLayout(3,1));
@@ -253,6 +265,9 @@ public class GUI implements ActionListener
 	master.setVisible(true);
 	frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
 	frame.add(master, BorderLayout.CENTER);
+	
+	frame.revalidate();
+	frame.repaint();
     }
 
     public void computerPress(int num)
@@ -263,54 +278,63 @@ public class GUI implements ActionListener
 	    tic.fillArray(passArray());
 	    button1.setText("O");
 	    button1.setEnabled(false);
+	    turn++;
 	    movePanelUpdate("Player X, it's your turn!");
 	    break;
 	case 2: updateArray(2);
 	    tic.fillArray(passArray());
 	    button2.setText("O");
 	    button2.setEnabled(false);
+	    turn++;
 	    movePanelUpdate("Player X, it's your turn!");
 	    break;
 	case 3: updateArray(3);
 	    tic.fillArray(passArray());
 	    button3.setText("O");
 	    button3.setEnabled(false);
+	    turn++;
 	    movePanelUpdate("Player X, it's your turn!");
 	    break;
 	case 4: updateArray(4);
 	    tic.fillArray(passArray());
 	    button4.setText("O");
 	    button4.setEnabled(false);
+	    turn++;
 	    movePanelUpdate("Player X, it's your turn!");
 	    break;
 	case 5: updateArray(5);
 	    tic.fillArray(passArray());
 	    button5.setText("O");
 	    button5.setEnabled(false);
+	    turn++;
 	    movePanelUpdate("Player X, it's your turn!");
 	    break;
 	case 6: updateArray(6);
 	    tic.fillArray(passArray());
 	    button6.setText("O");
 	    button6.setEnabled(false);
+	    turn++;
 	    movePanelUpdate("Player X, it's your turn!");
 	    break;
 	case 7: updateArray(7);
 	    tic.fillArray(passArray());
 	    button7.setText("O");
 	    button7.setEnabled(false);
+	    turn++;
 	    movePanelUpdate("Player X, it's your turn!");
 	    break;
 	case 8: updateArray(8);
 	    tic.fillArray(passArray());
 	    button8.setText("O");
 	    button8.setEnabled(false);
+	    turn++;
 	    movePanelUpdate("Player X, it's your turn!");
 	    break;
 	case 9: updateArray(9);
 	    tic.fillArray(passArray());
 	    button9.setText("O");
 	    button9.setEnabled(false);
+	    turn++;
 	    movePanelUpdate("Player X, it's your turn!");
 	    break;
 	}
@@ -340,16 +364,16 @@ public class GUI implements ActionListener
         int count = 0;
 
         for(int j = 0; j < takenSpaces.length; j++)
-            {
-                if(takenSpaces[j] != 0)
-                    {
-                        count++;
-                    }
-            }
+        {
+	    if(takenSpaces[j] != 0)
+	    {
+		count++;
+	    }
+	}
         if(count%2 == 0)
-            {
-                return 1;
-            }
+        {
+	    return 1;
+	}
         else
             return 2;
     }
@@ -364,16 +388,21 @@ public class GUI implements ActionListener
 	JLabel label1, label2, label3, label4, label5, label6, label7, label8, label9, label10, label11, label12, label13, label14, label15, label16, label17;
 	JLabel label18, label19, label20, label21, label22;
 	
-	int size = cardImages.size();
-	
-	cardImages.subList(0, size).clear();
+	ArrayList temp = new ArrayList();
+	temp.addAll(cardImages);
 
+	int size = cardImages.size();
+	cardImages.subList(0, size).clear();
+	
+	
+	
 	for(int i = 0; i < size; i++)
 	{
 	    int labelNumber = i+1;
-	    BufferedImage buffImage = (BufferedImage)cardImages.get(i);
+	    BufferedImage buffImage = (BufferedImage)temp.get(i);
 	    ImageIcon image = new ImageIcon(buffImage);
-	
+	    cardImages.add(image);
+	    
 	    if(player.equalsIgnoreCase("player"))
 	    {
 		
@@ -569,6 +598,15 @@ public class GUI implements ActionListener
 		}
 	    }
 	}
+
+	if(player.equalsIgnoreCase("dealer"))
+	{
+	    blackJackOb.updateLists(cardImages, "dealer");
+	}
+	else if(player.equalsIgnoreCase("player"))
+	{
+	    blackJackOb.updateLists(cardImages, "player");
+	}
 	frame.revalidate();
 	frame.repaint();
     }
@@ -599,6 +637,7 @@ public class GUI implements ActionListener
 
     public void gameOver()
     {
+
 	if(tic.isWinner() == 1)
 	{
 	    int selected = gameOverPane.showConfirmDialog(null, "Player X has won! Play again?", "Game over!", JOptionPane.OK_OPTION);
@@ -662,6 +701,42 @@ public class GUI implements ActionListener
 	master.revalidate();
     }
 
+    public void bjGameOver(String player)
+    {
+	if(player.equalsIgnoreCase("player"))
+	{
+	    int selected = bjGameOverPane.showConfirmDialog(null, "You busted! Play again?", "Game over!", JOptionPane.OK_OPTION);
+	    if(selected == JOptionPane.OK_OPTION)
+	    {
+		blackJackOb.refresh();
+		blackJackOb.addWin("dealer");
+		cardLayout.show(master, blackJack);
+		blackJackOb.playBlackJack(gui);
+	    }
+	    if(selected == JOptionPane.NO_OPTION)
+	    {
+		blackJackOb.refresh();
+		cardLayout.show(master, mainMenu);
+	    }
+	}
+	if(player.equalsIgnoreCase("dealer"))
+	{
+	    int selected = bjGameOverPane.showConfirmDialog(null, "You beat the dealer! Play again?", "Game over!", JOptionPane.OK_OPTION);
+	    if(selected == JOptionPane.OK_OPTION)
+	    {
+		blackJackOb.refresh();
+		blackJackOb.addWin("player");
+		cardLayout.show(master, blackJack);
+		blackJackOb.playBlackJack(gui);
+	    }
+	    if(selected == JOptionPane.NO_OPTION)
+	    {
+		blackJackOb.refresh();
+		cardLayout.show(master, mainMenu);
+	    }
+	}
+    }
+
     public void ticRefresh()
     {
 	button1.setText("");
@@ -688,7 +763,7 @@ public class GUI implements ActionListener
 	    takenSpaces[i] = 0;
 	}
 
-	movePanelUpdate("Player X, it's your turn!");
+	moveLabel.setText("Player X, it's your turn!");
 
 	turn = 0;
 	tic.resetArray();
@@ -697,10 +772,12 @@ public class GUI implements ActionListener
     public void actionPerformed(ActionEvent e)
     {
 	if(e.getSource() == button1)
-	{   
+	{ 
+
+	    turn++;
 	    button1.setFont(new Font("Serif", Font.BOLD, 25));
 	    
-	    if(getTurn() == 2)
+	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
 		updateArray(1);
 		tic.fillArray(passArray());
@@ -708,7 +785,7 @@ public class GUI implements ActionListener
 		button1.setEnabled(false);
 		movePanelUpdate("Player X, it's your turn!");
 	    }
-	    else if(getTurn() == 1)
+	    else if(getTurn() == 1 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
 		updateArray(1);
 		tic.fillArray(passArray());
@@ -717,69 +794,97 @@ public class GUI implements ActionListener
 		movePanelUpdate("Player O, it's your turn!");
 		tic.setHasMoved(true);
 	    }
+	    else if(getTurn() == 1 && (tic.getGameType()).equalsIgnoreCase("computer"))
+	    {
+		updateArray(1);
+		tic.fillArray(passArray());
+		button1.setText("X");
+		button1.setEnabled(false);
+		movePanelUpdate("Player O, it's your turn!");
+		tic.playComputerGame(gui, computerPlayer);
+	    }
 	  	    
-	    turn++;
 	    button1.revalidate();
 	    button1.repaint();
 	}
 	if(e.getSource() == button2)
 	{
+
+	    turn++;
 	    button2.setFont(new Font("Serif", Font.BOLD, 25));
 
-		if(getTurn() == 2)
-                {
-		    updateArray(2);
-		    tic.fillArray(passArray());
-		    button2.setText("O");
-		    button2.setEnabled(false);
-		    movePanelUpdate("Player X, it's your turn!");
-		}
-		else if(getTurn() == 1)
-		{
-		    updateArray(2);
-		    tic.fillArray(passArray());
-		    button1.setText("X");
-		    button1.setEnabled(false);
-		    movePanelUpdate("Player O, it's your turn!");
-		    tic.setHasMoved(true);
-		}
-		
-		
-		turn++;
+	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
+	    {
+		updateArray(2);
+		tic.fillArray(passArray());
+		button2.setText("O");
+		button2.setEnabled(false);
+		movePanelUpdate("Player X, it's your turn!");
+	    }
+	    else if(getTurn() == 1 && (tic.getGameType()).equalsIgnoreCase("human"))
+	    {
+		updateArray(2);
+		tic.fillArray(passArray());
+		button2.setText("X");
+		button2.setEnabled(false);
+		movePanelUpdate("Player O, it's your turn!");
+		tic.setHasMoved(true);
+	    }
+	    else if(getTurn() == 1 && (tic.getGameType()).equalsIgnoreCase("computer"))
+	    {
+		updateArray(2);
+		tic.fillArray(passArray());
+		button2.setText("X");
+		button2.setEnabled(false);
+		movePanelUpdate("Player O, it's your turn!");
+		tic.playComputerGame(gui, computerPlayer);
+	    }
+	    
                 button2.revalidate();
                 button2.repaint();
 	}
 	if(e.getSource() == button3)
 	{
+	    turn++;
 	    button3.setFont(new Font("Serif", Font.BOLD, 25));
-
-	    if(getTurn() == 2)
+	
+	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
 		updateArray(3);
 		tic.fillArray(passArray());
 		button3.setText("O");
 		button3.setEnabled(false);
 		movePanelUpdate("Player X, it's your turn!");
-	    } 
-	    else if(getTurn() == 1)
-	    {
-		updateArray(3);
-		tic.fillArray(passArray());
-		button1.setText("X");
-		button1.setEnabled(false);
-		movePanelUpdate("Player O, it's your turn!");
-		tic.setHasMoved(true);
 	    }
+	    else if(getTurn() == 1 && (tic.getGameType()).equalsIgnoreCase("human"))
+            {
+                updateArray(3);
+                tic.fillArray(passArray());
+                button3.setText("X");
+                button3.setEnabled(false);
+                movePanelUpdate("Player O, it's your turn!");
+                tic.setHasMoved(true);
+            }
+	    else if(getTurn() == 1 && (tic.getGameType()).equalsIgnoreCase("computer"))
+            {
+                updateArray(3);
+                tic.fillArray(passArray());
+                button3.setText("X");
+                button3.setEnabled(false);
+                movePanelUpdate("Player O, it's your turn!");
+                tic.playComputerGame(gui, computerPlayer);
+            }
 
-	    turn++;
 	    button3.revalidate();
 	    button3.repaint();
 	}
+    
 	if(e.getSource() == button4)
 	{
+	    turn++;
 	    button4.setFont(new Font("Serif", Font.BOLD, 25));
 
-	    if(getTurn() == 2)
+	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
 		updateArray(4);
 		tic.fillArray(passArray());
@@ -787,53 +892,71 @@ public class GUI implements ActionListener
 		button4.setEnabled(false);
 		movePanelUpdate("Player X, it's your turn!");
 	    }
-	    else if(getTurn() == 1)
-	    {
-		updateArray(4);
-		tic.fillArray(passArray());
-		button1.setText("X");
-		button1.setEnabled(false);
-		movePanelUpdate("Player O, it's your turn!");
-		tic.setHasMoved(true);
-	    }
-
-	    turn++;
+	    else if(getTurn() == 1 && (tic.getGameType()).equalsIgnoreCase("human"))
+            {
+                updateArray(4);
+                tic.fillArray(passArray());
+                button4.setText("X");
+                button4.setEnabled(false);
+                movePanelUpdate("Player O, it's your turn!");
+                tic.setHasMoved(true);
+            }
+	    else if(getTurn() == 1 && (tic.getGameType()).equalsIgnoreCase("computer"))
+            {
+                updateArray(4);
+                tic.fillArray(passArray());
+                button4.setText("X");
+                button4.setEnabled(false);
+                movePanelUpdate("Player O, it's your turn!");
+                tic.playComputerGame(gui, computerPlayer);
+            }
+	
+	  
 	    button4.revalidate();
 	    button4.repaint();
 	}
 	if(e.getSource() == button5)
 	{
+	    turn++;
 	    button5.setFont(new Font("Serif", Font.BOLD, 25));
-
-	    if(getTurn() == 2)
+	    
+	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
 		updateArray(5);
 		tic.fillArray(passArray());
 		button5.setText("O");
 		button5.setEnabled(false);
-		movePanelUpdate("Player X, it's your turn!");	
+		movePanelUpdate("Player X, it's your turn!");
 	    }
-	    else if(getTurn() == 1)
+            else if(getTurn() == 1 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
 		updateArray(5);
 		tic.fillArray(passArray());
-		button1.setText("X");
-		button1.setEnabled(false);
+		button5.setText("X");
+		button5.setEnabled(false);
 		movePanelUpdate("Player O, it's your turn!");
 		tic.setHasMoved(true);
 	    }
-	   
+            else if(getTurn() == 1 && (tic.getGameType()).equalsIgnoreCase("computer"))
+	    {
+		updateArray(5);
+		tic.fillArray(passArray());
+		button5.setText("X");
+		button5.setEnabled(false);
+		movePanelUpdate("Player O, it's your turn!");
+		tic.playComputerGame(gui, computerPlayer);
+	    }	   
 
-	    turn++;
 	    button5.setFont(new Font("Serif", Font.BOLD, 25));
 	    button5.revalidate();
 	    button5.repaint();
 	}
 	if(e.getSource() == button6)
-	{   
+	{ 
+	    turn++;
 	    button6.setFont(new Font("Serif", Font.BOLD, 25));
 
-	    if(getTurn() == 2)
+	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
 		updateArray(6);
 		tic.fillArray(passArray());
@@ -841,26 +964,34 @@ public class GUI implements ActionListener
 		button6.setEnabled(false);
 		movePanelUpdate("Player X, it's your turn!");
 	    }
-	    else if(getTurn() == 1)
+            else if(getTurn() == 1 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
 		updateArray(6);
 		tic.fillArray(passArray());
-		button1.setText("X");
-		button1.setEnabled(false);
+		button6.setText("X");
+		button6.setEnabled(false);
 		movePanelUpdate("Player O, it's your turn!");
 		tic.setHasMoved(true);
 	    }
+            else if(getTurn() == 1 && (tic.getGameType()).equalsIgnoreCase("computer"))
+	    {
+		updateArray(6);
+		tic.fillArray(passArray());
+		button6.setText("X");
+		button6.setEnabled(false);
+		movePanelUpdate("Player O, it's your turn!");
+		tic.playComputerGame(gui, computerPlayer);
+	    }
 	   
-
-	    turn++;
 	    button6.revalidate();
 	    button6.repaint();
 	}
 	if(e.getSource() == button7)
 	{
+	    turn++;
 	    button7.setFont(new Font("Serif", Font.BOLD, 25));
 
-	    if(getTurn() == 2)
+	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
 		updateArray(7);
 		tic.fillArray(passArray());
@@ -868,34 +999,34 @@ public class GUI implements ActionListener
 		button7.setEnabled(false);
 		movePanelUpdate("Player X, it's your turn!");
 	    }
-	    else if(getTurn() == 1)
-	    {
-		updateArray(7);
-		tic.fillArray(passArray());
-		button1.setText("X");
-		button1.setEnabled(false);
-		movePanelUpdate("Player O, it's your turn!");
-		tic.setHasMoved(true);
-	    }
-	    else if(getTurn() == 1 && (tic.getGameType()).equals("computer"))
+            else if(getTurn() == 1 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
 		updateArray(7);
 		tic.fillArray(passArray());
 		button7.setText("X");
 		button7.setEnabled(false);
 		movePanelUpdate("Player O, it's your turn!");
-		computerPlayer.pickSpace(takenSpaces, gui);
+		tic.setHasMoved(true);
+	    }
+            else if(getTurn() == 1 && (tic.getGameType()).equalsIgnoreCase("computer"))
+	    {
+		updateArray(7);
+		tic.fillArray(passArray());
+		button7.setText("X");
+		button7.setEnabled(false);
+		movePanelUpdate("Player O, it's your turn!");
+		tic.playComputerGame(gui, computerPlayer);
 	    }
 
-	    turn++;
 	    button7.revalidate();
 	    button7.repaint();
 	}
 	if(e.getSource() == button8)
-	{   
+	{
+	    turn++;
 	    button8.setFont(new Font("Serif", Font.BOLD, 25));
 
-	    if(getTurn() == 2)
+	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
 		updateArray(8);
 		tic.fillArray(passArray());
@@ -903,25 +1034,34 @@ public class GUI implements ActionListener
 		button8.setEnabled(false);
 		movePanelUpdate("Player X, it's your turn!");
 	    }
-	    else if(getTurn() == 1)
+            else if(getTurn() == 1 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
 		updateArray(8);
 		tic.fillArray(passArray());
-		button1.setText("X");
-		button1.setEnabled(false);
+		button8.setText("X");
+		button8.setEnabled(false);
 		movePanelUpdate("Player O, it's your turn!");
 		tic.setHasMoved(true);
 	    }
-
-	    turn++;
+            else if(getTurn() == 1 && (tic.getGameType()).equalsIgnoreCase("computer"))
+	    {
+		updateArray(8);
+		tic.fillArray(passArray());
+		button8.setText("X");
+		button8.setEnabled(false);
+		movePanelUpdate("Player O, it's your turn!");
+		tic.playComputerGame(gui, computerPlayer);
+	    }
+	    
 	    button8.revalidate();
 	    button8.repaint();
 	}
 	if(e.getSource() == button9)
 	{
+	    turn++;
 	    button9.setFont(new Font("Serif", Font.BOLD, 25));
 
-	    if(getTurn() == 2)
+	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
 		updateArray(9);
 		tic.fillArray(passArray());
@@ -929,17 +1069,25 @@ public class GUI implements ActionListener
 		button9.setEnabled(false);
 		movePanelUpdate("Player X, it's your turn!");
 	    }
-	    else if(getTurn() == 1)
+            else if(getTurn() == 1 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
 		updateArray(9);
 		tic.fillArray(passArray());
-		button1.setText("X");
-		button1.setEnabled(false);
+		button9.setText("X");
+		button9.setEnabled(false);
 		movePanelUpdate("Player O, it's your turn!");
 		tic.setHasMoved(true);
 	    }
+            else if(getTurn() == 1 && (tic.getGameType()).equalsIgnoreCase("computer"))
+	    {
+		updateArray(9);
+		tic.fillArray(passArray());
+		button9.setText("X");
+		button9.setEnabled(false);
+		movePanelUpdate("Player O, it's your turn!");
+		tic.playComputerGame(gui, computerPlayer);
+	    }
 
-	    turn++;
 	    button9.revalidate();
 	    button9.repaint();
 	}
@@ -975,14 +1123,16 @@ public class GUI implements ActionListener
 	    cardLayout.show(master, blackJack);
 	    numOfDecks = slider.getValue();
 	    blackJackOb.playBlackJack(gui);
-	    blackJackOb.originalDeal();
-	    blackJackOb.fillImageArrays();
 	    master.revalidate();
 	    master.repaint();
 	}
 	if(e.getSource() == hit)
 	{
 	    blackJackOb.hit("player");
+	}
+	if(e.getSource() == stand)
+	{
+	    blackJackOb.stand("player");
 	}
 	if(e.getSource() == exitMenu)
 	{

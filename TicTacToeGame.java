@@ -7,48 +7,20 @@ public class TicTacToeGame
     HumanPlayer player2 = new HumanPlayer();
 
     boolean humanGame;
-    boolean hasMoved;
+    boolean hasMoved = false;
 
-    public void playComputerGame(GUI Gui, ComputerPlayer computerPlayer)
+    public void playComputerGame(GUI Gui, ComputerPlayer cp)
     {
-	int turn = 0;
-
 	gui = Gui;
 
-	while(isWinner() == 0 && turn < 9)
+	if(gui.getTurn() == 1)
 	{
- 
-	    while(hasMoved == false)
-	    {
-		if(gui.getTurn() == 1)
-		{
-		    try
-		    {
-			turn++;
-			Thread.sleep(2000);
-		    }
-		    catch(Exception e)
-		    {
-			System.err.println(e.getMessage());
-		    }
-		}
-		else 
-		    break;
-	    }
-
-	    hasMoved = false;
-
-	    while(hasMoved == false)
-	    {
-		if(gui.getTurn() == 2)
-		{
-		    turn++;
-		    computerPlayer.pickSpace(takenSpaces, gui);
-		    setHasMoved(true);
-		}
-	    }
+	    return;
 	}
-	gui.gameOver();
+	else if(gui.getTurn() == 2)
+	{
+	    cp.pickSpace(takenSpaces, gui);
+	}
     }
 
     public void setHasMoved(boolean moved)
