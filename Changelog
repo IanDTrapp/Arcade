@@ -16,10 +16,12 @@ Changelog -
 	- Make the "x" appear, or implement a back button
 	- Leaderboards, etc.
 	- Fix spacing issues on TicTacToe player X and player Y panels
-	- Project turned in - Version 1.0 -
 	
 	To do next:
+	- Fix basic blackjack functionality
 	- Implement a stack to track move history (doesn't have to be primary function, just a duplicate for ctrl -Z)
-	- Resize buttons and sliders
+	- Resize buttons and sliders to look more visually appealing 
+	- Project write up
+	- Split functionality
 	
 	
