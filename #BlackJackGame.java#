@@ -1,4 +1,4 @@
-import java.util.Stack;
+B0;136;0cimport java.util.Stack;
 import java.util.ArrayList;
 
 public class BlackJackGame 
@@ -168,6 +168,20 @@ public class BlackJackGame
     public ArrayList getPlayerImages()
     {
 	return playerCardImages;
+    }
+
+    public int deckTotal(ArrayList card) 
+    {
+	int deckSize = card.size();
+	int total = 0;
+	for (int i = 0; i < deckSize; i++)
+	{
+	    Card tempCard = new Card();
+	    tempCard = card.get(i);
+	    int value = (Card)tempCard.getValue();
+	    total += value; 
+	}
+	return total;
     }
 
     public void dealerLogic() 
