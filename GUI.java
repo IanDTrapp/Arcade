@@ -56,6 +56,8 @@ public class GUI implements ActionListener
     private JMenu file, game;
     private JMenuItem mainMenuItem, exitMenu;
 
+    
+
     public static void main(String[] args)
     {
 	gui = new GUI();
@@ -236,7 +238,7 @@ public class GUI implements ActionListener
 	selectPlayerMain.add(selectButtonPanel);
    
 	//Leaderboard GUI
-	leaderMain = new JPanel();
+	leaderMain = new JPanel(new BorderLayout());
         leaderButtonPanel = new JPanel();
 	leaderTextPanel = new JPanel();
 	leaderTextArea = new JTextArea();
@@ -247,11 +249,8 @@ public class GUI implements ActionListener
 	sinceStart.addActionListener(this);
 
 	//Organizing leaderboard panels
-	leaderButtonPanel.add(allTime);
-	leaderButtonPanel.add(sinceStart);
-	leaderMain.add(leaderButtonPanel);
-	leaderMain.add(leaderTextPanel);
-
+	leaderMain.add(leaderTextPanel, BorderLayout.CENTER);
+	
 	//Master panel for card layout
 	master.add(mainMenuPanel, mainMenu);
 	master.add(blackJackMain, blackJack);
@@ -611,30 +610,6 @@ public class GUI implements ActionListener
 	frame.repaint();
     }
 
-    /*public void hit(ArrayList passedList, String player)
-    {
-	Card hitCard = passedList.pop();
-	
-	BufferedImage img = passedList.get(
-	
-	if(player.equalsIgnoreCase("player")
-	{
-	    
-	}
-	}*/
-
-
-    //Action listeners
-    /*public void returnToMenu(KeyEvent e)
-    {
-	int key = e.getKeyCode();
-	if (key == KeyEvent.VK_ESCAPE)
-	{
-	    ticRefresh();
-	    cardLayout.show(master, mainMenu);
-	}
-	}*/
-
     public void gameOver()
     {
 
@@ -708,15 +683,49 @@ public class GUI implements ActionListener
 	    int selected = bjGameOverPane.showConfirmDialog(null, "You busted! Play again?", "Game over!", JOptionPane.OK_OPTION);
 	    if(selected == JOptionPane.OK_OPTION)
 	    {
+		ArrayList temp, temp1;
+
+		temp = blackJackOb.getPlayerCards();
+		temp1 = blackJackOb.getDealerCards();
+		for(int i = 0; i < temp.size(); i++)
+		{
+		    leaderTextArea.append("MATCH HISTORY");
+		    leaderTextArea.append((temp.get(i)).getValue() + "of ");
+		    leaderTextArea.append((temp.get(i)).getSuit() + "/n");
+		    leaderTextArea.append((temp1.get(i)).getValue() + "of ");
+		    leaderTextArea.append((temp1.get(i)).getSuit() + "/n");
+		}
 		blackJackOb.refresh();
 		blackJackOb.addWin("dealer");
 		cardLayout.show(master, blackJack);
-		blackJackOb.playBlackJack(gui);
+		blackJackOb.playBlackJack(gui);	
 	    }
 	    if(selected == JOptionPane.NO_OPTION)
 	    {
+		ArrayList temp, temp1;
+
+                temp = blackJackOb.getPlayerCards();
+                temp1 = blackJackOb.getDealerCards();
+                for(int i = 0; i < temp.size(); i++)
+		{
+		    leaderTextArea.append("MATCH HISTORY");
+                    leaderTextArea.append((temp.get(i)).getValue() + "of ");
+                    leaderTextArea.append((temp.get(i)).getSuit() + "/n");
+                    leaderTextArea.append((temp1.get(i)).getValue() + "of ");
+                    leaderTextArea.append((temp1.get(i)).getSuit() + "/n");
+		}
+
+		int selected2 = bjGameOverPane.showConfirmDialog(null, "Do you want to see your match history?", "Game over!", JOptionPane.OK_OPTION);
+		if(selected2 == JOptionPane.OK_OPTION)
+		{   
+		    cardLayout.show(master, leaderBoard);
+		}
+		else if(selected2 == JOptionPane.NO_OPTION)
+		{
+		    cardLayout.show(master, mainMenu);
+		}
+
 		blackJackOb.refresh();
-		cardLayout.show(master, mainMenu);
 	    }
 	}
 	if(player.equalsIgnoreCase("dealer"))
@@ -724,13 +733,48 @@ public class GUI implements ActionListener
 	    int selected = bjGameOverPane.showConfirmDialog(null, "You beat the dealer! Play again?", "Game over!", JOptionPane.OK_OPTION);
 	    if(selected == JOptionPane.OK_OPTION)
 	    {
-		blackJackOb.refresh();
-		blackJackOb.addWin("player");
-		cardLayout.show(master, blackJack);
-		blackJackOb.playBlackJack(gui);
+		ArrayList temp, temp1;
+
+                temp = blackJackOb.getPlayerCards();
+                temp1 = blackJackOb.getDealerCards();
+                for(int i = 0; i < temp.size(); i++)
+		    {
+			leaderTextArea.append("MATCH HISTORY");
+			leaderTextArea.append((temp.get(i)).getValue() + "of ");
+			leaderTextArea.append((temp.get(i)).getSuit() + "/n");
+			leaderTextArea.append((temp1.get(i)).getValue() + "of ");
+			leaderTextArea.append((temp1.get(i)).getSuit() + "/n");
+		    }
+                blackJackOb.refresh();
+                blackJackOb.addWin("player");
+                cardLayout.show(master, blackJack);
+                blackJackOb.playBlackGame(gui);
 	    }
 	    if(selected == JOptionPane.NO_OPTION)
 	    {
+		ArrayList temp, temp1;
+
+                temp = blackJackOb.getPlayerCards();
+                temp1 = blackJackOb.getDealerCards();
+                for(int i = 0; i < temp.size(); i++)
+		    {
+			leaderTextArea.append("MATCH HISTORY");
+			leaderTextArea.append((temp.get(i)).getValue() + "of ");
+			leaderTextArea.append((temp.get(i)).getSuit() + "/n");
+			leaderTextArea.append((temp1.get(i)).getValue() + "of ");
+			leaderTextArea.append((temp1.get(i)).getSuit() + "/n");
+		    }
+		
+		int selected2 = bjGameOverPane.showConfirmDialog(null, "Do you want to see your match history?", "Game over!", JOptionPane.OK_OPTION);
+                if(selected2 == JOptionPane.OK_OPTION)
+		{
+		    cardLayout.show(master, leaderBoard);
+		}
+                else if(selected2 == JOptionPane.NO_OPTION)
+		{
+		    cardLayout.show(master, mainMenu);
+		}
+		
 		blackJackOb.refresh();
 		cardLayout.show(master, mainMenu);
 	    }
