@@ -86,4 +86,19 @@ public class BlackJackGame
     {
 	return playerCardImages;
     }
+
+    public int deckTotal(ArrayList card) 
+    {
+	int deckSize = card.size();
+	int total = 0;
+	for (int i = 0; i < deckSize; i++)
+	{
+	    Card tempCard = new Card();
+	    tempCard = card.get(i);
+	    int value = (Card)tempCard.getValue();
+	    total += value; 
+	}
+	return total;
+    }
+
 }

@@ -18,7 +18,7 @@ public class GUI implements ActionListener
     private JPanel mainMenuPanel, mainTitlePanel;
     private JLabel mainTitleLabel;
     private JButton ticButton, blackButton;
-    private JPanel deckMain, deckTitlePanel;
+    private JPanel deckMain, deckTitlePanel, centerPanel;
     private JLabel deckTitleLabel;
     private JSlider slider;
     private JButton okButton;
@@ -185,7 +185,7 @@ public class GUI implements ActionListener
 	deckMain.add(okButton);
     
 	//Blackjack GUI
-	blackJackMain = new JPanel(new GridLayout(3,1));
+	blackJackMain = new JPanel(new BorderLayout());
 	dealerPanel = new JPanel();
 	playerPanel = new JPanel();
 	BJButtonPanel = new JPanel();
@@ -195,16 +195,18 @@ public class GUI implements ActionListener
 	stand.addActionListener(this);
 	split = new JButton("Split");
 	split.addActionListener(this);
-
+	centerPanel = new JPanel(new GridLayout(2,1));
+      
 	//Adding buttons to button panel
 	BJButtonPanel.add(hit);
 	BJButtonPanel.add(stand);
 	BJButtonPanel.add(split);
 
 	//Adding panels to main blackjack panel
-	blackJackMain.add(dealerPanel);
-	blackJackMain.add(playerPanel);
-	blackJackMain.add(BJButtonPanel);
+	blackJackMain.add(centerPanel, BorderLayout.CENTER);
+	centerPanel.add(dealerPanel, "1");
+	centerPanel.add(playerPanel, "2");
+	blackJackMain.add(BJButtonPanel, BorderLayout.SOUTH);
 	
 	//selectPlayer GUI
 	selectPlayerMain = new JPanel(new GridLayout(2,1));
