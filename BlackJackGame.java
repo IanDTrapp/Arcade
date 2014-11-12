@@ -23,6 +23,16 @@ public class BlackJackGame
 	gui.updateCards(dealerCardImages, "dealer");
 	gui.updateCards(playerCardImages, "player");
     }
+    
+    public ArrayList getDealerCards()
+    {
+	return dealerCards;
+    }
+    
+    public ArrayList getPlayerCards()
+    {
+	return playerCards;
+    }
 
     public void refresh()
     {
@@ -73,18 +83,18 @@ public class BlackJackGame
 	dealerCards.add(card2);
 	dealerCardImages.add(card1.getImage());
 	dealerCardImages.add(card2.getImage());
-	int1 = card1.getValue();
+	int1 = card1.getValue().getValue();
 	dealerTotal += int1;
-	int2 = card2.getValue();
+	int2 = card2.getValue().getValue();
 	dealerTotal += int2;
 
 	playerCards.add(card3);
 	playerCards.add(card4);
 	playerCardImages.add(card3.getImage());
 	playerCardImages.add(card4.getImage());
-	int3 = card3.getValue();
+	int3 = card3.getValue().getValue();
 	playerTotal += int3;
-	int4 = card4.getValue();
+	int4 = card4.getValue().getValue();
 	playerTotal += int4;
     }
  
@@ -92,7 +102,7 @@ public class BlackJackGame
     public void hit(String player)
     {
 	Card card5 = (Card)deck.pop();
-	int temp = card5.getValue();
+	int temp = card5.getValue().getValue();
 
 	if(player.equalsIgnoreCase("player"))
 	{
