@@ -1347,7 +1347,7 @@ public class GUI implements ActionListener
 	    frame.dispose();
 	}
 	if(e.getSource() == undoMenu) {
-	    tic.undoTurn(moveList);
+	    tic.undoTurn(moveList, gui);
 	}
 	/*if(e.getSource() == mainMenuItem);
 	{
