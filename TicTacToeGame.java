@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 public class TicTacToeGame 
 {
     int[] takenSpaces = {0,0,0,0,0,0,0,0,0};
@@ -36,6 +38,10 @@ public class TicTacToeGame
 	{
 	    takenSpaces[i] = 0;
 	}
+    }
+
+    public void resetArraySpace(int space) {
+	takenSpaces[space -1] = 0;
     }
 
     public void setGameType(String gameType)
@@ -132,5 +138,10 @@ public class TicTacToeGame
 	}
 	// If no condition is met, return 0 signifying a draw
 	return 0;
+    }
+
+    public void undoTurn(Stack moves) {
+	int lastMove = (int)moves.pop();
+	gui.ticRefreshSpace(lastMove);
     }
 }

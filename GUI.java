@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Stack;
 
 public class GUI implements ActionListener
 {
@@ -54,8 +55,9 @@ public class GUI implements ActionListener
     private static int turn = 0;
     private JMenuBar menuBar;
     private JMenu file, game;
-    private JMenuItem mainMenuItem, exitMenu;
+    private JMenuItem mainMenuItem, exitMenu, undoMenu;
     Card card7;
+    Stack moveList = new Stack();
 
     public static void main(String[] args)
     {
@@ -80,6 +82,9 @@ public class GUI implements ActionListener
 	file.add(exitMenu);
 	game = new JMenu("Game");
 	mainMenuItem = new JMenuItem("Main Menu");
+	undoMenu = new JMenuItem("Undo");
+	game.add(undoMenu);
+	undoMenu.addActionListener(this);
 	game.add(mainMenuItem);
 	game.addActionListener(this);
 	
@@ -920,6 +925,57 @@ public class GUI implements ActionListener
 	tic.resetArray();
     }
 
+    public void ticRefreshSpace(int space)
+    {
+        if (space == 1) {
+	    button1.setText("");
+	    button1.setEnabled(true);
+        }
+	else if (space == 2) {
+	    button2.setText("");
+	    button2.setEnabled(true);
+	}
+	else if (space == 3) {
+	    button3.setText("");
+	    button3.setEnabled(true);
+	}
+	else if (space == 4) {
+	    button4.setText("");
+	    button4.setEnabled(true);
+	}
+	else if (space == 5) {
+	    button5.setText("");
+	    button5.setEnabled(true);
+	}
+	else if (space == 6) {
+	    button6.setText("");
+	    button6.setEnabled(true);
+	}
+	else if (space == 7) {
+	    button7.setText("");
+	    button7.setEnabled(true);
+	}
+	else if (space == 8) {
+	    button8.setText("");
+	    button8.setEnabled(true);
+	}
+	else if (space  == 9) {
+        button9.setText("");
+        button9.setEnabled(true);
+	}
+
+	// Resets that space in the local taken spaces array
+        takenSpaces[space-1] = 0;
+
+	// Alerts the player to the move having been undone
+        moveLabel.setText("Previous move has been undone!");
+
+        turn--;
+
+	// Resets that specific spot in the array in TicTacToeGame class
+        tic.resetArraySpace(space);
+    }
+
     public void actionPerformed(ActionEvent e)
     {
 	if(e.getSource() == button1)
@@ -954,7 +1010,7 @@ public class GUI implements ActionListener
 		movePanelUpdate("Player O, it's your turn!");
 		tic.playComputerGame(gui, computerPlayer);
 	    }
-	  	    
+	    moveList.push(1);
 	    button1.revalidate();
 	    button1.repaint();
 	}
@@ -990,9 +1046,9 @@ public class GUI implements ActionListener
 		movePanelUpdate("Player O, it's your turn!");
 		tic.playComputerGame(gui, computerPlayer);
 	    }
-	    
-                button2.revalidate();
-                button2.repaint();
+	    moveList.push(2);
+	    button2.revalidate();
+	    button2.repaint();
 	}
 	if(e.getSource() == button3)
 	{
@@ -1025,7 +1081,7 @@ public class GUI implements ActionListener
                 movePanelUpdate("Player O, it's your turn!");
                 tic.playComputerGame(gui, computerPlayer);
             }
-
+	    moveList.push(3);
 	    button3.revalidate();
 	    button3.repaint();
 	}
@@ -1062,7 +1118,7 @@ public class GUI implements ActionListener
                 tic.playComputerGame(gui, computerPlayer);
             }
 	
-	  
+	    moveList.push(4);
 	    button4.revalidate();
 	    button4.repaint();
 	}
@@ -1097,7 +1153,7 @@ public class GUI implements ActionListener
 		movePanelUpdate("Player O, it's your turn!");
 		tic.playComputerGame(gui, computerPlayer);
 	    }	   
-
+	    moveList.push(5);
 	    button5.setFont(new Font("Serif", Font.BOLD, 25));
 	    button5.revalidate();
 	    button5.repaint();
@@ -1133,7 +1189,7 @@ public class GUI implements ActionListener
 		movePanelUpdate("Player O, it's your turn!");
 		tic.playComputerGame(gui, computerPlayer);
 	    }
-	   
+	    moveList.push(6);
 	    button6.revalidate();
 	    button6.repaint();
 	}
@@ -1168,7 +1224,7 @@ public class GUI implements ActionListener
 		movePanelUpdate("Player O, it's your turn!");
 		tic.playComputerGame(gui, computerPlayer);
 	    }
-
+	    moveList.push(7);
 	    button7.revalidate();
 	    button7.repaint();
 	}
@@ -1203,7 +1259,7 @@ public class GUI implements ActionListener
 		movePanelUpdate("Player O, it's your turn!");
 		tic.playComputerGame(gui, computerPlayer);
 	    }
-	    
+	    moveList.push(8);
 	    button8.revalidate();
 	    button8.repaint();
 	}
@@ -1238,7 +1294,7 @@ public class GUI implements ActionListener
 		movePanelUpdate("Player O, it's your turn!");
 		tic.playComputerGame(gui, computerPlayer);
 	    }
-
+	    moveList.push(9);
 	    button9.revalidate();
 	    button9.repaint();
 	}
@@ -1289,6 +1345,9 @@ public class GUI implements ActionListener
 	{
 	    System.exit(0);
 	    frame.dispose();
+	}
+	if(e.getSource() == undoMenu) {
+	    tic.undoTurn(moveList);
 	}
 	/*if(e.getSource() == mainMenuItem);
 	{
