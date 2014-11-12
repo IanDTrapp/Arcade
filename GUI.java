@@ -210,7 +210,13 @@ public class GUI implements ActionListener
 	split = new JButton("Split");
 	split.addActionListener(this);
 	centerPanel = new JPanel(new GridLayout(2,1));
-      
+
+	// Only allowing split to be clicked if if canSplit is true
+	if (blackJackOb.canSplit() == true) {
+	    split.setEnabled(true);
+	}
+	else split.setEnabled(false);
+
 	//Adding buttons to button panel
 	BJButtonPanel.add(hit);
 	BJButtonPanel.add(stand);
