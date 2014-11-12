@@ -7,6 +7,26 @@ public class TicTacToeGame
     HumanPlayer player2 = new HumanPlayer();
 
     boolean humanGame;
+    boolean hasMoved = false;
+
+    public void playComputerGame(GUI Gui, ComputerPlayer cp)
+    {
+	gui = Gui;
+
+	if(gui.getTurn() == 1)
+	{
+	    return;
+	}
+	else if(gui.getTurn() == 2)
+	{
+	    cp.pickSpace(takenSpaces, gui);
+	}
+    }
+
+    public void setHasMoved(boolean moved)
+    {
+	hasMoved = moved;
+    }
 
     public void resetArray()
     {

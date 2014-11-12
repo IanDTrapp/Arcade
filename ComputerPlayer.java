@@ -127,7 +127,7 @@ public class ComputerPlayer {
 	
 	
 	//Block logic. If the opponent has two in a row, play the third to block them.
-	if(!spaces[0].equals(symbol) && spaces[0].equals(spaces[1]) && !spaces[0].equals(" ") && spaces[2].equals(" "))
+	else if(!spaces[0].equals(symbol) && spaces[0].equals(spaces[1]) && !spaces[0].equals(" ") && spaces[2].equals(" "))
 	{
 	    gui.computerPress(3);
 	}
@@ -252,7 +252,7 @@ public class ComputerPlayer {
 	
 	
 	//Block a fork
-	if((!spaces[0].equals(symbol) && !spaces[0].equals(" ") && spaces[2].equals(spaces[0]) && spaces[4].equals(" ")) && spaces[6].equals(" ") && spaces[8].equals(" "))
+	else if((!spaces[0].equals(symbol) && !spaces[0].equals(" ") && spaces[2].equals(spaces[0]) && spaces[4].equals(" ")) && spaces[6].equals(" ") && spaces[8].equals(" "))
 	    {
 		gui.computerPress(5);
 	    }
@@ -286,13 +286,13 @@ public class ComputerPlayer {
 	    }
 	
 	//Play center if everything above is fails
-	if(spaces[4].equals(" "))
+	else if(spaces[4].equals(" "))
 	{
 	    gui.computerPress(5);
 	}
 	
 	//Play opposite corner. Player corner if opponent is in the corner
-	if(!spaces[0].equals(symbol) && spaces[8].equals(" ") && !spaces[0].equals(" ")) 
+	else if(!spaces[0].equals(symbol) && spaces[8].equals(" ") && !spaces[0].equals(" ")) 
 	{
 	    gui.computerPress(9);
 	}
@@ -310,7 +310,7 @@ public class ComputerPlayer {
 	}
 	
 	//Play an empty corner
-	if(spaces[6].equals(" "))
+	else if(spaces[6].equals(" "))
 	{
 	    gui.computerPress(7);
 	}
@@ -328,7 +328,7 @@ public class ComputerPlayer {
 	}
 	
 	//Play an empty side. if everything above fails.
-	if(spaces[3].equals(" "))
+	else if(spaces[3].equals(" "))
 	{
 	    gui.computerPress(3);
 	}
