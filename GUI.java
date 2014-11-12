@@ -59,6 +59,51 @@ public class GUI implements ActionListener
     Card card7;
     Stack moveList = new Stack();
     Dimension stdBtnSize = new Dimension(400, 800);
+    private JLabel label1 = new JLabel();
+    private JLabel label2 = new JLabel();
+    private JLabel label3 = new JLabel();
+    private JLabel label4 = new JLabel();
+    private JLabel label5 = new JLabel();
+    private JLabel label6 = new JLabel();
+    private JLabel label7 = new JLabel();
+    private JLabel label8 = new JLabel();
+    private JLabel label9 = new JLabel();
+    private JLabel label10 = new JLabel();
+    private JLabel label11 = new JLabel();
+    private JLabel label12 = new JLabel();
+    private JLabel label13 = new JLabel();
+    private JLabel label14 = new JLabel();
+    private JLabel label15 = new JLabel();
+    private JLabel label16 = new JLabel();
+    private JLabel label17 = new JLabel();
+    private JLabel label18 = new JLabel();
+    private JLabel label19 = new JLabel();
+    private JLabel label20 = new JLabel();
+    private JLabel label21 = new JLabel();
+    private JLabel label22 = new JLabel();
+    private JLabel l1 = new JLabel();
+    private JLabel l2 = new JLabel();
+    private JLabel l3 = new JLabel();
+    private JLabel l4 = new JLabel();
+    private JLabel l5 = new JLabel();
+    private JLabel l6 = new JLabel();
+    private JLabel l7 = new JLabel();
+    private JLabel l8 = new JLabel();
+    private JLabel l9 = new JLabel();
+    private JLabel l10 = new JLabel();
+    private JLabel l11 = new JLabel();
+    private JLabel l12 = new JLabel();
+    private JLabel l13 = new JLabel();
+    private JLabel l14 = new JLabel();
+    private JLabel l15 = new JLabel();
+    private JLabel l16 = new JLabel();
+    private JLabel l17 = new JLabel();
+    private JLabel l18 = new JLabel();
+    private JLabel l19 = new JLabel();
+    private JLabel l20 = new JLabel();
+    private JLabel l21 = new JLabel();
+    private JLabel l22 = new JLabel(); 
+
 
     public static void main(String[] args)
     {
@@ -309,6 +354,7 @@ public class GUI implements ActionListener
                     leaderTextArea.append(((Card)(temp1.get(j))).getSuit() + " ");
 		}
 		blackJackOb.refresh();
+		refreshBJ();
 		cardLayout.show(master, blackJack);
 		blackJackOb.playBlackJack(gui);	
 	    }
@@ -340,6 +386,7 @@ public class GUI implements ActionListener
 		}
 
 		blackJackOb.refresh();
+		refreshBJ();
 	    }
     }
 
@@ -422,6 +469,58 @@ public class GUI implements ActionListener
 	gameOver();
     }
 
+    public void refreshBJ()
+    {
+	label1.setIcon(null);
+	label2.setIcon(null);
+	label3.setIcon(null);
+	label4.setIcon(null);
+	label5.setIcon(null);
+	label6.setIcon(null);
+	label7.setIcon(null);
+	label8.setIcon(null);
+	label9.setIcon(null);
+	label10.setIcon(null);
+	label11.setIcon(null);
+	label12.setIcon(null);
+	label13.setIcon(null);
+	label14.setIcon(null);
+	label15.setIcon(null);
+	label16.setIcon(null);
+	label17.setIcon(null);
+	label18.setIcon(null);
+	label19.setIcon(null);
+	label20.setIcon(null);
+	label21.setIcon(null);
+	label22.setIcon(null);
+
+	l1.setIcon(null);
+	l2.setIcon(null);
+	l3.setIcon(null);
+	l4.setIcon(null);
+	l5.setIcon(null);
+	l6.setIcon(null);
+	l7.setIcon(null);
+	l8.setIcon(null);
+	l9.setIcon(null);
+	l10.setIcon(null);
+	l11.setIcon(null);
+	l12.setIcon(null);
+	l13.setIcon(null);
+	l14.setIcon(null);
+	l15.setIcon(null);
+	l16.setIcon(null);
+	l17.setIcon(null);
+	l18.setIcon(null);
+	l19.setIcon(null);
+	l20.setIcon(null);
+	l21.setIcon(null);
+	l22.setIcon(null);
+
+	frame.revalidate();
+	frame.repaint();
+    }
+
     public void updateArray(int space)
     {
 	takenSpaces[space-1] = getTurn();
@@ -457,24 +556,21 @@ public class GUI implements ActionListener
     }
 
     public void updateCards(ArrayList cardImages, String player)
-    {
-	JLabel label1, label2, label3, label4, label5, label6, label7, label8, label9, label10, label11, label12, label13, label14, label15, label16, label17;
-	JLabel label18, label19, label20, label21, label22;
-	
+    {	
 	ArrayList temp = new ArrayList();
 	temp.addAll(cardImages);
 
-	int size = cardImages.size();
+	int size = temp.size();
+
 	cardImages.subList(0, size).clear();
 	
 	for(int i = 0; i < size; i++)
 	{
 	    int labelNumber = i+1;
 	    card7 = (Card)temp.get(i);
-	    BufferedImage buffImage = (BufferedImage)(card7.getImage());
-	    
+	    BufferedImage buffImage = ((BufferedImage)card7.getImage());
 	    ImageIcon image = new ImageIcon(buffImage);
-	    cardImages.add(image);
+	    cardImages.add(card7);
 	    
 	    if(player.equalsIgnoreCase("player"))
 	    {
@@ -573,8 +669,6 @@ public class GUI implements ActionListener
 		}
 	    }
 	    
-	    JLabel l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13, l14, l15, l16, l17, l18, l19, l20, l21, l22;
-
 	    if(player.equalsIgnoreCase("dealer"))
 	    {
 		int labelNum = i+1;
@@ -798,40 +892,54 @@ public class GUI implements ActionListener
 	    int selected = bjGameOverPane.showConfirmDialog(null, "You busted! Play again?", "Game over!", JOptionPane.OK_OPTION);
 	    if(selected == JOptionPane.OK_OPTION)
 	    {
-		ArrayList temp, temp1;
+		ArrayList temp, temp1, temp2;
 
 		temp = blackJackOb.getPlayerCards();
 		temp1 = blackJackOb.getDealerCards();
+		temp2 = blackJackOb.getDealerOriginalCards();
 		for(int i = 0; i < temp.size(); i++)
 		{
 		    leaderTextArea.append(((Card)(temp.get(i))).getValue() + "of ");
 		    leaderTextArea.append(((Card)(temp.get(i))).getSuit() + " ");
+		}
+		for(int k = 0; k < temp2.size(); k++)
+		{
+		    leaderTextArea.append(((Card)(temp2.get(k))).getValue() + "of ");
+		    leaderTextArea.append(((Card)(temp2.get(k))).getSuit() + " ");
 		}
 		for(int j = 0; j < temp1.size(); j++)
 		{
 		    leaderTextArea.append(((Card)(temp1.get(j))).getValue() + "of ");
                     leaderTextArea.append(((Card)(temp1.get(j))).getSuit() + " ");
 		}
+
 		blackJackOb.refresh();
+		refreshBJ();
 		blackJackOb.addWin("dealer");
 		cardLayout.show(master, blackJack);
 		blackJackOb.playBlackJack(gui);	
 	    }
 	    if(selected == JOptionPane.NO_OPTION)
 	    {
-		ArrayList temp, temp1;
+		ArrayList temp, temp1, temp2;
 
                 temp = blackJackOb.getPlayerCards();
                 temp1 = blackJackOb.getDealerCards();
+		temp2 = blackJackOb.getDealerOriginalCards();
                 for(int i = 0; i < temp.size(); i++)
 		{
                     leaderTextArea.append(((Card)(temp.get(i))).getValue() + "of ");
                     leaderTextArea.append(((Card)(temp.get(i))).getSuit() + " ");
 		}
-		for(int j = 0; j < temp.size(); j++)
+		for(int k = 0; k < temp2.size(); k++)
 		{
-		    leaderTextArea.append(((Card)(temp.get(j))).getValue() + "of ");
-                    leaderTextArea.append(((Card)(temp.get(j))).getSuit() + " ");
+		    leaderTextArea.append(((Card)(temp2.get(k))).getValue() + "of ");
+		    leaderTextArea.append(((Card)(temp2.get(k))).getSuit() + " ");
+		}
+		for(int j = 0; j < temp1.size(); j++)
+		{
+		    leaderTextArea.append(((Card)(temp1.get(j))).getValue() + "of ");
+                    leaderTextArea.append(((Card)(temp1.get(j))).getSuit() + " ");
 		}
 
 		int selected2 = bjGameOverPane.showConfirmDialog(null, "Do you want to see your match history?", "Game over!", JOptionPane.OK_OPTION);
@@ -845,6 +953,7 @@ public class GUI implements ActionListener
 		}
 
 		blackJackOb.refresh();
+		refreshBJ();
 	    }
 	}
 	if(player.equalsIgnoreCase("dealer"))
@@ -852,20 +961,28 @@ public class GUI implements ActionListener
 	    int selected = bjGameOverPane.showConfirmDialog(null, "You beat the dealer! Play again?", "Game over!", JOptionPane.OK_OPTION);
 	    if(selected == JOptionPane.OK_OPTION)
 	    {
-		ArrayList temp, temp1;
+                ArrayList temp, temp1, temp2;
 
                 temp = blackJackOb.getPlayerCards();
                 temp1 = blackJackOb.getDealerCards();
+                temp2 = blackJackOb.getDealerOriginalCards();
                 for(int i = 0; i < temp.size(); i++)
 		{
 		    leaderTextArea.append(((Card)(temp.get(i))).getValue() + "of ");
-		    leaderTextArea.append(((Card)(temp.get(i))).getSuit() + "  ");
+		    leaderTextArea.append(((Card)(temp.get(i))).getSuit() + " ");
 		}
-		for(int j = 0; j < temp1.size(); j++)
+                for(int k = 0; k < temp2.size(); k++)
+		{
+		    leaderTextArea.append(((Card)(temp2.get(k))).getValue() + "of ");
+		    leaderTextArea.append(((Card)(temp2.get(k))).getSuit() + " ");
+		}
+                for(int j = 0; j < temp1.size(); j++)
 		{
 		    leaderTextArea.append(((Card)(temp1.get(j))).getValue() + "of ");
-                    leaderTextArea.append(((Card)(temp1.get(j))).getSuit() + "  ");
+		    leaderTextArea.append(((Card)(temp1.get(j))).getSuit() + " ");
 		}
+
+		refreshBJ();
                 blackJackOb.refresh();
                 blackJackOb.addWin("player");
                 cardLayout.show(master, blackJack);
@@ -873,19 +990,25 @@ public class GUI implements ActionListener
 	    }
 	    if(selected == JOptionPane.NO_OPTION)
 	    {
-		ArrayList temp, temp1;
+		ArrayList temp, temp1, temp2;
 
                 temp = blackJackOb.getPlayerCards();
                 temp1 = blackJackOb.getDealerCards();
+                temp2 = blackJackOb.getDealerOriginalCards();
                 for(int i = 0; i < temp.size(); i++)
 		{
 		    leaderTextArea.append(((Card)(temp.get(i))).getValue() + "of ");
-		    leaderTextArea.append(((Card)(temp.get(i))).getSuit() + "  ");
+		    leaderTextArea.append(((Card)(temp.get(i))).getSuit() + " ");
 		}
-		for(int j = 0; j < temp1.size(); j++)
+                for(int k = 0; k < temp2.size(); k++)
+		{
+		    leaderTextArea.append(((Card)(temp2.get(k))).getValue() + "of ");
+		    leaderTextArea.append(((Card)(temp2.get(k))).getSuit() + " ");
+		}
+                for(int j = 0; j < temp1.size(); j++)
 		{
 		    leaderTextArea.append(((Card)(temp1.get(j))).getValue() + "of ");
-		    leaderTextArea.append(((Card)(temp1.get(j))).getSuit() + "  ");
+		    leaderTextArea.append(((Card)(temp1.get(j))).getSuit() + " ");
 		}
 		
 		int selected2 = bjGameOverPane.showConfirmDialog(null, "Do you want to see your match history?", "Game over!", JOptionPane.OK_OPTION);
@@ -899,6 +1022,7 @@ public class GUI implements ActionListener
 		    cardLayout.show(master, mainMenu);
 		}
 		
+		refreshBJ();
 		blackJackOb.refresh();
 		cardLayout.show(master, mainMenu);
 	    }
@@ -992,7 +1116,6 @@ public class GUI implements ActionListener
     {
 	if(e.getSource() == button1)
 	{ 
-
 	    turn++;
 	    button1.setFont(new Font("Serif", Font.BOLD, 50));
 	    

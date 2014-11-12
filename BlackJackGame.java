@@ -27,6 +27,11 @@ public class BlackJackGame
 	gui.updateCards(dealerOriginalCards, "dealero");
 	gui.updateCards(playerCards, "player");
     }
+    
+    public ArrayList getDealerOriginalCards()
+    {
+	return dealerOriginalCards;
+    }
 
     public boolean canSplit()
     {
@@ -61,6 +66,7 @@ public class BlackJackGame
 
 	dealerCards.subList(0, dealerCards.size()).clear();
 	playerCards.subList(0, playerCards.size()).clear();
+	dealerOriginalCards.subList(0, dealerOriginalCards.size()).clear();
 	dealerCardImages.subList(0, dealerCardImages.size()).clear();
 	playerCardImages.subList(0, dealerCardImages.size()).clear();
     }
@@ -69,21 +75,17 @@ public class BlackJackGame
     {
 	if(player.equalsIgnoreCase("player"))
 	{
-	    playerCardImages.subList(0, playerCardImages.size()).clear();
-	    playerCardImages.addAll(newList);
+	    playerCards.subList(0, playerCards.size()).clear();
+	    playerCards.addAll(newList);
 	}
 	else if(player.equalsIgnoreCase("dealer"))
 	{
-	    dealerCardImages.subList(0, dealerCardImages.size()).clear();
-	    dealerCardImages.addAll(newList);
-	}
-	else if(player.equalsIgnoreCase("playero"))
-	{
-	    playerCardImages.addAll(newList);
+	    dealerCards.subList(0, dealerCards.size()).clear();
+	    dealerCards.addAll(newList);
 	}
 	else if(player.equalsIgnoreCase("dealero"))
 	{
-	    dealerCardImages.addAll(newList);
+	    dealerOriginalCards.addAll(newList);
 	}
     }
 
@@ -139,15 +141,18 @@ public class BlackJackGame
 
     public void hit(String player)
     {
+
+	ArrayList tempArray = new ArrayList();
 	Card card5 = (Card)deck.pop();
 	int temp = card5.getValue().getValue();
 
 	if(player.equalsIgnoreCase("player"))
 	{
-	    playerCards.add(card5);
+	    tempArray.addAll(playerCards);
+	    playerCards.subList(0, playerCards.size()).clear();
+	    tempArray.add(card5);
 	    playerTotal += temp;
-	    playerCardImages.add(card5.getImage());
-	    gui.updateCards(playerCardImages, "player");
+	    gui.updateCards(tempArray, "player");
 	    if(playerTotal > 21)
 	    {
 		gui.bjGameOver("player");
@@ -166,7 +171,7 @@ public class BlackJackGame
 	if (player.equals("player")) 
 	{
 	    isPlayerStanding = true;
-	    gui.updateCards(dealerCardImages, "dealer");
+	    gui.updateCards(dealerCards, "dealer");
 	    if(dealerTotal > 21)
 	    {
 		gui.bjGameOver("dealer");
