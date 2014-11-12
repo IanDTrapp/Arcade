@@ -14,6 +14,8 @@ public class BlackJackGame
     private int dealerWins, playerWins;
     private boolean isPlayerStanding = false;
     private boolean isDealerStanding = false;
+    private ArrayList dealerOriginalCards = new ArrayList();
+    private ArrayList dealerOriginalImages = new ArrayList();
 
     public void playBlackJack(GUI Gui) 
     {
@@ -22,8 +24,24 @@ public class BlackJackGame
 	deck = shoe.getShuffledDeck();
 	
 	originalDeal();
-	gui.updateCards(dealerCardImages, "dealer");
-	gui.updateCards(playerCardImages, "player");
+	gui.updateCards(dealerOriginalCards, "dealero");
+	gui.updateCards(playerCards, "playero");
+    }
+
+    public boolean canSplit()
+    {
+	int[] temp = new int[2];
+	
+	for(int i = 0; i < 2; i ++)
+	{
+	    temp[i] =  ((Card)playerCards.get(i)).getValue().getValue();
+	}
+	if(temp[0] == temp[1])
+	{
+		return true;
+	}
+	else
+	    return false;
     }
     
     public ArrayList getDealerCards()
@@ -59,6 +77,14 @@ public class BlackJackGame
 	    dealerCardImages.subList(0, dealerCardImages.size()).clear();
 	    dealerCardImages.addAll(newList);
 	}
+	else if(player.equalsIgnoreCase("playero"))
+	{
+	    playerCardImages.addAll(newList);
+	}
+	else if(player.equalsIgnoreCase("dealero"))
+	{
+	    dealerCardImages.addAll(newList);
+	}
     }
 
     public void addWin(String player)
@@ -81,10 +107,10 @@ public class BlackJackGame
 	card4 = (Card)deck.pop();
 	int int1, int2, int3, int4;
 
-	dealerCards.add(card1);
-	dealerCards.add(card2);
-	dealerCardImages.add(card1.getImage());
-	dealerCardImages.add(card2.getImage());
+	dealerOriginalCards.add(card1);
+	dealerOriginalCards.add(card2);
+	dealerOriginalImages.add(card1.getImage());
+	dealerOriginalImages.add(card2.getImage());
 	int1 = card1.getValue().getValue();
 	dealerTotal += int1;
 	int2 = card2.getValue().getValue();
@@ -98,6 +124,11 @@ public class BlackJackGame
 	playerTotal += int3;
 	int4 = card4.getValue().getValue();
 	playerTotal += int4;
+
+	while(dealerTotal <= 16)
+	{
+	    hit("dealer");
+	}
     }
  
 
@@ -122,32 +153,39 @@ public class BlackJackGame
 	{
 	    dealerCards.add(card5);
 	    dealerTotal += temp;
-	    playerCardImages.add(card5.getImage());
-	    gui.updateCards(dealerCardImages, "dealer");
-	    if(dealerTotal > 21)
-	    {
-		gui.bjGameOver("dealer");
-		playerWins++;
-	    }
 	}
     }
 
     public void stand(String player)
     {
-	if (player.equals("player")) {
+	if (player.equals("player")) 
+	{
 	    isPlayerStanding = true;
-	}
-	if (player.equals("dealer")) {
-	    isDealerStanding = true;
+	    gui.updateCards(dealerCardImages, "dealer");
+	    if(dealerTotal > 21)
+	    {
+		gui.bjGameOver("dealer");
+	    }
+	    else if(dealerTotal <= 21 && playerTotal < dealerTotal)
+	    {
+		gui.bjGameOver("player");
+	    }
+	    else if(dealerTotal == 21 && playerTotal == 21)
+	    {
+		gui.bjTie();
+	    }
 	}
 	
-	if (isPlayerStanding == true && isDealerStanding == true) {
+	if(isPlayerStanding == true) 
+	{
 
-	    if((21-dealerTotal) < (21-playerTotal)) {
+	    if((21-dealerTotal) < (21-playerTotal)) 
+	    {
 		gui.bjGameOver("player");
 		dealerWins++;
 	    }
-	    if((21-playerTotal) < (21-dealerTotal)) {
+	    if((21-playerTotal) < (21-dealerTotal)) 
+	    {
 		gui.bjGameOver("dealer");
 		playerWins++;
 	    }
@@ -168,14 +206,5 @@ public class BlackJackGame
     public ArrayList getPlayerImages()
     {
 	return playerCardImages;
-    }
-
-    public void dealerLogic() 
-    {
-	if (dealerTotal <= 16)
-        {
-	    hit("dealer");
-	}
-	else stand("dealer");
     }
 }

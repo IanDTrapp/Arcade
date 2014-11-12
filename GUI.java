@@ -55,6 +55,7 @@ public class GUI implements ActionListener
     private JMenuBar menuBar;
     private JMenu file, game;
     private JMenuItem mainMenuItem, exitMenu;
+    Card card7;
 
     public static void main(String[] args)
     {
@@ -271,6 +272,60 @@ public class GUI implements ActionListener
 	frame.repaint();
     }
 
+    public void bjTie()
+    {
+	int selected = bjGameOverPane.showConfirmDialog(null, "It was a tie! Play again?", "Game over!", JOptionPane.OK_OPTION);
+	if(selected == JOptionPane.OK_OPTION)
+	{
+		ArrayList temp, temp1;
+
+		temp = blackJackOb.getPlayerCards();
+		temp1 = blackJackOb.getDealerCards();
+		for(int i = 0; i < temp.size(); i++)
+		{
+		    leaderTextArea.append(((Card)(temp.get(i))).getValue() + "of ");
+		    leaderTextArea.append(((Card)(temp.get(i))).getSuit() + " ");
+		}
+		for(int j = 0; j < temp1.size(); j++)
+		{
+		    leaderTextArea.append(((Card)(temp1.get(j))).getValue() + "of ");
+                    leaderTextArea.append(((Card)(temp1.get(j))).getSuit() + " ");
+		}
+		blackJackOb.refresh();
+		cardLayout.show(master, blackJack);
+		blackJackOb.playBlackJack(gui);	
+	    }
+	    if(selected == JOptionPane.NO_OPTION)
+	    {
+		ArrayList temp, temp1;
+
+                temp = blackJackOb.getPlayerCards();
+                temp1 = blackJackOb.getDealerCards();
+                for(int i = 0; i < temp.size(); i++)
+		{
+                    leaderTextArea.append(((Card)(temp.get(i))).getValue() + "of ");
+                    leaderTextArea.append(((Card)(temp.get(i))).getSuit() + " ");
+		}
+		for(int j = 0; j < temp.size(); j++)
+		{
+		    leaderTextArea.append(((Card)(temp.get(j))).getValue() + "of ");
+                    leaderTextArea.append(((Card)(temp.get(j))).getSuit() + " ");
+		}
+
+		int selected2 = bjGameOverPane.showConfirmDialog(null, "Do you want to see your match history?", "Game over!", JOptionPane.OK_OPTION);
+		if(selected2 == JOptionPane.OK_OPTION)
+		{   
+		    cardLayout.show(master, leaderBoard);
+		}
+		else if(selected2 == JOptionPane.NO_OPTION)
+		{
+		    cardLayout.show(master, mainMenu);
+		}
+
+		blackJackOb.refresh();
+	    }
+    }
+
     public void computerPress(int num)
     {
 	switch(num)
@@ -398,7 +453,9 @@ public class GUI implements ActionListener
 	for(int i = 0; i < size; i++)
 	{
 	    int labelNumber = i+1;
-	    BufferedImage buffImage = (BufferedImage)temp.get(i);
+	    card7 = (Card)temp.get(i);
+	    BufferedImage buffImage = (BufferedImage)(card7.getImage());
+	    
 	    ImageIcon image = new ImageIcon(buffImage);
 	    cardImages.add(image);
 	    
@@ -596,8 +653,42 @@ public class GUI implements ActionListener
 		    break;
 		}
 	    }
-	}
+	    else if(player.equalsIgnoreCase("playero"))
+	    {
+		int labelNum = i+1;
+		
+		JLabel lb1, lb2;
 
+		switch(labelNum)
+		{
+		case 1: lb1 = new JLabel();
+		    lb1.setIcon(image);
+		    playerPanel.add(lb1);
+		    break;
+		case 2: lb2 = new JLabel();
+		    lb2.setIcon(image);
+		    playerPanel.add(lb2);
+		    break;
+		}
+	    }
+	    else if(player.equalsIgnoreCase("dealero"))
+	    {
+		int labelNum = i+1;
+		switch(labelNum)
+		{
+		case 1: l1 = new JLabel();
+		    l1.setIcon(image);
+		    dealerPanel.add(l1);
+		    break;
+		case 2: l2 = new JLabel();
+		    l2.setIcon(image);
+		    dealerPanel.add(l2);
+		    break;
+		}
+	    }
+	}
+    
+    
 	if(player.equalsIgnoreCase("dealer"))
 	{
 	    blackJackOb.updateLists(cardImages, "dealer");
@@ -609,6 +700,7 @@ public class GUI implements ActionListener
 	frame.revalidate();
 	frame.repaint();
     }
+
 
     public void gameOver()
     {
@@ -780,6 +872,7 @@ public class GUI implements ActionListener
 		}
                 else if(selected2 == JOptionPane.NO_OPTION)
 		{
+		    blackJackOb.refresh();
 		    cardLayout.show(master, mainMenu);
 		}
 		
