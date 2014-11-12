@@ -12,6 +12,8 @@ public class BlackJackGame
     private Card card1, card2, card3, card4;
     private int dealerTotal, playerTotal;
     private int dealerWins, playerWins;
+    private boolean isPlayerStanding = false;
+    private boolean isDealerStanding = false;
 
     public void playBlackJack(GUI Gui) 
     {
@@ -122,15 +124,23 @@ public class BlackJackGame
 
     public void stand(String player)
     {
-	if((21-dealerTotal) < (21-playerTotal))
-	{
-	    gui.bjGameOver("player");
-	    dealerWins++;
+	if (player.equals("player")) {
+	    isPlayerStanding = true;
 	}
-	if((21-playerTotal) < (21-dealerTotal))
-	{
-	    gui.bjGameOver("dealer");
-	    playerWins++;
+	if (player.equals("dealer")) {
+	    isDealerStanding = true;
+	}
+	
+	if (isPlayerStanding == true && isDealerStanding == true) {
+
+	    if((21-dealerTotal) < (21-playerTotal)) {
+		gui.bjGameOver("player");
+		dealerWins++;
+	    }
+	    if((21-playerTotal) < (21-dealerTotal)) {
+		gui.bjGameOver("dealer");
+		playerWins++;
+	    }
 	}
     }
 
@@ -164,4 +174,12 @@ public class BlackJackGame
 	return total;
     }
 
+    public void dealerLogic() 
+    {
+	if (dealerTotal <= 16)
+        {
+	    hit("dealer");
+	}
+	else stand("dealer");
+    }
 }
