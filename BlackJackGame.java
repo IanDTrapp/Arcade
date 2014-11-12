@@ -225,7 +225,7 @@ public class BlackJackGame
 	if(deckNum == 1){
 	    splitDeck1.add(card9);
 	    splitTotal1 += temp1;
-	    Split1CardImages.add(card=9.getImage());
+	    Split1CardImages.add(card9.getImage());
 	    gui.updateCards(split1CardImages, "player");
 	    if(splitTotal1 > 21)
 		{
@@ -236,7 +236,7 @@ public class BlackJackGame
 	if(deckNum == 2) {
 	    splitDeck2.add(card10);
 	    splitTotal2 += temp2;
-	    split2CardImages.add(card10getImage());
+	    split2CardImages.add(card10.getImage());
 	    gui.updateCards(split2CardImages, "player");
 	    if(splitTotal2 > 21)
 		{
