@@ -16,6 +16,13 @@ public class BlackJackGame
     private boolean isDealerStanding = false;
     private ArrayList dealerOriginalCards = new ArrayList();
     private ArrayList dealerOriginalImages = new ArrayList();
+    // For splitting
+    private ArrayList splitDeck1 = new ArrayList();
+    private ArrayList splitDeck2 = new ArrayList();
+    private int splitTotal1 = 0;
+    private int splitTotal2 = 0;
+    private ArrayList split1CardImages = new ArrayList();
+    private ArrayList split2CardImages = new ArrayList();
 
     public void playBlackJack(GUI Gui) 
     {
@@ -199,8 +206,43 @@ public class BlackJackGame
 
     public void split(String player)
     {
-	return;
+	splitDeck1.add(playerCards[0]);
+	splitDeck2.add(playerCards[1]);
     }
+
+    public void hitOnSplit(int deckNum) {
+	// 1 - Left Deck   -- 2 - Right Deck
+	Card card9 = (Card)deck.pop();
+	Card card10 = (card)deck.pop();
+	int temp1 = card9.getValue().getValue();
+	int temp2 = card10.getValue().getValue();
+	
+	if(deckNum == 1){
+	    splitDeck1.add(card9);
+	    splitTotal1 += temp1;
+	    Split1CardImages.add(card=9.getImage());
+	    gui.updateCards(split1CardImages, "player");
+	    if(splitTotal1 > 21)
+		{
+		    gui.bjGameOver("player");
+		    dealerWins++;
+		}
+	}
+	if(deckNum == 2) {
+	    splitDeck2.add(card10);
+	    splitTotal2 += temp2;
+	    split2CardImages.add(card10getImage());
+	    gui.updateCards(split2CardImages, "player");
+	    if(splitTotal2 > 21)
+		{
+		    gui.bjGameOver("player");
+		    dealerWins++;
+		}
+	}
+	
+    } 
+
+
 
     
     public ArrayList getDealerImages()
