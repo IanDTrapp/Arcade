@@ -3,6 +3,7 @@ import java.util.Stack;
 public class TicTacToeGame
 {
     private GUI Gui;
+    private GUI Ui;
     int[] takenSpaces = {0,0,0,0,0,0,0,0,0};
     GUI gui = null;
 
@@ -142,7 +143,7 @@ public class TicTacToeGame
     }
 
     public void undoTurn(Stack moves, GUI gui) {
-	gui = Gui;
+	Ui = gui;
 	int lastMove = (int)moves.pop();
 	gui.ticRefreshSpace(lastMove);
     }
