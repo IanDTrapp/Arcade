@@ -199,15 +199,15 @@ public class GUI implements ActionListener
 	boardPanel.add(button2);
 	boardPanel.add(button3);
 
-	button1.setFont(new Font("Serif", Font.BOLD, 50));
-	button2.setFont(new Font("Serif", Font.BOLD, 50));
-	button3.setFont(new Font("Serif", Font.BOLD, 50));
-	button4.setFont(new Font("Serif", Font.BOLD, 50));
-	button5.setFont(new Font("Serif", Font.BOLD, 50));
-	button6.setFont(new Font("Serif", Font.BOLD, 50));
-	button7.setFont(new Font("Serif", Font.BOLD, 50));
-	button8.setFont(new Font("Serif", Font.BOLD, 50));
-	button9.setFont(new Font("Serif", Font.BOLD, 50));
+	button1.setFont(new Font("Serif", Font.BOLD, 100));
+	button2.setFont(new Font("Serif", Font.BOLD, 100));
+	button3.setFont(new Font("Serif", Font.BOLD, 100));
+	button4.setFont(new Font("Serif", Font.BOLD, 100));
+	button5.setFont(new Font("Serif", Font.BOLD, 100));
+	button6.setFont(new Font("Serif", Font.BOLD, 100));
+	button7.setFont(new Font("Serif", Font.BOLD, 100));
+	button8.setFont(new Font("Serif", Font.BOLD, 100));
+	button9.setFont(new Font("Serif", Font.BOLD, 100));
 
 	   
 	//Main menu GUI
@@ -218,11 +218,11 @@ public class GUI implements ActionListener
 	mainMenuPanel.add(mainTitlePanel);
         ticButton = new JButton("Tic Tac Toe");
 	ticButton.setPreferredSize(stdBtnSize);
-	ticButton.setFont(new Font("Serif", Font.BOLD, 30));
+	ticButton.setFont(new Font("Serif", Font.BOLD, 40));
 	ticButton.addActionListener(this);
 	blackButton = new JButton("Black Jack");
 	blackButton.setPreferredSize(stdBtnSize);
-	blackButton.setFont(new Font("Serif", Font.BOLD, 30));
+	blackButton.setFont(new Font("Serif", Font.BOLD, 40));
 	blackButton.addActionListener(this);
 
 	//Adding buttons
@@ -287,10 +287,10 @@ public class GUI implements ActionListener
 	selectTitleLabel = new JLabel("Select player type");
 	selectTitlePanel.add(selectTitleLabel);
 	humanButton = new JButton("Human vs Human");
-	humanButton.setFont(new Font("serif", Font.BOLD, 30));
+	humanButton.setFont(new Font("serif", Font.BOLD, 40));
 	humanButton.addActionListener(this);
 	computerButton = new JButton("Human vs. Computer");
-	computerButton.setFont(new Font("serif", Font.BOLD, 30));
+	computerButton.setFont(new Font("serif", Font.BOLD, 40));
 	computerButton.addActionListener(this);
 
 	//Organizing selectPlayer panels
@@ -876,17 +876,17 @@ public class GUI implements ActionListener
 		temp2 = blackJackOb.getDealerOriginalCards();
 		for(int i = 0; i < temp.size(); i++)
 		{
-		    leaderTextArea.append(" " + ((Card)(temp.get(i))).getValue() + "of ");
+		    leaderTextArea.append(" " + ((Card)(temp.get(i))).getValue() + " of ");
 		    leaderTextArea.append(((Card)(temp.get(i))).getSuit() + " ");
 		}
 		for(int k = 0; k < temp2.size(); k++)
 		{
-		    leaderTextArea.append(" " + ((Card)(temp2.get(k))).getValue() + "of ");
+		    leaderTextArea.append(" " + ((Card)(temp2.get(k))).getValue() + " of ");
 		    leaderTextArea.append(((Card)(temp2.get(k))).getSuit() + " ");
 		}
 		for(int j = 0; j < temp1.size(); j++)
 		{
-		    leaderTextArea.append(" " + ((Card)(temp1.get(j))).getValue() + "of ");
+		    leaderTextArea.append(" " + ((Card)(temp1.get(j))).getValue() + " of ");
                     leaderTextArea.append(((Card)(temp1.get(j))).getSuit() + " ");
 		}
 
@@ -907,17 +907,17 @@ public class GUI implements ActionListener
 		temp2 = blackJackOb.getDealerOriginalCards();
                 for(int i = 0; i < temp.size(); i++)
 		{
-                    leaderTextArea.append(" " + ((Card)(temp.get(i))).getValue() + "of ");
+                    leaderTextArea.append(" " + ((Card)(temp.get(i))).getValue() + " of ");
                     leaderTextArea.append(((Card)(temp.get(i))).getSuit() + " ");
 		}
 		for(int k = 0; k < temp2.size(); k++)
 		{
-		    leaderTextArea.append(" " + ((Card)(temp2.get(k))).getValue() + "of ");
+		    leaderTextArea.append(" " + ((Card)(temp2.get(k))).getValue() + " of ");
 		    leaderTextArea.append(((Card)(temp2.get(k))).getSuit() + " ");
 		}
 		for(int j = 0; j < temp1.size(); j++)
 		{
-		    leaderTextArea.append(" " + ((Card)(temp1.get(j))).getValue() + "of ");
+		    leaderTextArea.append(" " + ((Card)(temp1.get(j))).getValue() + " of ");
                     leaderTextArea.append(((Card)(temp1.get(j))).getSuit() + " ");
 		}
 
@@ -949,17 +949,17 @@ public class GUI implements ActionListener
                 temp2 = blackJackOb.getDealerOriginalCards();
                 for(int i = 0; i < temp.size(); i++)
 		{
-		    leaderTextArea.append(" " + ((Card)(temp.get(i))).getValue() + "of ");
+		    leaderTextArea.append(" " + ((Card)(temp.get(i))).getValue() + " of ");
 		    leaderTextArea.append(((Card)(temp.get(i))).getSuit() + " ");
 		}
                 for(int k = 0; k < temp2.size(); k++)
 		{
-		    leaderTextArea.append(" " + ((Card)(temp2.get(k))).getValue() + "of ");
+		    leaderTextArea.append(" " + ((Card)(temp2.get(k))).getValue() + " of ");
 		    leaderTextArea.append(((Card)(temp2.get(k))).getSuit() + " ");
 		}
                 for(int j = 0; j < temp1.size(); j++)
 		{
-		    leaderTextArea.append(" " + ((Card)(temp1.get(j))).getValue() + "of ");
+		    leaderTextArea.append(" " + ((Card)(temp1.get(j))).getValue() + " of ");
 		    leaderTextArea.append(((Card)(temp1.get(j))).getSuit() + " ");
 		}
 		
@@ -980,17 +980,17 @@ public class GUI implements ActionListener
                 temp2 = blackJackOb.getDealerOriginalCards();
                 for(int i = 0; i < temp.size(); i++)
 		{
-		    leaderTextArea.append(((Card)(temp.get(i))).getValue() + "of ");
+		    leaderTextArea.append(((Card)(temp.get(i))).getValue() + " of ");
 		    leaderTextArea.append(((Card)(temp.get(i))).getSuit() + " ");
 		}
                 for(int k = 0; k < temp2.size(); k++)
 		{
-		    leaderTextArea.append(((Card)(temp2.get(k))).getValue() + "of ");
+		    leaderTextArea.append(((Card)(temp2.get(k))).getValue() + " of ");
 		    leaderTextArea.append(((Card)(temp2.get(k))).getSuit() + " ");
 		}
                 for(int j = 0; j < temp1.size(); j++)
 		{
-		    leaderTextArea.append(((Card)(temp1.get(j))).getValue() + "of ");
+		    leaderTextArea.append(((Card)(temp1.get(j))).getValue() + " of ");
 		    leaderTextArea.append(((Card)(temp1.get(j))).getSuit() + " ");
 		}
 		
@@ -1102,7 +1102,7 @@ public class GUI implements ActionListener
 	if(e.getSource() == button1)
 	{ 
 	    turn++;
-	    button1.setFont(new Font("Serif", Font.BOLD, 50));
+	    button1.setFont(new Font("Serif", Font.BOLD, 100));
 	    
 	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
@@ -1138,7 +1138,7 @@ public class GUI implements ActionListener
 	{
 
 	    turn++;
-	    button2.setFont(new Font("Serif", Font.BOLD, 50));
+	    button2.setFont(new Font("Serif", Font.BOLD, 100));
 
 	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
@@ -1173,7 +1173,7 @@ public class GUI implements ActionListener
 	if(e.getSource() == button3)
 	{
 	    turn++;
-	    button3.setFont(new Font("Serif", Font.BOLD, 50));
+	    button3.setFont(new Font("Serif", Font.BOLD, 100));
 	
 	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
@@ -1209,7 +1209,7 @@ public class GUI implements ActionListener
 	if(e.getSource() == button4)
 	{
 	    turn++;
-	    button4.setFont(new Font("Serif", Font.BOLD, 50));
+	    button4.setFont(new Font("Serif", Font.BOLD, 100));
 
 	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
@@ -1245,7 +1245,7 @@ public class GUI implements ActionListener
 	if(e.getSource() == button5)
 	{
 	    turn++;
-	    button5.setFont(new Font("Serif", Font.BOLD, 50));
+	    button5.setFont(new Font("Serif", Font.BOLD, 100));
 	    
 	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
@@ -1274,14 +1274,14 @@ public class GUI implements ActionListener
 		tic.playComputerGame(gui, computerPlayer);
 	    }	   
 	    moveList.push(5);
-	    button5.setFont(new Font("Serif", Font.BOLD, 50));
+	    button5.setFont(new Font("Serif", Font.BOLD, 100));
 	    button5.revalidate();
 	    button5.repaint();
 	}
 	if(e.getSource() == button6)
 	{ 
 	    turn++;
-	    button6.setFont(new Font("Serif", Font.BOLD, 50));
+	    button6.setFont(new Font("Serif", Font.BOLD, 100));
 
 	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
@@ -1316,7 +1316,7 @@ public class GUI implements ActionListener
 	if(e.getSource() == button7)
 	{
 	    turn++;
-	    button7.setFont(new Font("Serif", Font.BOLD, 50));
+	    button7.setFont(new Font("Serif", Font.BOLD, 100));
 
 	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
@@ -1351,7 +1351,7 @@ public class GUI implements ActionListener
 	if(e.getSource() == button8)
 	{
 	    turn++;
-	    button8.setFont(new Font("Serif", Font.BOLD, 50));
+	    button8.setFont(new Font("Serif", Font.BOLD, 100));
 
 	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
@@ -1386,7 +1386,7 @@ public class GUI implements ActionListener
 	if(e.getSource() == button9)
 	{
 	    turn++;
-	    button9.setFont(new Font("Serif", Font.BOLD, 50));
+	    button9.setFont(new Font("Serif", Font.BOLD, 100));
 
 	    if(getTurn() == 2 && (tic.getGameType()).equalsIgnoreCase("human"))
 	    {
