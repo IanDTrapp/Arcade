@@ -39,4 +39,13 @@ public class Card
     {
 	return image;
     }
+
+    public void setImage(String newFilePath) {
+	try {
+	    BufferedImage img = ImageIO.read(new File(newFilePath));
+	    image = img;
+	} catch (Exception e) {
+	    System.err.println("File not found");
+	}
+    }
 }
