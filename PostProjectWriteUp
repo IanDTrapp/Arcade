@@ -1,0 +1,35 @@
+Arcade - Projet 4
+Jake Swinney
+Ian Trapp
+
+Overview:
+	
+	We designed our Arcade program to run less like a flash game type applet, and more like a full screen game application. 
+	In an attempt to make it an pain free and game centered experience that could emulate modern Windows applications. Both
+	games act and feel as a user should expect them to, and both are very intuitive with large, easily labeled buttons. It
+	should feel modern and fluid, but not too flashy and painful on the eye.  
+
+
+Design: 
+
+	We have a menu bar that allows a player to return to the main menu and exit the game from anywhere, allowing you to 
+	transition from game to game without completely exiting the application. This also allows scores to be preserved
+	universally throughout the application. Both games contain scoreboards for games since start up, accessible through 
+	the screen where you actually play the game. 
+
+	In Tic Tac Toe, we provide the user with large pressable buttons to represent spaces. This works well via mouse interaction
+	and also via touchscreen interaction, making it feel like a modern Windows 8 or mobile application adapted for a larger 
+	screen. We provide the score on either side of the screen so that users may keep track of their scoring as they play. 
+
+	In Black Jack, the user has a screen with the dealer's cards on top and the player's cards on the bottom. The user is 
+	presented with 3 buttons: Hit, Stand, and Split. Split is only clickable when splitting is actually an available option 
+	(where the first two cards are of the same value. This splits the deck in to two, with the same set of buttons splitting
+	and occuring for both hands. 
+
+Functionality:
+
+	In Tic Tac Toe, the user presses a button to choose that space. Upon pressing that button, their symbol is added to the 
+	button and the button is made unclickable. When a game is won, their win is added to the scoreboard and they are 
+	prompted to start a new game or exit to the main menu. 
+
+	

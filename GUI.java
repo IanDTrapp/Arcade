@@ -454,7 +454,7 @@ public class GUI implements ActionListener
 	    button8.setText("O");
 	    button8.setEnabled(false);
 	    turn++;
-	    moveList(8);
+	    moveList.push(8);
 	    movePanelUpdate("Player X, it's your turn!");
 	    break;
 	case 9: updateArray(9);
@@ -462,7 +462,7 @@ public class GUI implements ActionListener
 	    button9.setText("O");
 	    button9.setEnabled(false);
 	    turn++;
-	    moveList(9);
+	    moveList.push(9);
 	    movePanelUpdate("Player X, it's your turn!");
 	    break;
 	}
