@@ -149,14 +149,14 @@ public class GUI implements ActionListener
 	movePanel.add(moveLabel);
 	playerXPanel = new JPanel(new BorderLayout());
 	playerXLabel = new JLabel("Player X Wins:");
-	playerXWinsLabel = new JLabel("      " + playerXWins);
-	playerXWinsLabel.setFont(new Font("Serif", Font.BOLD, 25));
+	playerXWinsLabel = new JLabel("  " + playerXWins);
+	playerXWinsLabel.setFont(new Font("Serif", Font.BOLD, 50));
 	playerXPanel.add(playerXLabel, BorderLayout.NORTH);
 	playerXPanel.add(playerXWinsLabel, BorderLayout.CENTER);
 	playerOPanel = new JPanel(new BorderLayout());
 	playerOLabel = new JLabel("Player O Wins:");
-	playerOWinsLabel = new JLabel("      " + playerOWins);
-	playerOWinsLabel.setFont(new Font("Serif", Font.BOLD, 25));
+	playerOWinsLabel = new JLabel("  " + playerOWins);
+	playerOWinsLabel.setFont(new Font("Serif", Font.BOLD, 50));
 	playerOPanel.add(playerOLabel, BorderLayout.NORTH);
 	playerOPanel.add(playerOWinsLabel, BorderLayout.CENTER);
 	boardPanel = new JPanel(new GridLayout(3,3));
