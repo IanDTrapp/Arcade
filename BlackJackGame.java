@@ -96,6 +96,7 @@ public class BlackJackGame
     {
 	if(player.equalsIgnoreCase("player"))
 	{
+	    playerCards.subList(0, playerCards.size()).clear();
 	    playerCards.addAll(newList);
 	}
 	else if(player.equalsIgnoreCase("dealer"))
@@ -162,6 +163,15 @@ public class BlackJackGame
     }
  
 
+    public void isBust()
+    {
+	if(playerTotal > 21)
+	    {
+		gui.bjGameOver("player");
+		dealerWins++;
+	    }
+    }
+
     public void hit(String player)
     {
 
@@ -172,14 +182,6 @@ public class BlackJackGame
 	{
 	    playerCards.add(card5);
 	    playerTotal += temp;
-	 
-	    gui.updateCards(playerCards, "player");
-
-	    if(playerTotal > 21)
-	    {
-		gui.bjGameOver("player");
-		dealerWins++;
-	    }
 	}
 	else if(player.equalsIgnoreCase("dealer"))
 	{

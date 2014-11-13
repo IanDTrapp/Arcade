@@ -399,12 +399,14 @@ public class GUI implements ActionListener
 	    button1.setEnabled(false);
 	    turn++;
 	    movePanelUpdate("Player X, it's your turn!");
+	    moveList.push(1);
 	    break;
 	case 2: updateArray(2);
 	    tic.fillArray(passArray());
 	    button2.setText("O");
 	    button2.setEnabled(false);
 	    turn++;
+	    moveList.push(2);
 	    movePanelUpdate("Player X, it's your turn!");
 	    break;
 	case 3: updateArray(3);
@@ -412,6 +414,7 @@ public class GUI implements ActionListener
 	    button3.setText("O");
 	    button3.setEnabled(false);
 	    turn++;
+	    moveList.push(3);
 	    movePanelUpdate("Player X, it's your turn!");
 	    break;
 	case 4: updateArray(4);
@@ -419,6 +422,7 @@ public class GUI implements ActionListener
 	    button4.setText("O");
 	    button4.setEnabled(false);
 	    turn++;
+	    moveList.push(4);
 	    movePanelUpdate("Player X, it's your turn!");
 	    break;
 	case 5: updateArray(5);
@@ -426,6 +430,7 @@ public class GUI implements ActionListener
 	    button5.setText("O");
 	    button5.setEnabled(false);
 	    turn++;
+	    moveList.push(5);
 	    movePanelUpdate("Player X, it's your turn!");
 	    break;
 	case 6: updateArray(6);
@@ -433,6 +438,7 @@ public class GUI implements ActionListener
 	    button6.setText("O");
 	    button6.setEnabled(false);
 	    turn++;
+	    moveList.push(6);
 	    movePanelUpdate("Player X, it's your turn!");
 	    break;
 	case 7: updateArray(7);
@@ -440,6 +446,7 @@ public class GUI implements ActionListener
 	    button7.setText("O");
 	    button7.setEnabled(false);
 	    turn++;
+	    moveList.push(7);
 	    movePanelUpdate("Player X, it's your turn!");
 	    break;
 	case 8: updateArray(8);
@@ -447,6 +454,7 @@ public class GUI implements ActionListener
 	    button8.setText("O");
 	    button8.setEnabled(false);
 	    turn++;
+	    moveList(8);
 	    movePanelUpdate("Player X, it's your turn!");
 	    break;
 	case 9: updateArray(9);
@@ -454,6 +462,7 @@ public class GUI implements ActionListener
 	    button9.setText("O");
 	    button9.setEnabled(false);
 	    turn++;
+	    moveList(9);
 	    movePanelUpdate("Player X, it's your turn!");
 	    break;
 	}
@@ -549,43 +558,52 @@ public class GUI implements ActionListener
             return 2;
     }
 
+    public void refreshPlayerBJ()
+    {
+	label1.setIcon(null);
+	label2.setIcon(null);
+	label3.setIcon(null);
+	label4.setIcon(null);
+	label5.setIcon(null);
+	label6.setIcon(null);
+	label7.setIcon(null);
+	label8.setIcon(null);
+	label9.setIcon(null);
+	label10.setIcon(null);
+	label11.setIcon(null);
+	label12.setIcon(null);
+	label13.setIcon(null);
+	label14.setIcon(null);
+	label15.setIcon(null);
+	label16.setIcon(null);
+	label17.setIcon(null);
+	label18.setIcon(null);
+	label19.setIcon(null);
+	label20.setIcon(null);
+	label21.setIcon(null);
+	label22.setIcon(null);
+    }
+
     public int getNumDecks()
     {
 	return numOfDecks;
     }
 
     public void updateCards(ArrayList cardImages, String player)
-    {	
+    {		
 	temp.addAll(cardImages);
 
 	int size = temp.size();
-
-	cardImages.subList(0, cardImages.size()).clear();
 	
 	for(int i = 0; i < size; i++)
 	{
 	    int labelNumber = i+1;
 	    card7 = (Card)temp.get(i);
 	    BufferedImage buffImage = ((BufferedImage)card7.getImage());
-	    ImageIcon image = new ImageIcon(buffImage);
-	    cardImages.add(card7);
-
-	    if(player.equalsIgnoreCase("dealer"))
-	    {
-		blackJackOb.updateLists(cardImages, "dealer");
-	    }
-	    else if(player.equalsIgnoreCase("player"))
-	    {
-		blackJackOb.updateLists(cardImages, "player");
-	    }
-	    else if(player.equalsIgnoreCase("dealero"))
-	    {
-		blackJackOb.updateLists(cardImages, "dealero");
-	    }
+	    ImageIcon image = new ImageIcon(buffImage);	    
 	    
 	    if(player.equalsIgnoreCase("player"))
 	    {
-		blackJackOb.emptyList("player");
 		
 		switch(labelNumber)
 		{
@@ -661,7 +679,6 @@ public class GUI implements ActionListener
 	    
 	    if(player.equalsIgnoreCase("dealer"))
 	    {
-		blackJackOb.emptyList("dealer");
 
 		int labelNum = i+1;
 		switch(labelNum)
@@ -736,7 +753,6 @@ public class GUI implements ActionListener
 	    }
 	    else if(player.equalsIgnoreCase("dealero"))
 	    {
-		blackJackOb.emptyList("dealero");
 		
 		int labelNum = i+1;
 
@@ -751,9 +767,22 @@ public class GUI implements ActionListener
 		}
 	    }
 	}
-    	
-	temp.subList(0, temp.size()).clear();
 
+	if(player.equalsIgnoreCase("dealer"))
+	{
+	    blackJackOb.updateLists(temp, "dealer");
+	}
+	else if(player.equalsIgnoreCase("player"))
+	{
+	    blackJackOb.updateLists(temp, "player");
+	}
+	else if(player.equalsIgnoreCase("dealero"))
+	{
+	    blackJackOb.updateLists(temp, "dealero");
+	}
+
+	temp.subList(0, temp.size()).clear();
+	
 	frame.revalidate();
 	frame.repaint();
     }
@@ -1417,6 +1446,8 @@ public class GUI implements ActionListener
 	if(e.getSource() == hit)
 	{
 	    blackJackOb.hit("player");
+	    updateCards((ArrayList)blackJackOb.getPlayerCards(), "player");
+	    blackJackOb.isBust();
 	}
 	if(e.getSource() == stand)
 	{
