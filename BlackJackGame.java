@@ -133,6 +133,7 @@ public class BlackJackGame
 	card4 = (Card)deck.pop();
 	int int1, int2, int3, int4;
 
+	card1.setImage("classic-cards/b1fv.png");
 	dealerOriginalCards.add(card1);
 	dealerOriginalCards.add(card2);
 	int1 = card1.getValue().getValue();
