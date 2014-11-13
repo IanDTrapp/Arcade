@@ -128,10 +128,10 @@ public class GUI implements ActionListener
 	file.add(exitMenu);
 	game = new JMenu("Game");
 	mainMenuItem = new JMenuItem("Main Menu");
+	mainMenuItem.addActionListener(this);
 	undoMenu = new JMenuItem("Undo");
 	game.add(undoMenu);
 	undoMenu.addActionListener(this);
-	game.add(mainMenuItem);
 	game.addActionListener(this);
 	
 	menuBar.setVisible(true);
@@ -331,6 +331,7 @@ public class GUI implements ActionListener
 	
 	frame.revalidate();
 	frame.repaint();
+	
     }
 
     public void bjTie()
@@ -888,6 +889,8 @@ public class GUI implements ActionListener
                     leaderTextArea.append(((Card)(temp1.get(j))).getSuit() + " ");
 		}
 
+		leaderTextArea.append(" ----- Dealer wins!");
+
 		blackJackOb.refresh();
 		refreshBJ();
 		blackJackOb.addWin("dealer");
@@ -916,6 +919,8 @@ public class GUI implements ActionListener
 		    leaderTextArea.append(((Card)(temp1.get(j))).getValue() + "of ");
                     leaderTextArea.append(((Card)(temp1.get(j))).getSuit() + " ");
 		}
+
+		leaderTextArea.append(" ----- Dealer wins!");
 
 		int selected2 = bjGameOverPane.showConfirmDialog(null, "Do you want to see your match history?", "Game over!", JOptionPane.OK_OPTION);
 		if(selected2 == JOptionPane.OK_OPTION)
@@ -956,7 +961,9 @@ public class GUI implements ActionListener
 		    leaderTextArea.append(((Card)(temp1.get(j))).getValue() + "of ");
 		    leaderTextArea.append(((Card)(temp1.get(j))).getSuit() + " ");
 		}
-
+		
+		leaderTextArea.append(" ----- Player wins!");
+		
 		refreshBJ();
                 blackJackOb.refresh();
                 blackJackOb.addWin("player");
@@ -985,6 +992,8 @@ public class GUI implements ActionListener
 		    leaderTextArea.append(((Card)(temp1.get(j))).getValue() + "of ");
 		    leaderTextArea.append(((Card)(temp1.get(j))).getSuit() + " ");
 		}
+		
+		leaderTextArea.append(" ----- Player wins!");
 		
 		int selected2 = bjGameOverPane.showConfirmDialog(null, "Do you want to see your match history?", "Game over!", JOptionPane.OK_OPTION);
                 if(selected2 == JOptionPane.OK_OPTION)
@@ -1461,9 +1470,5 @@ public class GUI implements ActionListener
 	if(e.getSource() == undoMenu) {
 	    tic.undoTurn(moveList, gui);
 	}
-	/*if(e.getSource() == mainMenuItem);
-	{
-	    cardLayout.show(master, mainMenu);
-	    }*/
     }
 }
