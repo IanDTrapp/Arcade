@@ -23,6 +23,7 @@ Changelog -
 	- Fix indexOutOfBoundsException on startup 
 	- Fix basic blackjack functionality
 	- Split functionality
+	- Make dealer's first card not show	
 	- Project write up
 
 	
