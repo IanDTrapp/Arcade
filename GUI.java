@@ -305,6 +305,7 @@ public class GUI implements ActionListener
 	leaderTextPanel = new JPanel();
 	leaderTextPanel.setSize(size);
 	leaderTextArea = new JTextArea();
+	leaderTextArea.setSize(size);
 	leaderTextPanel.add(leaderTextArea);
 	allTime = new JButton("All Time");
 	allTime.addActionListener(this);
@@ -875,17 +876,17 @@ public class GUI implements ActionListener
 		temp2 = blackJackOb.getDealerOriginalCards();
 		for(int i = 0; i < temp.size(); i++)
 		{
-		    leaderTextArea.append(((Card)(temp.get(i))).getValue() + "of ");
+		    leaderTextArea.append(" " + ((Card)(temp.get(i))).getValue() + "of ");
 		    leaderTextArea.append(((Card)(temp.get(i))).getSuit() + " ");
 		}
 		for(int k = 0; k < temp2.size(); k++)
 		{
-		    leaderTextArea.append(((Card)(temp2.get(k))).getValue() + "of ");
+		    leaderTextArea.append(" " + ((Card)(temp2.get(k))).getValue() + "of ");
 		    leaderTextArea.append(((Card)(temp2.get(k))).getSuit() + " ");
 		}
 		for(int j = 0; j < temp1.size(); j++)
 		{
-		    leaderTextArea.append(((Card)(temp1.get(j))).getValue() + "of ");
+		    leaderTextArea.append(" " + ((Card)(temp1.get(j))).getValue() + "of ");
                     leaderTextArea.append(((Card)(temp1.get(j))).getSuit() + " ");
 		}
 
@@ -906,17 +907,17 @@ public class GUI implements ActionListener
 		temp2 = blackJackOb.getDealerOriginalCards();
                 for(int i = 0; i < temp.size(); i++)
 		{
-                    leaderTextArea.append(((Card)(temp.get(i))).getValue() + "of ");
+                    leaderTextArea.append(" " + ((Card)(temp.get(i))).getValue() + "of ");
                     leaderTextArea.append(((Card)(temp.get(i))).getSuit() + " ");
 		}
 		for(int k = 0; k < temp2.size(); k++)
 		{
-		    leaderTextArea.append(((Card)(temp2.get(k))).getValue() + "of ");
+		    leaderTextArea.append(" " + ((Card)(temp2.get(k))).getValue() + "of ");
 		    leaderTextArea.append(((Card)(temp2.get(k))).getSuit() + " ");
 		}
 		for(int j = 0; j < temp1.size(); j++)
 		{
-		    leaderTextArea.append(((Card)(temp1.get(j))).getValue() + "of ");
+		    leaderTextArea.append(" " + ((Card)(temp1.get(j))).getValue() + "of ");
                     leaderTextArea.append(((Card)(temp1.get(j))).getSuit() + " ");
 		}
 
@@ -948,17 +949,17 @@ public class GUI implements ActionListener
                 temp2 = blackJackOb.getDealerOriginalCards();
                 for(int i = 0; i < temp.size(); i++)
 		{
-		    leaderTextArea.append(((Card)(temp.get(i))).getValue() + "of ");
+		    leaderTextArea.append(" " + ((Card)(temp.get(i))).getValue() + "of ");
 		    leaderTextArea.append(((Card)(temp.get(i))).getSuit() + " ");
 		}
                 for(int k = 0; k < temp2.size(); k++)
 		{
-		    leaderTextArea.append(((Card)(temp2.get(k))).getValue() + "of ");
+		    leaderTextArea.append(" " + ((Card)(temp2.get(k))).getValue() + "of ");
 		    leaderTextArea.append(((Card)(temp2.get(k))).getSuit() + " ");
 		}
                 for(int j = 0; j < temp1.size(); j++)
 		{
-		    leaderTextArea.append(((Card)(temp1.get(j))).getValue() + "of ");
+		    leaderTextArea.append(" " + ((Card)(temp1.get(j))).getValue() + "of ");
 		    leaderTextArea.append(((Card)(temp1.get(j))).getSuit() + " ");
 		}
 		
